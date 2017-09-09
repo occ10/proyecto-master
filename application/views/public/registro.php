@@ -82,10 +82,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h1>City Gallery</h1>
     </div>
 
-    <div class="col-md-8 col-md-offset-3" style="">
+    <div class="col-md-8 col-md-offset-3" >
         <h1>Registrarte</h1>
         <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
-            <div class="row">
+        <div class="panel-body">
                 <div class="col-lg-8">
                     <!--onsubmit="return validateForm()"-->
                     <form  action="<?php echo site_url('registroUser')?>" name="myForm"  class="form-horizontal" method="post">
@@ -121,6 +121,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <input class="form-control" type="number" name="bday"   id="bday" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                             </div>
                         </div>
+                        <!--<div class="form-group" id="detalleRegistro" >
+                            <label for="detalle">Descripcion...</label>
+                            <div class="input-group">
+                                <textarea wrap="physical" name="detalle" id="detalle" rows="4" cols="50" placeholder="En pocas palabras... Vivo en torrevieja y trabajo en Valencia, me tengo que desplazar casi todos los dias de un a sitio a otro." class="form-control" required></textarea>
+                            </div>
+                        </div>-->
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>

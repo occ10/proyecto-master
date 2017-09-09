@@ -16,10 +16,10 @@ $this->load->view('private/include/cabecera');
             <div style="height:50px;">
                 <span style="width: 25%;color: #727272"><?php echo $numComentarios->totalComentarios?> comentarios recibidos</span>
             </div>
-            <div style="height:50px;">
-                <span style="width: 25%;color: #727272;display: inline-block;">Detalles</span>
-                <span style="width: 25%;color: #727272;display: inline-block;">
-                       <?php //echo  $detalleUsuario->detalles ?>
+            <div style="height:50px;width;50px">
+                <span style="width: 25%;color: #727272;display: inline-block;">Detalles:</span>
+                <span style="color: #727272;display: inline-block;width: 100%;">
+                    <?php echo  $detalleUsuario->detalles ?></span>
                     </span>
             </div>
            <?php  if(isset($detalleCoche->marca) && ($detalleCoche->color)){ ?>
@@ -110,7 +110,7 @@ $this->load->view('private/include/cabecera');
                                                     src="<?php echo base_url(); ?>assets/userFoto/<?php if ($comentario->foto == "") echo 'unkonwnfoto.png'; else echo $comentario->foto ?> "
                                                     alt="Smiley face" height="60px" width="60px"></a></div>
                                     <div><strong
-                                                style="color:#333333"><?php echo $comentario->nombre . $comentario->apellido ?></strong> <?php echo $comentario->comentario ?>
+                                                style="color:#333333"><?php echo $comentario->nombre .  $comentario->apellido ?></strong> <?php echo $comentario->comentario ?>
                                     </div>
                                 </div>
                             </li>

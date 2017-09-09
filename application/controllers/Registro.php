@@ -21,7 +21,7 @@ class Registro extends CI_Controller {
      */
     public function index()
     {
-        $this->load->view('public/registro');
+        $this->load->view('public/reg');
         //$this->load->view('public/confirmRegister');
     }
 
@@ -37,7 +37,8 @@ class Registro extends CI_Controller {
             'apellido' => $this->input->post('apellido'),
             'edad' => $this->input->post('bday'),
             'contraseña' => $pass,
-            'telefono' => $this->input->post('telefono'),
+            'telefono' => $this->input->post('telefonoReg'),
+             'detalles' => $this->input->post('detalles'),
              'salt' => $salt
         );
 

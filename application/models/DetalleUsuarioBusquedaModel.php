@@ -149,7 +149,7 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         return $result->result();
     }
 
-    public function obtenerTodoPorNombre($data){
+    public function obtenerTodoPorNombre($data,$correo){
 
         /*$this->db->select('usuario.*');
         $this->db->from('usuario');
@@ -160,11 +160,12 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->select('*');
         $this->db->from('usuario');
         $this->db->where('nombre like ', '%' . $data . '%');
+        $this->db->where('correo !=' , $correo );
         $result=$this->db->get();
 
         return $result->num_rows();
     }
-    public function obtenerUsuariosPorNombre($per_page,$uri_segment,$data)
+    public function obtenerUsuariosPorNombre($per_page,$uri_segment,$data,$correo)
     {
         /*$this->db->select('usuario.*');
         $this->db->from('usuario');
@@ -175,6 +176,7 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->select('*');
         $this->db->from('usuario');
         $this->db->where('nombre like ', '%' . $data . '%');
+        $this->db->where('correo !=', $correo );
         $this->db->limit($per_page,$uri_segment);
         $result= $this->db->get();
 

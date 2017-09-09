@@ -36,7 +36,7 @@ class Usuarios extends CI_Controller
 
             if ($this->input->get('telefono')) {
                 $aux = $this->input->get('telefono');
-
+                $correo = $this->session->userdata('user')->correo;
 
 
                         $result = $this->DetalleUsuarioBusquedaModel->buscarTelefono($aux);
@@ -49,7 +49,8 @@ class Usuarios extends CI_Controller
                         $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscado($aux);
                             $Resultado['detalleCoche'] = $this->CocheModel->DetalleCocheBuscado($aux);
                         $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->Comentarios($aux);
-                        //$Resultado['correo']  = $correo;
+                        $Resultado['correo']  = $correo;
+                            $Resultado['correoUSuarioSesion'] = $correo;
                         $this->load->view('private/detalleUsuarioBuscado', $Resultado);
                        }else{
                             $Resultado['Info'] ="No hay ningun usuario con este telefono";
@@ -67,7 +68,7 @@ class Usuarios extends CI_Controller
 
         if ($this->session->userdata('user')) {
 
-
+                        $correoUSuarioSesion = $this->session->userdata('user')->correo;
                         $Resultado['numViajes'] = $this->DetalleUsuarioBusquedaModel->numViajesUsuarioBuscadoPorCorreo($correo);
                         $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
                         $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
@@ -75,6 +76,7 @@ class Usuarios extends CI_Controller
 
                         $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($correo);
                         $Resultado['correo']  = $correo;
+                        $Resultado['correoUSuarioSesion'] = $correoUSuarioSesion;
                         $Resultado['Info'] ="No hay ningun usuario con correo";
                         $this->load->view('private/detalleUsuarioBuscado', $Resultado);
                         //print_r($Resultado);
@@ -87,7 +89,7 @@ class Usuarios extends CI_Controller
 
     public function buscarUsuariosPorOrigen(){
         if($this->session->userdata('user')) {
-
+            $correoUSuarioSesion = $this->session->userdata('user')->correo;
            /* if($this->session->userdata('origenUsuario')){
                 $var= $this->session->userdata('origenUsuario');
             }*/
@@ -126,7 +128,7 @@ class Usuarios extends CI_Controller
             print_r(count($output['rutas']));
             echo "</pre>";*/
             $output['prueba']='hola prueba';
-            //$output['id']=$id;
+            $Resultado['correoUSuarioSesion'] = $correoUSuarioSesion;
 
             $this->load->view('private/listaUsuariosBuscados', $output);
         }else{
@@ -136,10 +138,10 @@ class Usuarios extends CI_Controller
     }
 
     public function buscarUsuariosPorNombre(){
-        if($this->session->userdata('user')) {
+        if($this->session->userdata('user')->correo) {
 
 
-
+            $correo = $this->session->userdata('user')->correo;
             if(isset($_GET['usuarioNombre'])){
                 $var= $_GET['usuarioNombre'];
 
@@ -147,7 +149,7 @@ class Usuarios extends CI_Controller
             $var = ($this->uri->segment(3)) ? $this->uri->segment(3) : $var;
             $config['base_url'] = base_url().'usuarios/buscarUsuariosPorNombre/' . $var  ;
             //$config['suffix']= '?usuarioNombre=' . $var;
-            $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var);
+            $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var,$correo);
             $config['per_page'] = '5';
             $config['uri_segment'] = '4';
             $config['num_links'] = '5';
@@ -167,10 +169,10 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-            $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuariosPorNombre($config['per_page'],$page,$var);
+            $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuariosPorNombre($config['per_page'],$page,$var,$correo);
             $output['origen'] = $var;
             $output['paginacion'] = $this->pagination->create_links();
-            $output['total']=$this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var);
+            $output['total']=$this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var,$correo);
             /*echo "<pre>";
             print_r(count($output['rutas']));
             echo "</pre>";*/

@@ -145,7 +145,7 @@ $route['private/DetalleUsuarioPorCorreo/(:any)'] = 'usuarios/detalleUsuarioPorCo
 $route['private/buscarUsuariosPorOrigen'] = 'usuarios/buscarUsuariosPorOrigen';
 $route['private/buscarUsuariosPorOrigen/(:num)'] = 'usuarios/buscarUsuariosPorOrigen/$1';
 
-//buscar usuarios por origen
+//buscar usuarios por nombre
 $route['private/buscarUsuariosPorNombre'] = 'usuarios/buscarUsuariosPorNombre';
 $route['private/buscarUsuariosPorNombre/(:num)'] = 'usuarios/buscarUsuariosPorNombre/$1';
 

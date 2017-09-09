@@ -20,7 +20,7 @@ class Login extends CI_Controller {
     public function index()
     {
 
-        $this->load->view('public/login');
+        $this->load->view('public/log');
     }
     public function indexLogin()
     {
@@ -62,7 +62,7 @@ class Login extends CI_Controller {
                 }
         }
             $output['Error'] = 'error';
-            $this->load->view('public/login', $output);
+            $this->load->view('public/log', $output);
 
 
 

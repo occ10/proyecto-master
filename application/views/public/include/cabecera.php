@@ -12,13 +12,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url();?>assets/include/js/index.js"></script>
 
-    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <title>AppUa</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url();?>assets/include/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/css/register.css" rel="stylesheet">
-    <link href="<?php echo base_url();?>assets/css/login.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/perfil.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
+
+    <?php
+    if(isset($css_files) && isset($js_files)):
+    foreach($css_files as $file): ?>
+    <link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
+
+    <?php endforeach;
+    foreach($js_files as $file): ?>
+        <script src="<?php echo $file; ?>"></script>
+    <?php endforeach; ?>
+    <?php else: ?>
+        <!-- jQuery -->
+
+
+        <script src="<?php echo base_url();?>assets/include/js/jquery-3.2.1.min.js"></script>
+    <?php endif;?>
     <style>
 
         .header {
@@ -26,10 +44,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             color: white;
             background-color:#5F9EA0;
             clear: left;
-            text-align: center;*/
+            text-align: center;
         }
     </style>
-    <script>
+    <script type="text/javascript">
         function validateForm() {
 
             var x = document.forms["myForm"]["password1"].value;
@@ -40,37 +58,58 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
 
+
+        $(function(){
+            $("#correoElectronico").blur(function(event)
+            {
+
+                event.preventDefault();
+                var correo= $("#correoElectronico").val();
+                var url= "<?php echo base_url(); ?>private/correo/"+correo;
+
+                $.ajax(
+                    {
+                        type:"GET",
+                        url: url,
+                        success:function(response)
+                        {
+
+                            if(response=='false') {
+                                $("#messageCorreo").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
+                                $('form input[id="boUsuario"]').prop("disabled", true);
+                            }else{
+                                $("#messageCorreo").html("");
+                                $('form input[id="boUsuario"]').prop("disabled", false);
+                            }
+
+
+                        },
+                        error: function(error)
+                        {
+                            $("#message").html(error);
+                        }
+                    }
+                );
+            });
+        });
     </script>
+
 </head>
 <body>
 <div class="center">
-    <header>
+    <div>
+
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
 
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="<?php echo site_url('private/home')?> "> Home</a></li>
-                        <li><a href= " <?php echo site_url('modifyPerfil') ?>">Editar perfil</a></li>
-                        <li><a href="<?php echo site_url('private/listadoRutas') ?> ">Viajes publicados</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li> <a style='color:#fcfcfc;background: #337AB7; border-radius: 25px;height:35px;padding-top:6px;margin-top:8px;margin-right:20px' href="<?php echo site_url('publicarRuta')?> ">  <i class='glyphicon glyphicon-random'></i>&nbsp;&nbsp;&nbsp;&nbsp;Publicar una ruta </a></li>
-                        <li>
-                            <button style="margin-top:8px;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Bienvenido  <?php echo $this->session->userdata('user')->nombre ?>
-                                <span class="caret"></span></button>
-                            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                                <li><a href= " <?php echo site_url('modifyPerfil') ?>">Editar perfil</a></li>
-                                <li><a href='#'>CSS</a></li>
-                                <li><a href="<?php echo site_url('private/listadoRutas') ?> ">Viajes publicados</a></li>
-                                <li><a href= " <?php echo site_url('cerrarSesion') ?>">Cerrar cesion</a></li>
-                            </ul>
-                        </li>
                     </ul>
 
                 </div>
 
             </div>
         </nav>
-    </header>
-    <div class="col-md-8 col-md-offset-3">
+    </div>
+    <div class="row">
