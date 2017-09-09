@@ -1,0 +1,22 @@
+.center {
+    height:100%;
+ 
+}
+html, body {
+  height: 100%;
+    margin: 0;
+  padding: 0;
+
+}
+.olli {
+    
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.lli {
+    float: left;
+	width:33%;
+	list-style-type: none;
+}

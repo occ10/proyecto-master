@@ -1,0 +1,79 @@
+PASOS PREVIOS (HECHOS)
+
+- Subir código de las plantillas a Github. Luego se irán modificando. HECHO.
+
+- Creación base de datos (entidad relación + modelo físico en phpmyadmin). Cada uno de nosotros deberá
+tener la base de datos en local (en xampp). Si se actualiza con algún campo nuevo o tabla nueva, habrá que avisar. HECHO.
+
+- Para realizar la base de datos, seguir el diagrama de datos que se realizó en la primera práctica. Hay que agregar también la entidad "Comentario", tal y como nos dijo Jaume. HECHO.
+
+- Adaptar plantilla web a nuestro proyecto: quitar secciones que no nos interesan y meter estructura de codeigniter poco a poco en los archivos .html de la plantilla.
+Esto debe hacerse tanto para public como para private. HECHO.
+
+
+PASOS DESARROLLO
+
+- Estructura del repositorio:
+
+	- public: carpeta con el contenido de la plantilla public
+	- private: carpeta con el contenido de la plantilla private del administrador
+
+
+- Secciones a realizar por cada uno:
+
+	- public: 
+
+		home+cartelera
+		ficha detalle peli (mostrar sus datos, indicar participantes de la película (director, actores, etc) y si tiene premios también mostrarlos)
+		login (si al loguear, su login pertenece a un usuario administrador, será redireccionado a private. Si su login pertenece a un usuario normal, podrá navegar por la web de igual manera que un invitado, pero su login aparecerá en alguna parte y podrá cerrar sesión)
+		registro
+		Usuario puede votar películas
+		Usuario puede comentar películas
+
+	- private: 
+		Comprobar si sesión está iniciada, en caso negativo, no se puede acceder y debe ser redireccionado a la página login de public.
+		CRUD de las películas
+		CRUD participantes de las películas (crear un participante (actor, director, producto, guionista...) y luego poder asignarlo a N películas
+		CRUD premios (crear un premio y luego poder asignarlo a 1 película).
+
+PASOS DOCUMENTACIÓN
+
+Hay que hacer:
+
+- Entidad relación. OK, ya hecho.
+
+- Agregar entidad "Comentarios" al datamodel de la primera práctica. No se hará, en su lugar, se pone un "antes" y un "después" en la memoria. OK.
+
+- Wireframe de navegación. SIN HACER.
+
+- Mockups de la web. SIN HACER. Realizar tanto capturas de la web como mockups (home parte pública, detalles de una película, formulario de login/registro, home parte privada y la página de la tabla crud de películas)
+	- Utilizar herramientas como balsamiq mockups o mockup builder.
+
+- Apuntar qué patrones de diseño web hemos seguido. Repasar los apuntes de patrones y poner algunos. SIN HACER.
+
+- Realizar memoria PDF con los siguientes apartados. SIN HACER:
+
+	- Titulo
+	– Introducción/descripción general
+	– Wireframes y mockups
+	- Patrones de diseño web aplicados con su descripción y justificación.
+	– Diagramas: casos de uso, de clases, de datos, etc.
+	– Descripción técnica del sistema: tecnologías, arquitectura, servicios y servidores.
+	– Detalles de implementación
+	– Problemas encontrados y su solución
+	– Mejoras y ampliaciones
+	– Referencias
+
+
+-----
+
+Cosas que van a quedar pendientes pero se explicarán en la memoria:
+
+Parte pública
+- Premios de participantes, solo se han implementado los premios de películas.
+- Buscador de películas.
+- Perfil del usuario, historial de votaciones/comentarios.
+
+Parte privada
+- Mejorar enlace entre película-participantes, película-premios.
+- Premios de participantes CRUD.

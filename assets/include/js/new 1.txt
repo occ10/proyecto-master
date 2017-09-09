@@ -1,0 +1,96 @@
+/*
+$( "#tipoBusqueda" ).change(function() {
+
+  var tipo= $("#tipoBusqueda").val();
+   
+   switch(tipo){
+	     case "nombre":
+	         $("#tipo").val("");
+	         $("#messageTipo").html("");
+	         $("#tipoHidden").attr("value","nombre");
+	         $("#tipo").attr("placeholder", "Ejemplo: Miguel");
+             $("#myFormSearchUser").attr("action", "http://localhost/proyecto/private/buscarUsuariosPorNombre");			 
+         break;
+         case "origen":
+		 
+		 
+		 
+	         $("#tipo").val("");
+	         $("#messageTipo").html("");
+	         $("#tipoHidden").attr("value","origen");
+	         $("#tipo").attr("placeholder", "Ejemplo: Elche");
+			 $("#myFormSearchUser").attr("action", "http://localhost/proyecto/private/buscarUsuarios");
+			 //alert()
+			 
+         break;
+         case "telefono":
+	     $("#tipo").val("");
+	     $("#messageTipo").html("");
+	     $("#tipoHidden").attr("value","telefono");
+	     $("#tipo").attr("placeholder", "Ejemplo: 654 987 321");
+		 $("#myFormSearchUser").attr("action", "http://localhost/proyecto/private/buscarDetalleUsuario");
+		 
+		 
+         break;
+	   
+   }
+});
+
+$( "#boBuscarUsuario" ).click(function(event){
+
+	var tipo= $("#tipo").val();
+	if(tipo!=""){ 
+		var tipoBusqueda= $("#tipoBusqueda").val();
+		var characters = /^[a-z," "]+$/i;
+		switch(tipoBusqueda){
+			case "nombre":
+		   if (!characters.test(tipo)) {
+			  $("#messageTipo").html("El nombre solo debe contener letras");
+			   return false
+		   }else{
+			   //$("#messageTipo").html("");
+		   }
+			break;
+		case "origen":
+			   if (!characters.test(tipo)) {
+			   $("#messageTipo").html("El origen solo debe contener letras");
+			   return false
+		   }else{
+			   //$("#messageTipo").html("");
+		   }
+			break;
+		case "telefono":
+		var filter1 = /^[0-9-+]+$/;
+		var filter2 = /^(6|7)[0-9-+]+$/;
+		if (!filter1.test(tipo)) {
+			//return true;
+			
+			$("#messageTipo").html("El telefono solo debe contener numeros");
+			return false
+		}else if (!filter2.test(tipo)) {
+			//return true;
+			
+			$("#messageTipo").html("El telefono debe empezar por 6 o 7");
+			return false
+		}else if(tipo.length!=9){
+			
+			$("#messageTipo").html("El numero debe contener 9 cifras");
+			return false
+		}
+		else {
+			$("#messageTipo").html("");
+		}
+			break;		
+		}
+		//var pal=/^[a-z0-9]+([-._][a-z0-9]+)*@([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,4}$/.test($( "#tipo" ).val())
+			//&& /^(?=.{1,64}@.{4,64}$)(?=.{6,100}$).*/.test($( "#tipo" ).val());
+			//alert(pal);*/
+			
+	}	
+	
+});*/
+
+
+    $("#tipo").focus(function(){
+       //$('form input[id="boBuscarUsuario"]').prop("disabled", false);
+    });

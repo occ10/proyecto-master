@@ -1,0 +1,11 @@
+.center {
+    margin: auto;
+    width: 60%;
+    height:100%;
+    border: 1px solid #D3D3D3;
+	 
+}
+html, body {
+  height: 100%;
+  background-color:	#F5F5DC; 
+}

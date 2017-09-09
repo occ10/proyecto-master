@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="include/css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/login.css" rel="stylesheet">
+	<script>
+	var cont=1
+	function anyadirPasos() {
+	
+    var nodo = document.getElementById("p"+cont);
+		var par1 = document.createElement("div");
+		   var nodoTexto = document.createTextNode("hola mundo");
+   par1.appendChild(nodoTexto);
+   
+   var parentDiv = nodo.parentNode;
+	/*var att1 = document.createAttribute("class"); 
+	att1.value = "form-group";
+	par1.setAttributeNode(att1);*/
+parentDiv.appendChild(par1);
+	/*cont++
+	
+	var par1 = document.createElement("div");
+	var att1 = document.createAttribute("class"); 
+	att1.value = "form-group";
+	par1.setAttributeNode(att1);
+	
+	var att11 = document.createAttribute("id"); 
+	att11.value = "p"+cont;
+	par1.setAttributeNode(att11);
+	
+	var par2 = document.createElement("div");
+	var att2 = document.createAttribute("class"); 
+	att2.value = "input-group";
+	par2.setAttributeNode(att2);
+	
+	var par3 = document.createElement("input");
+	var att3 = document.createAttribute("type"); 
+	att3.value = "text";
+	par3.setAttributeNode(att3);
+	
+    var att4 = document.createAttribute("class"); 
+	att4.value = "form-control";
+	par3.setAttributeNode(att4);
+	
+	var att5 = document.createAttribute("id"); 
+	att5.value = "puntosPaso"+cont;
+	par3.setAttributeNode(att5);
+	
+	
+    var att6 = document.createAttribute("required"); 
+	par3.setAttributeNode(att6);
+	
+    par2.appendChild(par3);
+    par1.appendChild(par2);
+
+	//node.parentNode.insertBefore(par1, node.nextSibling);
+	
+	alert(cont)*/
+				
+	}
+	</script>
+</head>
+
+<body>
+	<div class="center">
+		<div class="col-md-8 col-md-offset-3">
+			<h3>Pblicar Ruta</h3>
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-lg-8">
+						<form  name="myForm"  onsubmit="return validateForm()"  class="form-horizontal">
+						
+							<div class="form-group">
+							
+								<label for="origen">Origen</label>
+								<div class="input-group">
+									<span class="input-group-addon">Text</span>
+									<input type="text" class="form-control" id="origen" placeholder="Ejemplo: Elche" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+								</div>
+							</div>
+							<div class="form-group">
+							   <label for="destino">Destino</label>
+								<div class="input-group">
+									<span class="input-group-addon">Text</span>
+									<input type="text" class="form-control" id="destino" placeholder="Ejemplo: Alicante" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+								</div>
+							</div>
+							<div class="form-group" >
+							    <label for="precio">Precio</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i class="glyphicon glyphicon-eur"></i></span>
+									<input type="text" class="form-control" id="precio" placeholder="Ejemplo: 3€" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+								</div>								
+							</div>	
+
+							<div class="form-group" >
+							    <label for="plaza">Plazas disponibles</label>
+								<div class="input-group">
+									<span class="input-group-addon"><i>N</i></span>
+									<input type="number" name="quantity" min="1" max="4" class="form-control" id="plaza" placeholder="Ejemplo: 3" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+							
+								</div>								
+							</div>	
+							<div class="form-group" >
+								<div class="input-group">
+									<label for="detalle">Detalles</label>
+									<textarea class="form-control" id="detalle" placeholder="Ejemplo: Voy a La universidad de Alicante todos los dias, salgo de Torrevieja, tengo clases solo por las mañanas" rows="6" cols="50"></textarea>
+								</div>								
+							</div>								
+                            <!--<div style="padding:10px;"><a href="#" onclick="anyadirPasos();"> + Añadir mas puntos de paso</a></div>-->				
+							<div class="form-group">
+								<input type="submit" value="Publicar" class="btn btn-primary">
+							</div>	  
+						</form> 
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

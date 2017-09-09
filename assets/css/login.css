@@ -1,0 +1,24 @@
+.center {
+    margin: auto;
+    width: 80%;
+    min-height:100%;
+    position:relative;
+    border: 1px solid #D3D3D3;
+    background-color:#FFFFFF;
+}
+html, body {
+    height: 100%;
+    background-color:#F5F5DC;
+}
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color:#B0C4DE;
+    text-align: center;
+
+
+
+}
