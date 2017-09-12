@@ -7,21 +7,6 @@ $this->load->view('private/include/cabecera');
     <h3>Zona ocupada</h3>
     <hr>
 
-    <?php
-    if(isset($Exito)) {
-        ?>
-        <div class="alert alert-success">
-            <strong>Success!</strong> Los datos se han insertado correctamente.
-        </div>
-        <?php
-    }else if(isset($Error)){
-        ?>
-        <div class="alert alert-danger">
-            <strong>Danger!</strong> Ha habido algun error en la insercion de los errores.
-        </div>
-        <?php
-    }
-    ?>
     <div class="panel-body">
 
         <div style="background-color:#F5F5DC;height:950px">

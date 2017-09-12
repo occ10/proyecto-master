@@ -10,6 +10,7 @@ class LoginModel extends CI_Model
         $this->db->from('usuario');
         $this->db->where('correo', $data['correo']);
         $this->db->where('contraseña', $data['contraseña']);
+        //$this->db->where('confirmado', 'SI');
 
         $query = $this->db->get();
         return $result = $query->row();
@@ -25,4 +26,5 @@ class LoginModel extends CI_Model
         else
             return $result;
     }
+
 }

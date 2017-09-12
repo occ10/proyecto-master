@@ -56,6 +56,8 @@ $route['translate_uri_dashes'] = FALSE;
 //$route['gestion'] = 'gestion/index';
 $route['registro'] = 'registro/index';
 $route['registroUser'] = 'registro/indexRegister';
+$route['confirmRegistro/(:any)'] = 'registro/confirmRegistro/$1';
+
 $route['login'] = 'login/index';
 $route['loginUser'] = 'login/indexLogin';
 $route['cerrarSesion'] = 'login/unset_session_data';//cerrar sesion
@@ -155,6 +157,15 @@ $route['private/comentarUsuario'] = 'usuarios/comentarUsuario';
 //ver comentarios de usuario
 $route['private/verComentarios/(:any)'] = 'usuarios/comentariosUsuarioPorCorreo/$1';
 $route['private/verComentarios/(:any)/(:any)'] = 'usuarios/comentariosUsuarioPorCorreo/$1/$2';
+
+//ver comentarios  recibidos
+$route['private/opinionesRecibidas'] = 'usuarios/comentariosRecibidos';
+$route['private/opinionesRecibidas/(:any)'] = 'usuarios/comentariosRecibidos/$1';
+
+
+//ver comentarios hechos
+$route['private/opinionesHechas'] = 'usuarios/comentariosHechos';
+$route['private/opinionesHechas/(:any)'] = 'usuarios/comentariosHechos/$1';
 
 /*$route['private/listadoRutas/add'] = 'ruta/modificarRuta';
 $route['private/listadoRutas/insert'] = 'ruta/modificarRuta';

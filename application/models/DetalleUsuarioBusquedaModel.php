@@ -49,11 +49,21 @@ class DetalleUsuarioBusquedaModel extends CI_Model
 
         $this->db->select('count(*) as totalComentarios,');
         $this->db->from('comenta');
-        $this->db->join('usuario', 'usuario.correo = comenta.usuarioComentado');
-        $this->db->where('usuario.correo', $correo);
+        //$this->db->join('usuario', 'usuario.correo = comenta.usuarioComentado');
+        $this->db->where('comenta.usuarioComentado', $correo);
         $result= $this->db->get();
         return $result->row();
     }
+    public function numComentariosHechosPorCorreo($correo){
+
+        $this->db->select('count(*) as totalComentarios,');
+        $this->db->from('comenta');
+        //$this->db->join('usuario', 'usuario.correo = comenta.usuarioComentado');
+        $this->db->where('comenta.usuarioComenta', $correo);
+        $result= $this->db->get();
+        return $result->row();
+    }
+
     public function DetalleUsuarioBuscado($telefono)
     {
 
@@ -197,6 +207,19 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->join('comenta as c', 'c.usuarioComenta = u.correo');
         //$this->db->where('u.telefono', $telefono);
         $this->db->where('c.usuarioComentado', $correo);
+        $this->db->limit($per_page,$uri_segment);
+        return $result= $this->db->get()->result();
+        //return $result = $query->row();
+    }
+
+    public function todosComentariosHechosPorCorreo($per_page,$uri_segment,$correo)
+    {
+
+        $this->db->select('u.*,c.*');
+        $this->db->from('usuario as u');
+        $this->db->join('comenta as c', 'c.usuarioComenta = u.correo');
+        //$this->db->where('u.telefono', $telefono);
+        $this->db->where('c.usuarioComenta', $correo);
         $this->db->limit($per_page,$uri_segment);
         return $result= $this->db->get()->result();
         //return $result = $query->row();

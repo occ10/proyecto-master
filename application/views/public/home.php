@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <span class="caret"></span></button>
                             <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
                               <li><a href= " <?php echo site_url('modifyPerfil') ?>">Editar perfil</a></li>
-                              <li><a href="<?php echo site_url('public/mapaCordenadas') ?>">Download cordenates</a></li>
+                              <li><a href="<?php echo site_url('') ?>">CSS</a></li>
                               <li><a href="<?php echo site_url('private/listadoRutas') ?> ">Viajes publicados</a></li>
                                 <li><a href="<?php echo site_url('private/perfilUsuarioBuscado') ?> ">Buscar usuario</a></li>
                                 <li><a href= " <?php echo site_url('cerrarSesion') ?>">Cerrar cesion</a></li>

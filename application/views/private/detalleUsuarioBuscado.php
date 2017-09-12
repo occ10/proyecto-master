@@ -16,10 +16,10 @@ $this->load->view('private/include/cabecera');
             <div style="height:50px;">
                 <span style="width: 25%;color: #727272"><?php echo $numComentarios->totalComentarios?> comentarios recibidos</span>
             </div>
-            <div style="height:50px;width;50px">
-                <span style="width: 25%;color: #727272;display: inline-block;">Detalles:</span>
+            <div style="height:100px;width;50px">
+                <span style="width: 25%;color: #727272;display: inline-block;">Detalles:</span></br>
                 <span style="color: #727272;display: inline-block;width: 100%;">
-                    <?php echo  $detalleUsuario->detalles ?></span>
+                    Tel: <?php echo  $detalleUsuario->telefono ?> </span></br> Correo: <?php echo  $detalleUsuario->correo ?>
                     </span>
             </div>
            <?php  if(isset($detalleCoche->marca) && ($detalleCoche->color)){ ?>
@@ -60,6 +60,7 @@ $this->load->view('private/include/cabecera');
                 </div>
                 <?php
             }
+            if($detalleUsuario->correo != $correoUSuarioSesion){
             ?>
             <form  action="<?php echo site_url('private/comentarUsuario')?>" id="myFormComentario" name="myFormComentario"  class="form-horizontal" method="post" style="">
                 <div><input type="hidden" name="usuarioComentado" id="usuariocomentado" value="<?php echo $detalleUsuario->correo ?>"></div>
@@ -79,7 +80,7 @@ $this->load->view('private/include/cabecera');
                     <input type="submit" value="Publicar comentario" class="btn btn-primary" id="boPublicarComentario">
                 </div>
             </form>
-
+            <?php }  ?>
         </div>
 
         <div class="col-sm-7" style="padding:0;">
@@ -114,7 +115,7 @@ $this->load->view('private/include/cabecera');
                                     </div>
                                 </div>
                             </li>
-
+                            <hr>
 
                             <?php
 

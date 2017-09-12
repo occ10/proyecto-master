@@ -47,10 +47,10 @@ class Login extends CI_Controller {
                 $Resultado = $this->LoginModel->get_contents($data2);
 
 
-                if (!empty($Resultado)) {
+                if (!empty($Resultado) && $Resultado->confirmado == 'SI') {
                     //Se guarda el objeto
                     $this->session->set_userdata('user', $Resultado);
-                    $result = $this->CocheModel->consultarCoche($data);
+                   // $result = $this->CocheModel->consultarCoche($data);
                     /*if($result == true) {
                         //$this->session->set_userdata('user', $Resultado)
                         $this->session->set_flashdata('public', true);
@@ -59,9 +59,14 @@ class Login extends CI_Controller {
                    // $output['boleano'] = $this->CocheModel->consultarCoche($user);
 
                     //$this->load->view('public/home');
+                }else{
+
+                    $output['Error'] = 'Debes confirmar tu registro mediante el correo mandado con la direccion registrada';
                 }
+        }else{
+            $output['Error'] = 'Los datos son incorrectos';
         }
-            $output['Error'] = 'error';
+
             $this->load->view('public/log', $output);
 
 
@@ -72,9 +77,9 @@ class Login extends CI_Controller {
     public function unset_session_data() {
 
         $this->session->unset_userdata('user');
-        $this->session->unset_userdata('origen');
-        $this->session->userdata('origenUsuarioNombre');
-        $this->session->userdata('origenUsuario');
+        //$this->session->unset_userdata('origen');
+       // $this->session->userdata('origenUsuarioNombre');
+        //$this->session->userdata('origenUsuario');
         redirect('/');
     }
     public function indexPrivada(){

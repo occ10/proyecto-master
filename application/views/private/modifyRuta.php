@@ -4,7 +4,7 @@ $this->load->view('private/include/cabecera');
 ?>
 
 <div class="col-md-8 col-md-offset-2"  style="margin-bottom: 80px">
-    <h3>Pblicar Ruta</h3>
+    <h3>Actualizar Ruta</h3>
     <hr>
     <?php
     if(isset($Exito)) {
@@ -27,16 +27,20 @@ $this->load->view('private/include/cabecera');
                 <form  action="<?php echo site_url('private/updateRuta')?>" name="myForm"  class="form-horizontal" method="post">
                     <div class="form-group">
                         <label for="modelo">Coche:</label>
-                        <select class="form-control" name="matricula" id="matricula">
+                        <!--<select class="form-control" name="matricula" id="matricula">
                             <?php
-                            if (isset($coches)){
-                                foreach($coches as $coche):
+                            //if (isset($coches)){
+                                //foreach($coches as $coche):
                                     ?>
-                                    <option value='<?php echo  $coche->matricula ?>'>  <?php echo  $coche->matricula ?> </option>
+                                    <option value='<?php //echo  $coche->matricula ?>'>  <?php //echo  $coche->matricula ?> </option>
                                     <?php
-                                endforeach;
-                            }?>
-                        </select>
+                               // endforeach;
+                           // }?>
+                        </select>-->
+                        <div class="input-group">
+                            <span class="input-group-addon">Text</span>
+                            <input name="matricula" type="text" class="form-control" id="matricula"  disabled value="<?php if (isset($coche))echo  $coche->matricula ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                        </div>
                     </div>
                     <div>
                         <input type="hidden" name="id" value="<?php  if (isset($ruta)) echo $ruta->id ?>">
@@ -76,7 +80,7 @@ $this->load->view('private/include/cabecera');
                         <label for="plaza">Plazas ocupadas</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i>N</i></span>
-                            <input name="plazaOcupadas" type="number" name="quantity" min="1" max="4" class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                            <input name="plazaOcupadas" type="number" name="quantity" min="1" max=<?php if(isset ($ruta)) echo $ruta->plazas ?>  class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
 
                         </div>
                     </div>

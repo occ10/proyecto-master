@@ -115,26 +115,38 @@ class Mapa extends CI_Controller {
                 if (isset($_GET['codParking'])) {
                     $var = $_GET['codParking'];
                     $result4 = $this->MapaModel->esUsuarioOcupaZona($user);
-                    if (empty($result4)) {
+                    $result5 = $this->CocheModel->ConsultaMatricula($user);
+                    if (!empty($result5)) {
 
-                        $data = array(
-                            'codigo' => $var,
 
-                        );
-                        $result = $this->MapaModel->obtenerCordenadasZonasParking($data);
-                        $output['Resultado'] = $result;
-                        $output['code'] = $var;
-                        $this->load->view('private/zonas', $output);
+                        if (empty($result4)) {
 
-                    } else {
+                            $data = array(
+                                'codigo' => $var,
 
-                        $result = $this->MapaModel->obtenerCordenadaZonaParking($user);
-                        //TODO
-                        $output['Resultado'] = $result;
-                        //echo "<pre>" . $result[0]->id .  "</pre>";
-                        $output['espacioOcupado'] = $result[0]->id;
-                        $output['Info'] = "Debes desocupar la zona ocupada y luego puedes volver a buscar aparcamiento";
-                        $this->load->view('private/liberarZonaParking', $output);
+                            );
+                            $result = $this->MapaModel->obtenerCordenadasZonasParking($data);
+                            $output['Resultado'] = $result;
+                            $output['code'] = $var;
+                            $this->load->view('private/zonas', $output);
+
+                        } else {
+
+                            $result = $this->MapaModel->obtenerCordenadaZonaParking($user);
+                            //TODO
+                            $output['Resultado'] = $result;
+                            //echo "<pre>" . $result[0]->id .  "</pre>";
+                            $output['espacioOcupado'] = $result[0]->id;
+                            $output['Info'] = "Debes desocupar la zona ocupada y luego puedes volver a buscar aparcamiento";
+                            $this->load->view('private/liberarZonaParking', $output);
+                        }
+                    }else{
+                        $output['cooredenadas'] = $this->MapaModel->obtenerCordenadasUNI();
+                        $output['corrdenates'] = $output['cooredenadas'];
+                        $output['Info'] = "no dispones de un coche para poder buscar zonas de parking";
+
+                        $this->load->view('private/parking', $output);
+
                     }
 
             } else {

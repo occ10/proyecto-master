@@ -1,0 +1,11 @@
+https://www.formget.com/codeigniter-uri-segment/
+https://validator.w3.org/nu/#textarea
+https://www.w3schools.com/bootstrap/bootstrap_templates.asp
+https://www.w3schools.com/html/default.asp
+https://www.w3schools.com/css/default.asp
+https://www.w3schools.com/js/default.asp
+https://www.w3schools.com/sql/default.asp
+https://www.w3schools.com/php/default.asp
+https://www.w3schools.com/jquery/default.asp
+http://librosweb.es/
+https://www.codeigniter.com/user_guide/

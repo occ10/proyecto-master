@@ -188,6 +188,7 @@ class Usuarios extends CI_Controller
     public function ComentarUsuario(){
         if ($this->session->userdata('user')) {
             $usuarioComenta = $this->session->userdata('user')->correo;
+            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
             $usuarioComentado = $this->input->post('usuarioComentado');
             $comentario = $this->input->post('comentario');
             $data = array(
@@ -206,6 +207,7 @@ class Usuarios extends CI_Controller
             $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($usuarioComentado);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($usuarioComentado);
             $Resultado['correo']  = $usuarioComentado;
+            $Resultado['correoUSuarioSesion'] = $usuarioComenta;
             $this->load->view('private/detalleUsuarioBuscado', $Resultado);
 
         } else {
@@ -261,6 +263,106 @@ class Usuarios extends CI_Controller
             $this->load->view('public/home');
         }
     }
+
+    public function comentariosRecibidos()
+    {
+        if ($this->session->userdata('user')) {
+
+            $correo = $this->session->userdata('user')->correo;
+
+            $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
+            //$Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
+
+
+
+            //////////////////////////////////////pagination comentarios
+            $config['base_url'] = base_url().'private/opinionesRecibidas';
+            //$config['suffix']= '?usuarioCorreo=' . $correo;
+            $var = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
+            $config['total_rows']  = $var->totalComentarios;
+            $config['per_page'] = '3';
+            $config['uri_segment'] = '3';
+            $config['num_links'] = '3';
+            //$config['first_link'] = 'Primero';
+            // $config['last_link'] = 'Ultimo';
+            $config['next_link'] = 'Siguiente ->';
+            $config['prev_link'] = '<- Anterior';
+
+            $config['cur_tag_open'] = '<b class="atual">';
+            $config['cur_tag_close'] = '</b>';
+
+            $config['full_tag_open'] = '<div class="paginacion" >';
+            $config['full_tag_close'] = '</div>';
+
+
+            $this->pagination->initialize($config);
+
+            //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->todosComentariosPorCorreo($config['per_page'],$page,$correo);
+            //$output['origen'] = $var;
+            $Resultado['paginacion'] = $this->pagination->create_links();
+            $Resultado['total'] = $var->totalComentarios;
+            //$Resultado['correo']  = $correo;
+
+            $this->load->view('private/comentariosRecibidos',$Resultado);
+
+        } else {
+            $this->load->view('public/home');
+        }
+
+    }
+
+
+    public function comentariosHechos()
+    {
+        if ($this->session->userdata('user')) {
+
+            $correo = $this->session->userdata('user')->correo;
+
+            $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosHechosPorCorreo($correo);
+            //$Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
+
+
+
+            //////////////////////////////////////pagination comentarios
+            $config['base_url'] = base_url().'private/opinionesHechas';
+            //$config['suffix']= '?usuarioCorreo=' . $correo;
+            $var = $this->DetalleUsuarioBusquedaModel->numComentariosHechosPorCorreo($correo);
+            $config['total_rows']  = $var->totalComentarios;
+            $config['per_page'] = '3';
+            $config['uri_segment'] = '3';
+            $config['num_links'] = '3';
+            //$config['first_link'] = 'Primero';
+            // $config['last_link'] = 'Ultimo';
+            $config['next_link'] = 'Siguiente ->';
+            $config['prev_link'] = '<- Anterior';
+
+            $config['cur_tag_open'] = '<b class="atual">';
+            $config['cur_tag_close'] = '</b>';
+
+            $config['full_tag_open'] = '<div class="paginacion" >';
+            $config['full_tag_close'] = '</div>';
+
+
+            $this->pagination->initialize($config);
+
+            //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->todosComentariosHechosPorCorreo($config['per_page'],$page,$correo);
+            //$output['origen'] = $var;
+            $Resultado['paginacion'] = $this->pagination->create_links();
+            $Resultado['total'] = $var->totalComentarios;
+            //$Resultado['correo']  = $correo;
+
+            $this->load->view('private/comentariosRealizados',$Resultado);
+
+        } else {
+            $this->load->view('public/home');
+        }
+
+    }
+
 }
 
 

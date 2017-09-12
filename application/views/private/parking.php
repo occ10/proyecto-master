@@ -7,25 +7,20 @@ $this->load->view('private/include/cabecera');
     <h3>Buscar Parking</h3>
     <hr>
     <h4>Elige parking</h4>
-    <?php
-    if(isset($Exito)) {
-        ?>
-        <div class="alert alert-success">
-            <strong>Success!</strong> Los datos se han insertado correctamente.
-        </div>
-        <?php
-    }else if(isset($Error)){
-        ?>
-        <div class="alert alert-danger">
-            <strong>Danger!</strong> Ha habido algun error en la insercion de los errores.
-        </div>
-        <?php
-    }
-    ?>
+
     <div class="panel-body">
 
         <div style="background-color:#F5F5DC;height:900px">
             <div style="margin-left:100px" class="col-lg-8">
+                <?php
+                if(isset($Info)){
+                    ?>
+                    <div class="alert alert-info">
+                        <strong>Info!</strong> <?php echo $Info ?>
+                    </div>
+                    <?php
+                }
+                ?>
                 <form  action="<?php echo site_url('findZoneParking')?>" name="myForm"  class="form-horizontal" method="GET">
                     <div class="form-group">
                         <label for="codParking">Elige parking:</label>

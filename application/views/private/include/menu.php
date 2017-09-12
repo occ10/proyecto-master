@@ -7,8 +7,8 @@
     </div>
     <div class="list-group"  style="margin-top:15px">
         <p class="list-group-item">Opiniones</p>
-        <a href= " <?php echo site_url('private/opinionesRecibidas') ?>" class="list-group-item">Opiniones Recibidas</a>
-        <a href= " <?php echo site_url('private/OpinionesDejadas') ?>"  class="list-group-item">Opiniones dejadas</a>
+        <a href= " <?php echo site_url('private/opinionesRecibidas') ?>" class="list-group-item">Opiniones recibidas</a>
+        <a href= " <?php echo site_url('private/opinionesHechas') ?>"  class="list-group-item">Opiniones hechas</a>
 
     </div>
 </div>

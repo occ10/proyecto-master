@@ -16,10 +16,10 @@ $this->load->view('private/include/cabecera');
                 <div style="height:50px;">
                     <span style="width: 25%;color: #727272"><?php echo $numComentarios->totalComentarios?> comentarios recibidos</span>
                 </div>
-                <div style="height:50px;">
-                    <span style="width: 25%;color: #727272;display: inline-block;">Detalles</span>
-                    <span style="width: 25%;color: #727272;display: inline-block;">
-                       <?php //echo  $detalleUsuario->detalles ?>
+                <div style="height:100px;">
+                    <span style="width: 25%;color: #727272;display: inline-block;">Detalles: </span> </br>
+                    <span style="width: 100%;color: #727272;display: inline-block;">
+                       Tel: <?php echo  $detalleUsuario->telefono ?> </span></br> Correo: <?php echo  $detalleUsuario->correo ?>
                     </span>
                 </div>
                 <hr>
