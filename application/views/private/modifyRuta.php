@@ -6,26 +6,31 @@ $this->load->view('private/include/cabecera');
 <div class="col-md-8 col-md-offset-2"  style="margin-bottom: 80px">
     <h3>Actualizar Ruta</h3>
     <hr>
-    <?php
-    if(isset($Exito)) {
-        ?>
-        <div class="alert alert-success">
-            <strong>Success!</strong> Los datos se han actualizado correctamente.
-        </div>
-        <?php
-    }else if(isset($Error)){
-        ?>
-        <div class="alert alert-danger">
-            <strong>Danger!</strong> Ha habido algun error en la actualizacion de los datos.
-        </div>
-        <?php
-    }
-    ?>
+
     <div class="panel-body">
         <div class="row" style="background-color:#F5F5DC;height:680px">
             <div style="margin-left:100px" class="col-lg-8">
+
+                <?php
+                if(isset($Exito)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Los datos se han actualizado correctamente.
+                    </div>
+                    <?php
+                }else if(isset($Error)){
+                    ?>
+                    <div class="alert alert-danger">
+                        <strong>Danger!</strong> Ha habido algun error en la actualizacion de los datos.
+                    </div>
+                    <?php
+                }
+                if(!isset($Exito) && !isset($Error)){
+                ?>
                 <form  action="<?php echo site_url('private/updateRuta')?>" name="myForm"  class="form-horizontal" method="post">
-                    <div class="form-group">
+
+                    <input name="matricula" type="hidden"  id="matricula"  value="<?php if (isset($coche))echo  $coche->matricula ?>" >
+                   <!-- <div class="form-group">
                         <label for="modelo">Coche:</label>
                         <!--<select class="form-control" name="matricula" id="matricula">
                             <?php
@@ -36,12 +41,12 @@ $this->load->view('private/include/cabecera');
                                     <?php
                                // endforeach;
                            // }?>
-                        </select>-->
+                        </select>
                         <div class="input-group">
                             <span class="input-group-addon">Text</span>
                             <input name="matricula" type="text" class="form-control" id="matricula"  disabled value="<?php if (isset($coche))echo  $coche->matricula ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                         </div>
-                    </div>
+                    </div>-->
                     <div>
                         <input type="hidden" name="id" value="<?php  if (isset($ruta)) echo $ruta->id ?>">
                     </div>
@@ -80,7 +85,7 @@ $this->load->view('private/include/cabecera');
                         <label for="plaza">Plazas ocupadas</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i>N</i></span>
-                            <input name="plazaOcupadas" type="number" name="quantity" min="1" max=<?php if(isset ($ruta)) echo $ruta->plazas ?>  class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                            <input name="plazaOcupadas" type="number" name="quantity" min="1" max=<?php if(isset ($ruta)) echo $ruta->plazas;?>  class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
 
                         </div>
                     </div>
@@ -95,6 +100,8 @@ $this->load->view('private/include/cabecera');
                         <input type="submit" value="Actualizar" class="btn btn-primary">
                     </div>
                 </form>
+
+                <?php } ?>
             </div>
         </div>
     </div>

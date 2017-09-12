@@ -65,6 +65,7 @@ class RutaModel extends CI_Model
         $this->db->join('usuario', 'usuario.correo = realizaruta.usuario');
 
         $this->db->where('ruta.origen', $data);
+        $this->db->where('(ruta.plazas - ruta.plazasOcupadas) > ', 0);
         $result=$this->db->get();
 
         return $result->num_rows();
@@ -79,6 +80,7 @@ class RutaModel extends CI_Model
         $this->db->join('usuario', 'usuario.correo = realizaruta.usuario');
 
         $this->db->where('ruta.origen', $data);
+        $this->db->where('(ruta.plazas - ruta.plazasOcupadas) > ', 0);
         $this->db->limit($per_page,$uri_segment);
         $result= $this->db->get();
 

@@ -133,7 +133,7 @@ class Ruta extends CI_Controller {
             $data2 = array(
                 'usuario' => $this->session->userdata('user')->correo,
             );
-            //Transferimos datos al modelo
+
             $Resultado['coche'] = $this->CocheModel->get_contents($data2);
             //echo "<pre>";
             // print_r($Resultado);
