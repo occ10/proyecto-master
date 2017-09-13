@@ -129,6 +129,13 @@ $route['private/anuncioUsuario/(:any)/(:num)'] = 'anuncio/detalle/$1/$2';
 //peticion matricula a traves de ajax
 $route['private/matricula/(:any)'] = 'coche/matricula/$1';
 
+//cambiar foto coche
+$route['private/cambiarFotoCoche/(:any)'] = 'coche/fotoCoche/$1';
+
+//borrar coche
+$route['private/borrarCoche/(:any)'] = 'coche/borrarCoche/$1';
+
+
 //peticion correo a traves de ajax
 $route['private/correo/(:any)'] = 'registro/correo/$1';
 

@@ -61,13 +61,13 @@ $this->load->view('private/include/menu');
                                     <input class="form-control" type="number" min="1" max="100" name="bday" value="<?php  echo $this->session->userdata('user')->edad?>"  required><span class="input-group-addon" value="20" required><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <!--<div class="form-group">
                                 <label for="modelo">Contraseña:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                    <input class="form-control" type="password" name="password" id="password1" placeholder="Contraseña" value="<?php  echo $this->session->userdata('user')->contraseña ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                                    <input class="form-control" type="password" name="password" id="password1" placeholder="Contraseña" value="<?php  //echo $this->session->userdata('user')->contraseña ?>" >span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-10">
                                     <input type="submit" value="Submit" class="btn btn-primary">

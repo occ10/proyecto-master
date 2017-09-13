@@ -11,4 +11,10 @@
         <a href= " <?php echo site_url('private/opinionesHechas') ?>"  class="list-group-item">Opiniones hechas</a>
 
     </div>
+    <div class="list-group"  style="margin-top:15px">
+        <p class="list-group-item">Cuenta</p>
+        <a href= " <?php echo site_url('private/contrasenya') ?>" class="list-group-item">Contraseña</a>
+        <a href= " <?php echo site_url('private/darBaja') ?>"  class="list-group-item">Darse de baja</a>
+
+    </div>
 </div>

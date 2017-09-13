@@ -6,23 +6,23 @@ $this->load->view('private/include/cabecera');
 <div class="col-md-10 col-md-offset-1" style="margin-bottom: 80px">
     <h2>Rutas publicadas</h2>
 
-    <table class="table table-striped" style="width:90%">
-        <thead>
-        <tr>
-            <th>Origen</th>
-            <th>Plazas</th>
-         <!--   <th>Plazas ocupadas</th>
-            <th>Precio</th>
-            <th>Detalles</th>-->
-        </tr>
-        </thead>
-        <tbody>
+
         <?php
 
         if (isset($rutas) and count($rutas)> 0){
             foreach ($rutas as $ruta):
                 ?>
-
+    <table class="table table-striped" style="width:90%">
+        <thead>
+        <tr>
+            <th>Origen</th>
+            <th>Plazas</th>
+            <!--   <th>Plazas ocupadas</th>
+               <th>Precio</th>
+               <th>Detalles</th>-->
+        </tr>
+        </thead>
+        <tbody>
                 <tr>
                     <td><?php echo $ruta->origen ?> </td>
                     <td><?php echo $ruta->plazas ?> </td>

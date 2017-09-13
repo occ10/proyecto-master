@@ -6,35 +6,43 @@ $this->load->view('private/include/menu');
 <div class="col-sm-8 text-left" style="margin-bottom: 80px">
     <h1>Información sobre tu coche</h1>
     <hr>
+    <?php
+    if(isset($result1) && $result1 == false){
+        ?>
+
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
-    <?php
-    if(isset($Exito)) {
-        ?>
-        <div class="alert alert-success">
-            <strong>Success!</strong> Los datos se han insertado correctamente.
-        </div>
-        <?php
-    }else if(isset($Error)){
-        ?>
-        <div class="alert alert-danger">
-            <strong>Danger!</strong> <?echo $Error  ?>.
-        </div>
-        <?php
-    }else if(isset($errorCar)){
-       ?>
-    <div class="alert alert-danger">
-        <?php
-        //foreach ($errorCoche as $error):
-            echo  $errorCar;
-       // endforeach;
-        ?>
-    </div>
-    <?php
-    }
-    ?>
+<?php }?>
     <div class="panel-body">
-        <div style="background-color:#F5F5DC;height:600px;width:600px">
+        <div style="background-color:#F5F5DC;height:650px;width:600px">
             <div style="margin-left:150px" class="col-lg-6" >
+
+                <?php
+                if(isset($Exito)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> Los datos se han insertado correctamente.
+                    </div>
+                    <?php
+                }else if(isset($Error)){
+                    ?>
+                    <div class="alert alert-danger">
+                        <strong>Danger!</strong> <?echo $Error  ?>.
+                    </div>
+                    <?php
+                }else if(isset($errorCar)){
+                    ?>
+                    <div class="alert alert-danger">
+                        <?php
+                        //foreach ($errorCoche as $error):
+                        echo  $errorCar;
+                        // endforeach;
+                        ?>
+                    </div>
+                    <?php
+                }else{
+                if(!isset($result1)){
+
+                ?>
                 <?php echo form_open_multipart('insertCar',array('id' => 'formelement'));?>
 
 
@@ -138,6 +146,33 @@ $this->load->view('private/include/menu');
                         </div>
 
                 </form>
+                <?php }else{
+
+                    if(isset($result3)) {
+                        ?>
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> El coche se ha borrado correctamente.
+                        </div>
+                        <?php
+                    }else{
+                    ?>
+
+                    <div style="padding-top:40px;">
+                        <img style="border-radius: 50%;"
+                             src="<?php echo base_url(); ?>assets/cocheFoto/<?php if ($result2->imageFoto == "") echo 'car.png'; else echo $result2->imageFoto ?> "
+                             alt="Smiley face" height="90px" width="90px"></div>
+                    <div style="display: -webkit-flex; /* Safari */">
+                        <p><?php echo $result2->marca ?> <br> Categoria: <?php echo $result2->categoria ?> <br>
+                            Color: <?php echo $result2->color ?></p>
+
+                    </div>
+                    <div class="alert alert-info">
+                        <a href="<?php echo site_url('private/cambiarFotoCoche/' . $result2->matricula) ?>" style="cursor:pointer">Cambiar foto</a>
+                    </div>
+                    <div class="alert alert-info">
+                        <a href="<?php echo site_url('private/borrarCoche/' . $result2->matricula) ?>" style="cursor:pointer">Eleminar coche</a>
+                    </div>
+                <?php } } }?>
             </div>
         </div>
     </div>

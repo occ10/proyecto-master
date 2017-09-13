@@ -13,18 +13,6 @@ class CocheModel extends CI_Model
         //Inserta coche en la base de datos
         $this->db->insert('coche', $data);
         return ($this->db->affected_rows() > 0);
-        //$res = $this->db->query($str);
-        //$msage="";
-        //if (!$res) {
-            // if query returns null
-            //$msg = $this->db->error();
-            //$num = $this->db->_error_number();
-
-            //return $msg;
-            //return ($this->db->affected_rows() > 0);
-        //}
-       // return "";
-
 
     }
     function get_contents($data)
@@ -96,5 +84,31 @@ class CocheModel extends CI_Model
         $query = $this->db->get();
         //return $query->num_rows() > 0 ;
         return $result = $query->row();
+    }
+
+    public function updateFoto($data,$matricula){
+        //$foto = array('foto' => "");
+        $this->db->trans_start();
+        $this->db->where('matricula', $matricula);
+        $this->db->update('coche', $data);
+        $this->db->trans_complete();
+
+        if($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+    }
+
+    public function borrarCoche($matricula){
+        //$foto = array('foto' => "");
+        $this->db->trans_start();
+        $this->db->where('matricula', $matricula);
+        $this->db->delete('coche');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
     }
 }

@@ -40,20 +40,34 @@ class modifyPerfil extends CI_Controller {
     public function updateUser(){
 
         if($this->session->userdata('user')) {
+            if ($this->input->post('password') != null) {
 
-            //$pass = $this->encrypt->encode($this->input->post('password'));
-            $pass =hash('sha512', $this->input->post('password'));
-            $salt = uniqid(mt_rand(), true);
-            $pass=crypt($pass,$salt);
+                //$pass = $this->encrypt->encode($this->input->post('password'));
+                $pass = hash('sha512', $this->input->post('password'));
+                $salt = uniqid(mt_rand(), true);
+                $pass = crypt($pass, $salt);
+
+                $data = array(
+                    'correo' => $this->input->post('correo'),
+                    'nombre' => $this->input->post('nombre'),
+                    'apellido' => $this->input->post('apellido'),
+                    'edad' => $this->input->post('bday'),
+                    'telefono' => $this->input->post('telefono'),
+                    'contraseña' => $pass,
+                    'salt' => $salt
+                );
+            } else {
+
             $data = array(
                 'correo' => $this->input->post('correo'),
                 'nombre' => $this->input->post('nombre'),
                 'apellido' => $this->input->post('apellido'),
                 'edad' => $this->input->post('bday'),
-                'contraseña' => $pass,
+
                 'telefono' => $this->input->post('telefono'),
-                'salt' => $salt
+
             );
+             }
             $Resultado = $this->ModifyPerfilModel->actualizarUsuario($data);
 
 
