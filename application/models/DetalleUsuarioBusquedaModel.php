@@ -224,4 +224,10 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         return $result= $this->db->get()->result();
         //return $result = $query->row();
     }
+
+
+     public function updatePassword($data,$user){
+
+
+     }
 }

@@ -44,30 +44,30 @@ $("#boBuscarUsuarioT" ).click(function(event){
 
 });
 
-$("#telefonoReg" ).blur(function(){
+$(".telUser" ).blur(function(){
 
-	var valor= $("#telefonoReg").val();
+	var valor= $(".telUser").val();
 	var filter1 = /^[0-9-+]+$/;
 		var filter2 = /^(6|7)[0-9-+]+$/;
 		if (!filter1.test(valor)) {
 			//return true;
 			
-			$("#messageReg").html("El telefono solo debe contener numeros");
+			$(".messageR").html("El telefono solo debe contener numeros");
 			$('form input[id="boUsuarioReg"]').prop("disabled", true);
 		}else if (!filter2.test(valor)) {
 			//return true;
 			
-			$("#messageReg").html("El telefono debe empezar por 6 o 7");
+			$(".messageR").html("El telefono debe empezar por 6 o 7");
 			$('form input[id="boUsuarioReg"]').prop("disabled", true);
 			//return false
 		}else if(valor.length!=9){
 			
-			$("#messageReg").html("El numero debe contener 9 cifras");
+			$(".messageR").html("El numero debe contener 9 cifras");
 			$('form input[id="boUsuarioReg"]').prop("disabled", true);
 			//return false
 		}
 		else {
-			$("#messageReg").html("");
+			$(".messageR").html("");
 			$('form input[id="boUsuarioReg"]').prop("disabled", false);
 		}
 

@@ -111,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                <input type="text" name="telefono" class="form-control" id="telefono" placeholder="Telefono"><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                                <input type="text" name="telefono" class="form-control telUser" id="telefono" placeholder="Telefono"><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                             </div>
                         </div>
                         <div class="form-group">

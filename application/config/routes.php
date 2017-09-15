@@ -174,6 +174,11 @@ $route['private/opinionesRecibidas/(:any)'] = 'usuarios/comentariosRecibidos/$1'
 $route['private/opinionesHechas'] = 'usuarios/comentariosHechos';
 $route['private/opinionesHechas/(:any)'] = 'usuarios/comentariosHechos/$1';
 
+
+//modificar password
+$route['private/passwordInformation'] = 'usuarios/passwordInformation';
+$route['private/modifyPassword'] = 'modifyPerfil/modifyPassword';
+
 /*$route['private/listadoRutas/add'] = 'ruta/modificarRuta';
 $route['private/listadoRutas/insert'] = 'ruta/modificarRuta';
 $route['private/listadoRutas/insert_validation'] = 'ruta/modificarRuta';

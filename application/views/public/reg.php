@@ -33,9 +33,9 @@ $this->load->view('public/include/cabecera');
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                        <input type="text" name="telefonoReg" class="form-control" id="telefonoReg" placeholder="Telefono"><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                        <input type="text" name="telefonoReg" class="form-control telUser" id="telefonoReg" placeholder="Telefono"><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                     </div>
-                    <i id="messageReg" style="color:red"></i>
+                    <i class="messageR" id="messageReg" style="color:red"></i>
                 </div>
                 <div class="form-group">
                     <label for="bday">Edad:</label>

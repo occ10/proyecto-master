@@ -47,21 +47,24 @@ class Login extends CI_Controller {
                 $Resultado = $this->LoginModel->get_contents($data2);
 
 
-                if (!empty($Resultado) && $Resultado->confirmado == 'SI') {
-                    //Se guarda el objeto
-                    $this->session->set_userdata('user', $Resultado);
-                   // $result = $this->CocheModel->consultarCoche($data);
-                    /*if($result == true) {
-                        //$this->session->set_userdata('user', $Resultado)
-                        $this->session->set_flashdata('public', true);
-                    }*/
-                   redirect('/');
-                   // $output['boleano'] = $this->CocheModel->consultarCoche($user);
+                if (!empty($Resultado)) {
+                    if ($Resultado->confirmado == 'SI') {
 
-                    //$this->load->view('public/home');
+                        //Se guarda el objeto
+                        $this->session->set_userdata('user', $Resultado);
+                        // $result = $this->CocheModel->consultarCoche($data);
+                        /*if($result == true) {
+                            //$this->session->set_userdata('user', $Resultado)
+                            $this->session->set_flashdata('public', true);
+                        }*/
+                        redirect('/');
+                    }else{
+
+                        $output['Error'] = 'Debes confirmar tu registro mediante el correo mandado con la direccion registrada';
+                    }
                 }else{
 
-                    $output['Error'] = 'Debes confirmar tu registro mediante el correo mandado con la direccion registrada';
+                    $output['Error'] = 'La contraseña es incorrecta';
                 }
         }else{
             $output['Error'] = 'Los datos son incorrectos';

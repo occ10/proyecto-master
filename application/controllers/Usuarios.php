@@ -14,6 +14,7 @@ class Usuarios extends CI_Controller
         $this->load->model('DetalleUsuarioBusquedaModel');
         $this->load->model('CocheModel');
         $this->load->library('pagination');
+        $this->load->library('encrypt');
 
     }
 
@@ -360,6 +361,12 @@ class Usuarios extends CI_Controller
         } else {
             $this->load->view('public/home');
         }
+
+    }
+
+    public function passwordInformation()
+    {
+        $this->load->view('private/modifyPassword');
 
     }
 

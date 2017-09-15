@@ -51,14 +51,15 @@ $this->load->view('private/include/menu');
                                 <label for="modelo">Teléfono:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                                    <input type="tel" name="telefono" class="form-control" id="telefono" placeholder="Telefono" value="<?php  echo $this->session->userdata('user')->telefono ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                                    <input type="tel" name="telefono" class="form-control telUser" id="telefono" placeholder="Telefono" value="<?php  echo $this->session->userdata('user')->telefono ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                                 </div>
+                                <i class="messageR" id="messageReg" style="color:red"></i>
                             </div>
                             <div class="form-group">
                                 <label for="fechaNacimiento">Edad:</label>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                                    <input class="form-control" type="number" min="1" max="100" name="bday" value="<?php  echo $this->session->userdata('user')->edad?>"  required><span class="input-group-addon" value="20" required><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                                    <input class="form-control" type="number" min="18" max="75" name="bday" value="<?php  echo $this->session->userdata('user')->edad?>"  required><span class="input-group-addon" value="20" required><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                                 </div>
                             </div>
                             <!--<div class="form-group">

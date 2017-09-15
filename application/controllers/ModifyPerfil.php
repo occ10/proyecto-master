@@ -84,4 +84,60 @@ class modifyPerfil extends CI_Controller {
 
     }
 
+
+    public function modifyPassword(){
+
+
+        //generar el hash a traves de a contraseña propuesta del usuario
+        $pass =hash('sha512', $this->input->post('password1'));
+        $user = $this->session->userdata('user')->correo;
+        $data = array(
+            'correo' => $user,
+
+        );
+
+        $this->load->model('LoginModel');
+        //recuperar el salt del usuario
+        $salt=$this->LoginModel->get_salt($data);
+
+        if(!empty($salt)){
+            //crear el password mezclando el hash y la salt del usuario
+            $pass=crypt($pass,$salt);
+            $data2 = array(
+                'correo' => $user,
+                'contraseña' => $pass
+            );
+            $Resultado = $this->LoginModel->get_contents($data2);
+
+
+            if (!empty($Resultado)) {
+                //$pass = $this->encrypt->encode($this->input->post('password'));
+                $pass =hash('sha512', $this->input->post('password2'));
+                $salt = uniqid(mt_rand(), true);
+                $pass=crypt($pass,$salt);
+                $data = array(
+
+                    'contraseña' => $pass,
+                    'salt' => $salt
+                );
+                $actualizado = $this->ModifyPerfilModel->updatePassword($data,$user);
+                if($actualizado == true){
+                    $output['Exito'] = 'La contraseña se ha actualizado correctamanet';
+
+                }else{
+                    $output['Error'] = 'Ha habido un error en la actualizcion intentalo de nuevo';
+                }
+
+            }else{
+
+                $output['Error'] = 'La contraseña actual es incorrecta';
+            }
+        }else{
+            $output['Error'] = 'Los datos son incorrectos';
+        }
+        $this->load->view('private/modifyPassword',$output);
+
+
+    }
+
 }
