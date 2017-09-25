@@ -38,24 +38,26 @@ $this->load->view('public/include/cabecera');
                     <i class="messageR" id="messageReg" style="color:red"></i>
                 </div>
                 <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input class="form-control" type="password" name="passwordReg" id="passwordReg" placeholder="Contraseña" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                    </div>
+                    <i id="passwordRegid" class="passwordRegc" style="color:red"></i>
+                </div>
+                <div class="form-group">
                     <label for="bday">Edad:</label>
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input class="form-control" type="number" name="bday"   id="bday" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                        <input class="form-control" type="number" min="18" max="76" name="bday"   id="bday" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                     </div>
                 </div>
                 <div class="form-group" id="detalleRegistro" >
-                    <label for="detalles">Descripcion...</label>
+                    <label for="detalles">Descripcion...(max caracters 300)</label>
                     <div class="input-group">
-                        <textarea  name="detalles" id="detalles" rows="4" cols="50" placeholder="En pocas palabras... Vivo en torrevieja y trabajo en Valencia, me tengo que desplazar casi todos los dias de un a sitio a otro." class="form-control" required></textarea>
+                        <textarea  name="detalles" id="detalles" rows="4" cols="50" maxlength="300" placeholder="En pocas palabras... Vivo en torrevieja y trabajo en Valencia, me tengo que desplazar casi todos los dias de un a sitio a otro." class="form-control" required></textarea>
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input class="form-control" type="password" name="password" id="password1" placeholder="Contraseña" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
-                    </div>
-                </div>
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                         <input type="submit" value="Regisrar" class="btn btn-primary" id="boUsuarioReg">

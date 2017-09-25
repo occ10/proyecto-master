@@ -7,26 +7,26 @@ $this->load->view('private/include/cabecera');
     <h3><?php echo $detalleUsuario->origen ?> --> Universidad de Alicante</h3>
 
         <div class="row" style="height:880px">
-            <div class="col-sm-8" style="border-style:solid; border-width:1px;border-color: #DDDDDD;">
-                <div style="margin-top: 10px;height:50px;">
+            <div class="col-sm-8" style="border-style:solid; border-width:1px;border-color: #DDDDDD;height:100%;background-color:#F5F5DC">
+                <div style="margin-top: 10px;height:50px;background-color:#FFFFFF">
 
-                 <span style="width: 25%;color: #727272;display: inline-block;">Salida</span>
+                 <span style="width: 25%;color: #727272;display: inline-block;">Salida:</span>
                     <span style="width: 25%;color: #727272;display: inline-block;"><?php echo $detalleUsuario->origen ?></span>
 
                 </div>
-                <div style="height:50px;">
+                <div style="height:50px;background-color:#FFFFFF">
                     <span style="width: 25%;color: #727272;display: inline-block;">Fecha Publicacion</span>
                     <span style="width: 25%;color: #727272;display: inline-block;">
                        <?php echo  $detalleUsuario->fechaPublicacion ?>
                     </span>
                 </div>
-                <div style="height:50px;">
-                    <span style="width: 25%;color: #727272;display: inline-block;">Detalles</span>
-                    <span style="width: 25%;color: #727272;display: inline-block;">
+                <div style="height:100px;background-color:#FFFFFF">
+                    <span style="width: 25%;color: #727272;display: inline-block;">Detalles:</span>
+                    <span style="width: 100%;color: #727272;display: inline-block;">
                        <?php echo  $detalleUsuario->detalles ?>
                     </span>
                 </div>
-
+                <div id="map-canvas" style="width: 100%; height: 560px"></div>
             </div>
             <div class="col-sm-4" style="padding:0">
                 <div style="border-style: solid;border-color:#DDDDDD;border-width:1px">
@@ -136,5 +136,5 @@ $this->load->view('private/include/cabecera');
 
 
 <?php
-$this->load->view('private/include/pie');
+$this->load->view('private/include/pieRuta');
 ?>

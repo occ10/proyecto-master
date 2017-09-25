@@ -11,8 +11,8 @@ class Coche extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('upload');
         $this->load->model('CocheModel');
-        // $this->load->model('PeliculaModel');
-        // $this->load->model('PeliculaVotacionModel');
+        $this->load->model('RutaModel');
+
     }
 
     /**
@@ -37,6 +37,7 @@ class Coche extends CI_Controller {
             if($result == true){
                 $output['result1'] = $result;
                 $output['result2'] = $this->CocheModel->get_contents($data2);
+                $output['correo'] = $user;
 
             }
 
@@ -155,9 +156,10 @@ class Coche extends CI_Controller {
 
     }
 
-    public function borrarCoche($matricula){
-
+    public function borrarCoche($matricula,$correo){
+        $Resultado['ruta'] = $this->RutaModel->borrarRutaCoche($correo);
         $output['result3']  = $this->CocheModel->borrarCoche($matricula);
+
         $this->load->view('private/coche', $output);
 
     }

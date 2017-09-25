@@ -196,7 +196,7 @@ class Ruta extends CI_Controller {
                 $output['Error'] = 'error';
             }
 
-            $this->load->view('private/borradoRutas', $output);
+            $this->load->view('private/listadoRutas', $output);
         }else{
             $this->load->view('public/home');
         }

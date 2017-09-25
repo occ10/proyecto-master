@@ -86,4 +86,19 @@ class RutaModel extends CI_Model
 
         return $result->result();
     }
+    public function borrarRutaCoche($correo)
+    {
+       return $this->db->query("
+    DELETE t1, t2
+    FROM realizaruta t1 JOIN ruta t2
+    ON t1.ruta = t2.id
+    WHERE t1.usuario = '".$correo."'");
+        //$this->db->trans_start();
+
+
+
+    }
+/*Delete t1, t2 From realizaruta as t1
+INNER JOIN  ruta as t2 on t1.ruta = t2.id
+WHERE  t1.usuario='yo@hotmail.com'*/
 }

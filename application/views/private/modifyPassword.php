@@ -8,23 +8,24 @@ $this->load->view('private/include/menu');
     <hr>
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
     <div class="panel-body" >
-        <div style="background-color:#F5F5DC;height:500px">
-            <div style="margin-left:100px" class="col-lg-8"  >
-                <?php
-                if(isset($Exito)) {
-                    ?>
-                    <div class="alert alert-success">
-                        <strong>Success!</strong> <?php echo $Exito ?>.
-                    </div>
-                    <?php
-                }else if(isset($Error)){
-                    ?>
-                    <div class="alert alert-danger">
-                        <strong>Danger!</strong> <?php echo $Error ?>.
-                    </div>
-                    <?php
-                }
+        <div style="background-color:#F5F5DC;height:300px">
+            <?php
+            if(isset($Exito)) {
                 ?>
+                <div class="alert alert-success">
+                    <strong>Success!</strong> <?php echo $Exito ?>.
+                </div>
+                <?php
+            }else if(isset($Error)){
+                ?>
+                <div class="alert alert-danger">
+                    <strong>Danger!</strong> <?php echo $Error ?>.
+                </div>
+                <?php
+            }
+            ?>
+            <div style="margin-left:100px" class="col-lg-8"  >
+
                 <form  action="<?php echo site_url('private/modifyPassword')?>" name="myForm"  class="form-horizontal" method="post">
 
                     <div class="form-group">
@@ -39,20 +40,23 @@ $this->load->view('private/include/menu');
                         <label for="modelo">Nueva contraseña:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input class="form-control" type="password" name="password2" id="password2" placeholder="Contraseña nueva" value="<?php  //echo $this->session->userdata('user')->contraseña ?>" required> <span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                            <input class="form-control passNew" type="password" name="password2" id="password2" placeholder="Contraseña nueva" value="<?php  //echo $this->session->userdata('user')->contraseña ?>" required> <span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                         </div>
+                        <i id="newPassword" class="newPasswordAdd" style="color:red"></i>
                     </div>
 
                     <div class="form-group">
                         <label for="modelo">Confirma nueva contraseña:</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input class="form-control" type="password" name="password3" id="password3" placeholder="Confirmar nueva ontraseña" value="<?php  //echo $this->session->userdata('user')->contraseña ?>" required> <span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                            <input class="form-control passNew" type="password" name="password3" id="password3" placeholder="Confirmar nueva ontraseña" value="<?php  //echo $this->session->userdata('user')->contraseña ?>" required> <span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                         </div>
+                        <i id="confNewPassword" class="newPasswordAdd" style="color:red"></i>
                     </div>
                     <div class="form-group">
+                        <i id="boRecoverPass" class="newPasswordAdd" style="color:red"></i>
                         <div class="col-sm-offset-2 col-sm-10">
-                            <input type="submit" value="Submit" class="btn btn-primary">
+                            <input type="submit" value="Submit" class="btn btn-primary boUsuarioX" id="boUpdatePass">
                         </div>
                     </div>
 

@@ -9,24 +9,25 @@ $this->load->view('private/include/cabecera');
 
     <div class="panel-body">
         <div class="row" style="background-color:#F5F5DC;height:680px">
+            <?php
+            if(isset($Exito)) {
+                ?>
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Los datos se han actualizado correctamente.
+                </div>
+                <?php
+            }else if(isset($Error)){
+                ?>
+                <div class="alert alert-danger">
+                    <strong>Danger!</strong> Ha habido algun error en la actualizacion de los datos.
+                </div>
+                <?php
+            }
+            if(!isset($Exito) && !isset($Error)){
+            ?>
             <div style="margin-left:100px" class="col-lg-8">
 
-                <?php
-                if(isset($Exito)) {
-                    ?>
-                    <div class="alert alert-success">
-                        <strong>Success!</strong> Los datos se han actualizado correctamente.
-                    </div>
-                    <?php
-                }else if(isset($Error)){
-                    ?>
-                    <div class="alert alert-danger">
-                        <strong>Danger!</strong> Ha habido algun error en la actualizacion de los datos.
-                    </div>
-                    <?php
-                }
-                if(!isset($Exito) && !isset($Error)){
-                ?>
+
                 <form  action="<?php echo site_url('private/updateRuta')?>" name="myForm"  class="form-horizontal" method="post">
 
                     <input name="matricula" type="hidden"  id="matricula"  value="<?php if (isset($coche))echo  $coche->matricula ?>" >
@@ -101,8 +102,9 @@ $this->load->view('private/include/cabecera');
                     </div>
                 </form>
 
-                <?php } ?>
+
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>

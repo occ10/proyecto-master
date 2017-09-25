@@ -7,11 +7,22 @@ $this->load->view('private/include/cabecera');
     <h2>Rutas publicadas</h2>
 
 
+    <?php
+    if(isset($Exito)) {
+        ?>
+        <div class="alert alert-success">
+            <strong>Success!</strong> Los datos se han borrado correctamente.
+        </div>
         <?php
-
-        if (isset($rutas) and count($rutas)> 0){
-            foreach ($rutas as $ruta):
-                ?>
+    }else if(isset($Error)){
+        ?>
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> Ha habido algun error en el borrado de los datos.
+        </div>
+        <?php
+    }
+    if (isset($rutas) and count($rutas)> 0){
+    ?>
     <table class="table table-striped" style="width:90%">
         <thead>
         <tr>
@@ -23,6 +34,12 @@ $this->load->view('private/include/cabecera');
         </tr>
         </thead>
         <tbody>
+
+        <?php
+
+        //if (isset($rutas) and count($rutas)> 0){
+            foreach ($rutas as $ruta):
+                ?>
                 <tr>
                     <td><?php echo $ruta->origen ?> </td>
                     <td><?php echo $ruta->plazas ?> </td>
@@ -41,6 +58,11 @@ $this->load->view('private/include/cabecera');
                 </tr>
                 <?php
             endforeach;
+
+          ?>
+        </tbody>
+    </table>
+        <?php
         }else{ ?>
 
             <div class="alert alert-info">
@@ -49,9 +71,6 @@ $this->load->view('private/include/cabecera');
             <?php
         }
         ?>
-
-        </tbody>
-    </table>
 </div>
 
 

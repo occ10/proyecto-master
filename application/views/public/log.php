@@ -22,13 +22,13 @@ $this->load->view('public/include/cabecera');
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                            <input type="text" name="correo" class="form-control" id="correoElectronico" placeholder="Correo Electronico" required>
+                            <input type="text" name="correo" class="form-control" id="correoElectronico" placeholder="Correo Electronico" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                            <input class="form-control" name="contraseña" type="password" id="password1" placeholder="Contraseña" required>
+                            <input class="form-control" name="contraseña" type="password" id="password1" placeholder="Contraseña" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                         </div>
                     </div>
                     <!--<div class="form-group">
@@ -36,15 +36,15 @@ $this->load->view('public/include/cabecera');
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input class="form-control" type="text" id="password2" placeholder="Repetir Contraseña" required>
                         </div>
-                    </div>	-->
+                    </div>
                     <div class="form-group">
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox"> Remember me
                             </label>
                         </div>
-                    </div>
-                    <div> <a href="./recuperacionClave.html">¿Has olvidado los datos de la cuenta?</a></div>
+                    </div>-->
+                    <div> <a href=<?php echo site_url("public/recoverPass")?>>¿Has olvidado los datos de la cuenta?</a></div>
                     <div class="form-group">
                         <input type="submit" value="Login" class="btn btn-primary">
                     </div>

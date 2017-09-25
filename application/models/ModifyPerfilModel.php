@@ -31,16 +31,12 @@ class ModifyPerfilModel extends CI_Model
 
     function updatePassword($data,$user){
 
-        $this->db->trans_start();
         $this->db->where('correo', $user);
         $this->db->update('usuario', $data);
-        $this->db->trans_complete();
 
-        if($this->db->trans_status() === FALSE)
-            return false;
-        else
-            return true;
-        // return ($this->db->affected_rows() > 0);
+        return $this->db->affected_rows() > 0;
+
+
 
     }
 }

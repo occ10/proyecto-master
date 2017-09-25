@@ -13,10 +13,9 @@ $this->load->view('private/include/menu');
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
 <?php }?>
     <div class="panel-body">
-        <div style="background-color:#F5F5DC;height:650px;width:600px">
-            <div style="margin-left:150px" class="col-lg-6" >
+        <div style="background-color:#F5F5DC;height:600px;width:600px">
 
-                <?php
+            <?php
                 if(isset($Exito)) {
                     ?>
                     <div class="alert alert-success">
@@ -39,10 +38,22 @@ $this->load->view('private/include/menu');
                         ?>
                     </div>
                     <?php
+                }else if(isset($result3)) {
+                    ?>
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> El coche se ha borrado correctamente.
+                    </div>
+                    <?php
+
+
                 }else{
+           ?>
+            <div style="margin-left:150px" class="col-lg-6" >
+                <?php
                 if(!isset($result1)){
 
                 ?>
+
                 <?php echo form_open_multipart('insertCar',array('id' => 'formelement'));?>
 
 
@@ -148,13 +159,13 @@ $this->load->view('private/include/menu');
                 </form>
                 <?php }else{
 
-                    if(isset($result3)) {
+                   /* if(isset($result3)) {
                         ?>
                         <div class="alert alert-success">
                             <strong>Success!</strong> El coche se ha borrado correctamente.
                         </div>
                         <?php
-                    }else{
+                    }else{*/
                     ?>
 
                     <div style="padding-top:40px;">
@@ -170,10 +181,12 @@ $this->load->view('private/include/menu');
                         <a href="<?php echo site_url('private/cambiarFotoCoche/' . $result2->matricula) ?>" style="cursor:pointer">Cambiar foto</a>
                     </div>
                     <div class="alert alert-info">
-                        <a href="<?php echo site_url('private/borrarCoche/' . $result2->matricula) ?>" style="cursor:pointer">Eleminar coche</a>
+                        <a href="<?php echo site_url('private/borrarCoche/' . $result2->matricula) . '/' . $correo ?>" style="cursor:pointer">Eleminar coche</a>
                     </div>
-                <?php } } }?>
+                    <?php //}
+                } ?>
             </div>
+                    <?php  }?>
         </div>
     </div>
 </div>

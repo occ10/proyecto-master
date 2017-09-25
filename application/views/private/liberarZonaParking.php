@@ -10,12 +10,11 @@ $this->load->view('private/include/cabecera');
     <div class="panel-body">
 
         <div style="background-color:#F5F5DC;height:950px">
+            <?php  if(isset ($Info)) {?>
+                <div class="alert alert-info">
+                    <strong>Info!</strong>  <?php echo $Info ?>.
+                </div>
             <div style="margin-left:100px" class="col-lg-8">
-                <?php  if(isset ($Info)) {?>
-                    <div class="alert alert-info">
-                        <strong>Info!</strong>  <?php echo $Info ?>.
-                    </div>
-
 
                     <form  action="<?php echo site_url('desoccupyZoneParking')?>" name="myForm"  class="form-horizontal" method="GET">
                         <div class="form-group" >
@@ -32,8 +31,9 @@ $this->load->view('private/include/cabecera');
                         </div>
                     </form>
 
-                <?php   } ?>
+
             </div>
+            <?php   } ?>
             <div id="map" style="width: 100%; height: 600px;"></div>
         </div>
     </div>

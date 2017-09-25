@@ -7,24 +7,26 @@ $this->load->view('private/include/menu');
             <h1>Información personal</h1>
             <hr>
             <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
-            <?php
-            if(isset($Exito)) {
-                ?>
-                <div class="alert alert-success">
-                    <strong>Success!</strong> Los datos se han actualizado correctamente.
-                </div>
-                <?php
-            }else if(isset($Error)){
-            ?>
-                <div class="alert alert-danger">
-                    <strong>Danger!</strong> Ha habido algun error en la actualizacion de los errores.
-                </div>
-            <?php
-            }
-            ?>
+
             <div class="panel-body" >
                 <div style="background-color:#F5F5DC;height:500px">
+                    <?php
+                    if(isset($Exito)) {
+                        ?>
+                        <div class="alert alert-success">
+                            <strong>Success!</strong> Los datos se han actualizado correctamente.
+                        </div>
+                        <?php
+                    }else if(isset($Error)){
+                        ?>
+                        <div class="alert alert-danger">
+                            <strong>Danger!</strong> Ha habido algun error en la actualizacion de los errores.
+                        </div>
+                        <?php
+                    }
+                    ?>
                     <div style="margin-left:100px" class="col-lg-8"  >
+
                         <form  action="<?php echo site_url('updateUser')?>" name="myForm"  class="form-horizontal" method="post">
                             <div class="form-group">
                                 <label for="modelo">Nombre:</label>

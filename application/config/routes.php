@@ -133,7 +133,7 @@ $route['private/matricula/(:any)'] = 'coche/matricula/$1';
 $route['private/cambiarFotoCoche/(:any)'] = 'coche/fotoCoche/$1';
 
 //borrar coche
-$route['private/borrarCoche/(:any)'] = 'coche/borrarCoche/$1';
+$route['private/borrarCoche/(:any)/(:any)'] = 'coche/borrarCoche/$1/$2';
 
 
 //peticion correo a traves de ajax
@@ -179,6 +179,11 @@ $route['private/opinionesHechas/(:any)'] = 'usuarios/comentariosHechos/$1';
 $route['private/passwordInformation'] = 'usuarios/passwordInformation';
 $route['private/modifyPassword'] = 'modifyPerfil/modifyPassword';
 
+$route['public/recoverPass'] = 'modifyPerfil/recoverPassword';
+$route['public/updatePass'] = 'modifyPerfil/updatePassword';
+$route['private/recoverUpdatePassword/(:any)'] = 'modifyPerfil/recoverUpdatePassword/$1';
+//$route['private/recoverUpdatePassword'] = 'modifyPerfil/recoverUpdatePassword';
+$route['private/modifyLosedPassword/'] = 'modifyPerfil/modifyLosedPassword';
 /*$route['private/listadoRutas/add'] = 'ruta/modificarRuta';
 $route['private/listadoRutas/insert'] = 'ruta/modificarRuta';
 $route['private/listadoRutas/insert_validation'] = 'ruta/modificarRuta';

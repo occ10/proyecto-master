@@ -60,36 +60,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         $(function(){
-            $("#correoElectronico").blur(function(event)
-            {
+            $("#correoElectronico").blur(function(event) {
+
 
                 event.preventDefault();
-                var correo= $("#correoElectronico").val();
-                var url= "<?php echo base_url(); ?>private/correo/"+correo;
+                var correo = $("#correoElectronico").val();
+                var pattern = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+                if (pattern.test(correo)) {
+
+
+                var url = "<?php echo base_url(); ?>private/correo/" + correo;
 
                 $.ajax(
                     {
-                        type:"GET",
+                        type: "GET",
                         url: url,
-                        success:function(response)
-                        {
+                        success: function (response) {
 
-                            if(response=='false') {
+                            if (response == 'false') {
                                 $("#messageCorreo").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
                                 $('form input[id="boUsuario"]').prop("disabled", true);
-                            }else{
+                            } else {
                                 $("#messageCorreo").html("");
                                 $('form input[id="boUsuario"]').prop("disabled", false);
                             }
 
 
                         },
-                        error: function(error)
-                        {
+                        error: function (error) {
                             $("#message").html(error);
                         }
                     }
                 );
+            }else{
+                    $("#messageCorreo").html("El formato del correo no es correcto");
+                    $('form input[id="boUsuario"]').prop("disabled", true);
+            }
             });
         });
     </script>

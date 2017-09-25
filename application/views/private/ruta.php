@@ -7,24 +7,25 @@ $this->load->view('private/include/cabecera');
     <h3>Pblicar Ruta</h3>
     <hr>
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
-    <?php
-    if(isset($Exito)) {
-        ?>
-        <div class="alert alert-success">
-            <strong>Success!</strong> Los datos se han insertado correctamente.
-        </div>
-        <?php
-    }else if(isset($Error)){
-        ?>
-        <div class="alert alert-danger">
-            <strong>Danger!</strong> Ha habido algun error en la insercion de los errores.
-        </div>
-        <?php
-    }
-    ?>
+
     <div class="panel-body">
 
         <div style="background-color:#F5F5DC;height:600px">
+            <?php
+            if(isset($Exito)) {
+                ?>
+                <div class="alert alert-success">
+                    <strong>Success!</strong> Los datos se han insertado correctamente.
+                </div>
+                <?php
+            }else if(isset($Error)){
+                ?>
+                <div class="alert alert-danger">
+                    <strong>Danger!</strong> Ha habido algun error en la insercion de los errores.
+                </div>
+                <?php
+            }
+            ?>
             <?php  if(!isset($noTieneCoche)){?>
            <div style="margin-left:100px" class="col-lg-8">
                 <form  action="<?php echo site_url('insertRuta')?>" name="myForm"  class="form-horizontal" method="post">
