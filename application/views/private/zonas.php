@@ -10,7 +10,7 @@ $this->load->view('private/include/cabecera');
     <div class="panel-body">
 
         <div style="background-color:#F5F5DC;height:950px">
-            <div style="margin-left:100px" class="col-lg-8">
+            <div style="margin-left:100px;padding-top:60px" class="col-lg-8">
                 <?php  if(isset ($Resultado) && !empty($Resultado)) {?>
                     <form  action="<?php echo site_url('occupyZoneParking')?>" name="myForm"  class="form-horizontal" method="GET">
                         <div class="form-group">

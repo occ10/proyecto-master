@@ -27,7 +27,7 @@ $this->load->view('private/include/cabecera');
             }
             ?>
             <?php  if(!isset($noTieneCoche)){?>
-           <div style="margin-left:100px" class="col-lg-8">
+           <div style="margin-left:100px;padding-top:60px" class="col-lg-8" >
                 <form  action="<?php echo site_url('insertRuta')?>" name="myForm"  class="form-horizontal" method="post">
                    <!-- <div class="form-group">
                         <label for="matricula">Coche:</label>

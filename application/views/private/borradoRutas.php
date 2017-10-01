@@ -24,9 +24,6 @@ $this->load->view('private/include/cabecera');
             <tr>
                 <th>Origen</th>
                 <th>Plazas</th>
-                <!--   <th>Plazas ocupadas</th>
-                   <th>Precio</th>
-                   <th>Detalles</th>-->
             </tr>
             </thead>
             <tbody>

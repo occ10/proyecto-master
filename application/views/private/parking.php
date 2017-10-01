@@ -10,7 +10,7 @@ $this->load->view('private/include/cabecera');
 
     <div class="panel-body">
 
-        <div style="background-color:#F5F5DC;height:900px">
+        <div style="background-color:#F5F5DC;height:900px;padding-top:60px">
             <div style="margin-left:100px" class="col-lg-8">
                 <?php
                 if(isset($Info)){

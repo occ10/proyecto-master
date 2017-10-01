@@ -8,7 +8,7 @@ $this->load->view('public/include/cabecera');
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
     <div class="panel-body">
         <div style="background-color:#F5F5DC;height:350px;">
-            <div class="col-lg-8" style="margin-left:100px;padding-top: 20px">
+            <div class="col-lg-8" style="margin-left:100px;padding-top: 60px">
                 <?php
                 if(isset($Error)) {
                     ?>
