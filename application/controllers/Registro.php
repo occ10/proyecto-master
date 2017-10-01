@@ -27,9 +27,9 @@ class Registro extends CI_Controller {
 
     public function indexRegister()
     {
-        if ( $this->input->post('password') && $this->input->post('correo') && $this->input->post('nombre') &&
+        /*if ( $this->input->post('password') && $this->input->post('correo') && $this->input->post('nombre') &&
             $this->input->post('apellido')  && $this->input->post('bday')  && $this->input->post('telefonoReg') && $this->input->post('detalles')
-        ) {
+        ) {*/
 
             //$pass = $this->encrypt->encode($this->input->post('password'));
             $pass = hash('sha512', $this->input->post('password'));
@@ -65,9 +65,9 @@ class Registro extends CI_Controller {
             //redirect('/');
             //$this->load->view('public/confirmRegistro');
             $this->load->view('public/confirmRegister', $data);
-        }else{
+        /*}else{
             $this->load->view('public/home');
-        }
+        }*/
 
     }
     public function indexPrivada(){
@@ -77,13 +77,10 @@ class Registro extends CI_Controller {
     public function send_mail($correo)
     {
 
-
-        //configuracion para gmail
-
         $this->load->library('email');
         $config['protocol'] = 'smtp';
         //$config['smtp_host']    = 'ssl://smtp.gmail.com';
-        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_host'] = 'smtp.gmail.com';
         $config['smtp_port'] = '465';
         $config['smtp_timeout'] = '7';
         $config['smtp_user'] = 'infochamit@gmail.com';
@@ -101,23 +98,24 @@ class Registro extends CI_Controller {
         $this->email->subject('Email Test');
         $this->email->message('haga click en el enlace abajo para activar tu cuenta, y poder utilizar la aplicacion ' . site_url('confirmRegistro/' . $correo));
 //site_url("public/confirmRegistro/'
-        //$this->email->send();
+       $this->email->send();
+       return true;
         //echo $this->email->print_debugger();
         //Send mail
-        if ($this->email->send()) {
+       /* if ($this->email->send()) {
 
            // $this->session->set_flashdata("email_sent", "Email sent successfully.");
-            echo "<pre>" .
-            $this->email->print_debugger() . "</pre>";
+           // echo "<pre>" .
+            //$this->email->print_debugger() . "</pre>";
             return true;
         }else {
 
-            echo "<pre>" .
-                $this->email->print_debugger() . "</pre>";
+          //  echo "<pre>" .
+              //  $this->email->print_debugger() . "</pre>";
             //$this->session->set_flashdata("email_sent", "Error in sending Email.");
             //$this->load->view('email_form');
             return false;
-        }
+        }*/
 
     }
 

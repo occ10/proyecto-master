@@ -71,11 +71,6 @@ class Login extends CI_Controller {
         }
 
             $this->load->view('public/log', $output);
-
-
-
-
-
     }
     public function unset_session_data() {
 
