@@ -184,15 +184,96 @@ $route['public/updatePass'] = 'modifyPerfil/updatePassword';
 $route['private/recoverUpdatePassword/(:any)'] = 'modifyPerfil/recoverUpdatePassword/$1';
 //$route['private/recoverUpdatePassword'] = 'modifyPerfil/recoverUpdatePassword';
 $route['private/modifyLosedPassword/'] = 'modifyPerfil/modifyLosedPassword';
-/*$route['private/listadoRutas/add'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/insert'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/insert_validation'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/success/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/delete/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/read/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/edit/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/update_validation/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/update/:num'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/ajax_list_info'] = 'ruta/modificarRuta';
-$route['private/listadoRutas/ajax_list'] = 'ruta/modificarRuta';*/
 
+
+//parte privada
+$route['private'] = 'home/indexPrivada';
+
+//listado usuarios
+$route['private/listadoUsuarios'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/add'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/insert'] = 'ruta/modificarRuta';
+$route['private/listadoUsuarios/insert_validation'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/success/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/delete/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/read/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/edit/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/update_validation/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/update/:any'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/ajax_list_info'] = 'adminUsuario/usuarios';
+$route['private/listadoUsuarios/ajax_list'] = 'adminUsuario/usuarios';
+
+//listado coches
+
+$route['private/listadoCoches'] = 'adminCoche/coches';
+$route['private/listadoCoches/add'] = 'adminCoche/coches';
+$route['private/listadoCoches/insert'] = 'adminCoche/coches';
+$route['private/listadoCoches/insert_validation'] = 'adminCoche/coches';
+$route['private/listadoCoches/success/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/delete/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/read/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/edit/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/update_validation/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/update/:any'] = 'adminCoche/coches';
+$route['private/listadoCoches/ajax_list_info'] = 'adminCoche/coches';
+$route['private/listadoCoches/ajax_list'] = 'adminCoche/coches';
+
+//listado coches
+$route['private/listadoRutas'] = 'adminRuta/rutas';
+$route['private/listadoRutas/add'] = 'adminRuta/rutas';
+$route['private/listadoRutas/insert'] = 'adminRuta/rutas';
+$route['private/listadoRutas/insert_validation'] = 'adminRuta/rutas';
+$route['private/listadoRutas/success/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/delete/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/read/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/edit/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/update_validation/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/update/:num'] = 'adminRuta/rutas';
+$route['private/listadoRutas/ajax_list_info'] = 'adminRuta/rutas';
+$route['private/listadoRutas/ajax_list'] = 'adminRuta/rutas';
+
+
+
+//listado de aparcamientos
+$route['private/listadoAparcamiento'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/add'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/insert'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/insert_validation'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/success/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/delete/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/read/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/edit/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/update_validation/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/update/:any'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/ajax_list_info'] = 'adminParking/parkings';
+$route['private/listadoAparcamiento/ajax_list'] = 'adminParking/parkings';
+
+
+//listado de zonas
+$route['private/listadoZona'] = 'adminZona/zonas';
+$route['private/listadoZona/add'] = 'adminZona/zonas';
+$route['private/listadoZona/insert'] = 'adminZona/zonas';
+$route['private/listadoZona/insert_validation'] = 'adminZona/zonas';
+$route['private/listadoZona/success/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/delete/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/read/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/edit/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/update_validation/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/update/:any'] = 'adminZona/zonas';
+$route['private/listadoZona/ajax_list_info'] = 'adminZona/zonas';
+$route['private/listadoZona/ajax_list'] = 'adminZona/zonas';
+
+
+//listado de zonas
+$route['private/listadoComentario'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/add'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/insert'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/insert_validation'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/success/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/delete/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/read/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/edit/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/update_validation/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/update/:any'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/ajax_list_info'] = 'adminComentario/comentarios';
+$route['private/listadoComentario/ajax_list'] = 'adminComentario/comentarios';

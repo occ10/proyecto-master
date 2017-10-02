@@ -27,4 +27,7 @@ class Home extends CI_Controller {
     public function indexRegistro(){
         $this->load->view('public/registro');
     }
+    public function indexPrivada(){
+        $this->load->view('private/adminHome');
+    }
 }
