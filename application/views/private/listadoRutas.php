@@ -21,7 +21,7 @@ $this->load->view('private/include/cabecera');
         </div>
         <?php
     }
-    if (isset($rutas) and count($rutas)> 0){
+    else if (isset($rutas) and count($rutas)> 0){
     ?>
     <table class="table table-striped" style="width:90%">
         <thead>
@@ -49,8 +49,17 @@ $this->load->view('private/include/cabecera');
                     ?> </td>
                     <td><?php //echo  $ruta->detalles
                     ?> </td>-->
+                    <?php
+                    if($ruta->opcion == '0'){
+                        ?>
                     <td><a href="<?php echo site_url('private/modifyRuta/' . $ruta->id) ?>" class="btn btn-info"
                            role="button">Actualizar</a></td>
+                    <?php }else{
+
+                        ?>
+                        <td></td>
+                        <?php
+                    } ?>
                     <td><a href="<?php echo site_url('private/detalleRuta/' . $ruta->id) ?>" class="btn btn-info"
                            role="button">Ver Detalles</a></td>
                     <td><a href="<?php echo site_url('private/borrarRuta/' . $ruta->id) ?>" class="btn btn-info"
@@ -60,8 +69,21 @@ $this->load->view('private/include/cabecera');
             endforeach;
 
           ?>
+
         </tbody>
     </table>
+        <div class="text-center" style="width:100%">
+
+            <div   style="paddint-top:40px">
+                <!--<a href="-->
+                <?php
+                echo $paginacion;
+
+                ?>
+
+            </div>
+
+        </div>
         <?php
         }else{ ?>
 

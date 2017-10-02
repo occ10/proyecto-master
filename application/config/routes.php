@@ -53,6 +53,7 @@ $route['default_controller'] = 'home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+
 //$route['gestion'] = 'gestion/index';
 $route['registro'] = 'registro/index';
 $route['registroUser'] = 'registro/indexRegister';
@@ -110,6 +111,7 @@ $route['desoccupyZoneParking'] = 'mapa/desoccupyZoneParking';
 //$route['private/viajesPublicados'] = 'ruta/modificarRuta';
 //obtener todas las rutas publicadas por un usuario
 $route['private/listadoRutas'] = 'ruta/listaRutasUsuario';
+$route['private/listadoRutas/(:num)'] = 'ruta/listaRutasUsuario/$1';
 //obtener ruta de un usuario dada por su id
 $route['private/detalleRuta/(:num)'] = 'ruta/detalle/$1';
 //actualizar ruta
@@ -219,18 +221,18 @@ $route['private/listadoCoches/ajax_list_info'] = 'adminCoche/coches';
 $route['private/listadoCoches/ajax_list'] = 'adminCoche/coches';
 
 //listado coches
-$route['private/listadoRutas'] = 'adminRuta/rutas';
-$route['private/listadoRutas/add'] = 'adminRuta/rutas';
-$route['private/listadoRutas/insert'] = 'adminRuta/rutas';
-$route['private/listadoRutas/insert_validation'] = 'adminRuta/rutas';
-$route['private/listadoRutas/success/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/delete/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/read/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/edit/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/update_validation/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/update/:num'] = 'adminRuta/rutas';
-$route['private/listadoRutas/ajax_list_info'] = 'adminRuta/rutas';
-$route['private/listadoRutas/ajax_list'] = 'adminRuta/rutas';
+$route['private/listadoRuta'] = 'adminRuta/rutas';
+$route['private/listadoRuta/add'] = 'adminRuta/rutas';
+$route['private/listadoRuta/insert'] = 'adminRuta/rutas';
+$route['private/listadoRuta/insert_validation'] = 'adminRuta/rutas';
+$route['private/listadoRuta/success/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/delete/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/read/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/edit/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/update_validation/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/update/:num'] = 'adminRuta/rutas';
+$route['private/listadoRuta/ajax_list_info'] = 'adminRuta/rutas';
+$route['private/listadoRuta/ajax_list'] = 'adminRuta/rutas';
 
 
 
@@ -264,7 +266,7 @@ $route['private/listadoZona/ajax_list_info'] = 'adminZona/zonas';
 $route['private/listadoZona/ajax_list'] = 'adminZona/zonas';
 
 
-//listado de zonas
+//listado de comentarios
 $route['private/listadoComentario'] = 'adminComentario/comentarios';
 $route['private/listadoComentario/add'] = 'adminComentario/comentarios';
 $route['private/listadoComentario/insert'] = 'adminComentario/comentarios';
@@ -277,3 +279,32 @@ $route['private/listadoComentario/update_validation/:any'] = 'adminComentario/co
 $route['private/listadoComentario/update/:any'] = 'adminComentario/comentarios';
 $route['private/listadoComentario/ajax_list_info'] = 'adminComentario/comentarios';
 $route['private/listadoComentario/ajax_list'] = 'adminComentario/comentarios';
+
+//listado de historial de aparcamiento
+$route['private/listadoAparcaCoche'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/add'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/insert'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/insert_validation'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/success/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/delete/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/read/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/edit/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/update_validation/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/update/:any'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/ajax_list_info'] = 'adminHistorialParking/historialAparcamientos';
+$route['private/listadoAparcaCoche/ajax_list'] = 'adminHistorialParking/historialAparcamientos';
+
+
+//listado de historial de aparcamiento
+$route['private/listadoRutaRealizada'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/add'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/insert'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/insert_validation'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/success/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/delete/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/read/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/edit/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/update_validation/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/update/:any'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/ajax_list_info'] = 'adminRutaRealizada/rutaRealizada';
+$route['private/listadoRutaRealizada/ajax_list'] = 'adminRutaRealizada/rutaRealizada';

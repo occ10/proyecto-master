@@ -76,7 +76,7 @@ $this->load->view('private/include/adminCabecera');
                                 </div>
                             </div>
                         </div>
-                        <a href="<?php echo site_url('private/listadoRutas')?>">
+                        <a href="<?php echo site_url('private/listadoRuta')?>">
                             <div class="panel-footer">
                                 <span class="pull-left">Ver</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

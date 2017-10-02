@@ -9,7 +9,7 @@ $this->load->view('private/include/menu');
             <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
 
             <div class="panel-body" >
-                <div style="background-color:#F5F5DC;height:500px">
+                <div style="background-color:#F5F5DC;height:550px">
                     <?php
                     if(isset($Exito)) {
                         ?>
@@ -23,9 +23,9 @@ $this->load->view('private/include/menu');
                             <strong>Danger!</strong> Ha habido algun error en la actualizacion de los errores.
                         </div>
                         <?php
-                    }
+                    }else{
                     ?>
-                    <div style="margin-left:100px" class="col-lg-8"  >
+                    <div style="margin-left:100px;padding-top:40px" class="col-lg-8"  >
 
                         <form  action="<?php echo site_url('updateUser')?>" name="myForm"  class="form-horizontal" method="post">
                             <div class="form-group">
@@ -79,6 +79,7 @@ $this->load->view('private/include/menu');
 
                         </form>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>

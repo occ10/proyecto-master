@@ -80,7 +80,7 @@ class Registro extends CI_Controller {
         $this->load->library('email');
         $config['protocol'] = 'smtp';
         //$config['smtp_host']    = 'ssl://smtp.gmail.com';
-        $config['smtp_host'] = 'smtp.gmail.com';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
         $config['smtp_port'] = '465';
         $config['smtp_timeout'] = '7';
         $config['smtp_user'] = 'infochamit@gmail.com';

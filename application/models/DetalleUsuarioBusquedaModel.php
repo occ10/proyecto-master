@@ -141,7 +141,8 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->from('usuario');
         $this->db->join('realizaruta', 'usuario.correo = realizaruta.usuario');
         $this->db->join('ruta', 'realizaruta.ruta = ruta.id');
-        $this->db->where('ruta.origen', $data);
+        $this->db->where('ruta.origen', $data['origen']);
+        $this->db->where('usuario.correo != ', $data['correo']);
         $result=$this->db->get();
 
         return $result->num_rows();
@@ -152,7 +153,8 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->from('usuario');
         $this->db->join('realizaruta', 'usuario.correo = realizaruta.usuario');
         $this->db->join('ruta', 'realizaruta.ruta = ruta.id');
-        $this->db->where('ruta.origen', $data);
+        $this->db->where('ruta.origen', $data['origen']);
+        $this->db->where('usuario.correo != ', $data['correo']);
         $this->db->limit($per_page,$uri_segment);
         $result= $this->db->get();
 

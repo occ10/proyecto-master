@@ -168,7 +168,7 @@ class modifyPerfil extends CI_Controller {
                 $this->load->library('email');
                 $config['protocol'] = 'smtp';
                 //$config['smtp_host']    = 'ssl://smtp.gmail.com';
-                $config['smtp_host'] = 'smtp.gmail.com';
+                $config['smtp_host'] = 'ssl://smtp.gmail.com';
                 $config['smtp_port'] = '465';
                 $config['smtp_timeout'] = '7';
                 $config['smtp_user'] = 'infochamit@gmail.com';
@@ -180,7 +180,7 @@ class modifyPerfil extends CI_Controller {
                 $this->email->initialize($config);
 
                 $from_email = "infochamit@gmail.com";
-                $to_email = 'infoouadi@gmail.com';
+                $to_email = $correo;
                 $this->email->from($from_email, 'chamit');
                 $this->email->to($to_email);
                 $this->email->subject('Email Test');

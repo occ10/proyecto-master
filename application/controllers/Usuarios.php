@@ -101,7 +101,11 @@ class Usuarios extends CI_Controller
             $var = ($this->uri->segment(3)) ? $this->uri->segment(3) : $var;
             $config['base_url'] = base_url().'usuarios/buscarUsuariosPorOrigen/' . $var;
 
-            $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodo($var);
+            $data = array(
+                'origen' => $var,
+                'correo' => $correoUSuarioSesion
+            );
+            $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodo($data);
             $config['per_page'] = '5';
             $config['uri_segment'] = '4';
             $config['num_links'] = '5';
@@ -121,10 +125,10 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-            $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuarios($config['per_page'],$page,$var);
+            $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuarios($config['per_page'],$page,$data);
             $output['origen'] = $var;
             $output['paginacion'] = $this->pagination->create_links();
-            $output['total']=$this->DetalleUsuarioBusquedaModel->obtenerTodo($var);
+            $output['total']=$this->DetalleUsuarioBusquedaModel->obtenerTodo($data);
             /*echo "<pre>";
             print_r(count($output['rutas']));
             echo "</pre>";*/

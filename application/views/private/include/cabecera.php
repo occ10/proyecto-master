@@ -76,6 +76,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             height:80px;
             text-align: center;
             margin-top:40px;
+            padding-top: 30px;
 
 
         }
@@ -175,14 +176,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                 <li> <a style='color:#fcfcfc;background: #337AB7; border-radius: 25px;height:35px;padding-top:6px;margin-top:8px;margin-right:20px' href="<?php echo site_url('buscarRuta')?> ">  <i class='glyphicon glyphicon-search'></i>&nbsp;&nbsp;&nbsp;&nbsp;Buscar anuncio </a></li>
                                 <li> <a style='color:#fcfcfc;background: #337AB7; border-radius: 25px;height:35px;padding-top:6px;margin-top:8px;margin-right:20px' href="<?php echo site_url('publicarRuta')?> ">  <i class='glyphicon glyphicon-road'></i>&nbsp;&nbsp;&nbsp;&nbsp;Publicar anuncio </a></li>
-                                <li> <a style='color:#fcfcfc;background: #337AB7; border-radius: 25px;height:35px;padding-top:6px;margin-top:8px;margin-right:20px' href="<?php echo site_url('buscarParking') ?>" > <i class='glyphicons glyphicons-parking'></i>&nbsp;&nbsp;&nbsp;&nbsp;Buscar parking </a></li>
+                            <li> <a style='color:#fcfcfc;background: #337AB7; border-radius: 25px;height:35px;padding-top:6px;margin-top:8px;margin-right:20px' href="<?php echo site_url('buscarParking') ?>" > <i class='glyphicon glyphicon-random'></i>&nbsp;&nbsp;&nbsp;&nbsp;Buscar parking </a></li>
 
                             <li>
                                     <button style="margin-top:8px;" class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Bienvenido  <?php echo $this->session->userdata('user')->nombre ?>
                                         <span class="caret"></span></button>
                                     <ul class="dropdown-menu" role="menu1" aria-labelledby="menu1">
                                         <li><a href= " <?php echo site_url('modifyPerfil') ?>">Editar perfil</a></li>
-                                        <li><a href='#'>CSS</a></li>
+                                        <li><a href='<?php echo site_url('private') ?>'>Admin</a></li>
                                         <li><a href="<?php echo site_url('private/listadoRutas') ?> ">Viajes publicados</a></li>
                                         <li><a href="<?php echo site_url('private/perfilUsuarioBuscado') ?> ">Buscar usuario</a></li>
                                         <li><a href= " <?php echo site_url('cerrarSesion') ?>">Cerrar cesion</a></li>

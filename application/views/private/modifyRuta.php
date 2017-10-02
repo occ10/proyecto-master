@@ -23,9 +23,9 @@ $this->load->view('private/include/cabecera');
                 </div>
                 <?php
             }
-            if(!isset($Exito) && !isset($Error)){
+            else{
             ?>
-            <div style="margin-left:100px" class="col-lg-8">
+            <div style="margin-left:100px;padding-top:60px" class="col-lg-8">
 
 
                 <form  action="<?php echo site_url('private/updateRuta')?>" name="myForm"  class="form-horizontal" method="post">

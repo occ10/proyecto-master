@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AdminRuta extends CI_Controller
+class AdminRutaRealizada extends CI_Controller
 {
 
     public function __construct()
@@ -11,26 +11,20 @@ class AdminRuta extends CI_Controller
         $this->load->database();// podría hacerlo desde el autoload
         $this->load->helper('url');
         $this->load->library('session');
-        $this->load->model('CocheModel');
-        $this->load->model('RealizaRutaModel');
-        $this->load->model('RutaModel');
         $this->load->library('grocery_CRUD');
-        $this->load->library('pagination');
-        $this->load->library('session');
-
     }
-    public function rutas()
+    public function rutaRealizada()
     {
         //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
-        $crud->set_table('ruta');
-        $crud->set_subject('ruta');
+        $crud->set_table('realizaruta');
+        $crud->set_subject('realizaruta');
         $crud->set_theme("datatables");
-        $crud->set_crud_url_path(site_url('private/listadoRuta'));
+        $crud->set_crud_url_path(site_url('private/listadoRutaRealizada'));
         $output = $crud->render();
 
-        $this->load->view('private/adminRuta',$output);
+        $this->load->view('private/adminRutaRealizada',$output);
     }
 
 }

@@ -28,6 +28,11 @@ class Home extends CI_Controller {
         $this->load->view('public/registro');
     }
     public function indexPrivada(){
+        if ($this->session->userdata('user')){
         $this->load->view('private/adminHome');
+    }else{
+            $this->load->view('public/home');
+        }
+
     }
 }

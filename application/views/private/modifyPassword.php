@@ -8,7 +8,7 @@ $this->load->view('private/include/menu');
     <hr>
     <h4>Nota: campos con <i style="color:red">*</i> son obligatrios</h4>
     <div class="panel-body" >
-        <div style="background-color:#F5F5DC;height:300px">
+        <div style="background-color:#F5F5DC;height:350px">
             <?php
             if(isset($Exito)) {
                 ?>
@@ -24,7 +24,7 @@ $this->load->view('private/include/menu');
                 <?php
             }
             ?>
-            <div style="margin-left:100px" class="col-lg-8"  >
+            <div style="margin-left:100px;padding-top:40px" class="col-lg-8"  >
 
                 <form  action="<?php echo site_url('private/modifyPassword')?>" name="myForm"  class="form-horizontal" method="post">
 

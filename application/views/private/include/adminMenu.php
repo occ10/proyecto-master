@@ -31,7 +31,7 @@
                 <a href="<?php echo site_url('private')?>"><i class="fa fa-fw fa-dashboard"></i> Inicio</a>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#usuarios"><i class="fa fa-file-movie-o"></i> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#usuarios"> Usuarios <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="usuarios" class="collapse">
                     <li>
                         <a href="<?php echo site_url('private/listadoUsuarios')?>">Gestión</a>
@@ -39,7 +39,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#coches"><i class="fa fa-user"></i> Coches <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#coches">Coches <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="coches" class="collapse">
                     <li>
                         <a href="<?php echo site_url('private/listadoCoches')?>">Gestión</a>
@@ -48,16 +48,16 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#ruta"><i class="fa fa-film"></i><i class="fa fa-user"></i> Ruta <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#ruta"> Ruta <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="ruta" class="collapse">
                     <li>
-                        <a href="<?php echo site_url('private/listadoRutas')?>">Gestión</a>
+                        <a href="<?php echo site_url('private/listadoRuta')?>">Gestión</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#parking"><i class="fa fa-film"></i><i class="fa fa-user"></i> Parking <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#parking"> Parking <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="parking" class="collapse">
                     <li>
                         <a href="<?php echo site_url('private/listadoAparcamiento')?>">Gestión</a>
@@ -65,7 +65,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#zona"><i class="fa fa-film"></i><i class="fa fa-user"></i> Zona <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#zona"> Zona <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="zona" class="collapse">
                     <li>
                         <a href="<?php echo site_url('private/listadoZona')?>">Gestión</a>
@@ -74,7 +74,7 @@
             </li>
 
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#comentario"><i class="fa fa-film"></i> <i class="fa fa-trophy"></i> Comentarios <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#comentario"> Comentarios <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="comentario" class="collapse">
                     <li>
                         <a href="<?php echo site_url('private/listadoComentario')?>">Gestión</a>
@@ -83,24 +83,24 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#historialParking"><i class="fa fa-film"></i> <i class="fa fa-trophy"></i> Historial Parking <i class="fa fa-fw fa-caret-down"></i></a>
+                <a href="javascript:;" data-toggle="collapse" data-target="#historialParking"> Historial Parking <i class="fa fa-fw fa-caret-down"></i></a>
                 <ul id="historialParking" class="collapse">
                     <li>
-                        <a href="<?php echo site_url('private/listadoHistorialParking')?>">Gestión</a>
+                        <a href="<?php echo site_url('private/listadoAparcaCoche')?>">Gestión</a>
                     </li>
 
                 </ul>
             </li>
 
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#rutasPublicadas"><i class="fa fa-film"></i> <i class="fa fa-trophy"></i> Rutas Publicadas <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul id="rutasPublicadas" class="collapse">
+            <!--<li>
+                <a href="javascript:;" data-toggle="collapse" data-target="#rutasRealizadas"> Rutas Realizadas <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="rutasRealizadas" class="collapse">
                     <li>
-                        <a href="<?php echo site_url('private/listadoRutasPublicadas')?>">Gestión</a>
+                        <a href="<?php ///echo site_url('private/listadoRutaRealizada')?>">Gestión</a>
                     </li>
 
                 </ul>
-            </li>
+            </li>-->
         </ul>
     </div>
     <!-- /.navbar-collapse -->

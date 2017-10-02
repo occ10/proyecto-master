@@ -21,8 +21,9 @@ $this->load->view('private/include/cabecera');
                         <div class="col-md-6" style="border-right-style:groove;height:80%">
                             <div class="row">
                                 <div class="col-md-7"><img style="border-radius: 50%;"
-                                                           src="<?php echo base_url(); ?>assets/userFoto/<?php echo $usuario->foto ?> "
-                                                           alt="Smiley face" height="50%" width="50%"></div>
+                                                           src="<?php echo base_url(); ?>assets/userFoto/<?php if($usuario->foto=="") echo 'unkonwnfoto.png'; else  echo $usuario->foto ?> "
+
+                                                           alt="Smiley face" height="100px" width="100px"></div>
                                 <div class="col-md-5" style="color:#000000"><h4><?php echo $usuario->nombre . " " . $usuario->apellido ?>
 
                                 </div>
