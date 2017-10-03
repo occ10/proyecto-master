@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <link href="<?php echo base_url();?>assets/include/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url();?>assets/css/perfil.css" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>assets/img/ua.PNG">
     <!--<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">-->
 
     <?php

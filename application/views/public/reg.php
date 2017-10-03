@@ -26,9 +26,9 @@ $this->load->view('public/include/cabecera');
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input type="text" name="correo" class="form-control" id="correoElectronico" placeholder="Correo Electronico" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                        <input type="text" name="correo" class="form-control correoElectronicoMessage" id="correoElectronico" placeholder="Correo Electronico" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
                     </div>
-                    <i id="messageCorreo" style="color:red"></i>
+                    <i id="messageCorreo" class="correoErrorMessage" style="color:red"></i>
                 </div>
                 <div class="form-group">
                     <div class="input-group">

@@ -42,11 +42,18 @@ class Ruta extends CI_Controller {
     public function InsertarRuta()
     {
         if($this->session->userdata('user')) {
+
+                $origen = $this->input->post('origen',true);
+                $precio = htmlentities($this->input->post('precio',true));
+                $plazas = htmlentities($this->input->post('plaza',true));
+                $detalles = htmlentities($this->input->post('detalle',true));
+                $fechaPublicacion = date("Y/m/d");
+
             $data = array(
-                'origen' => $this->input->post('origen'),
-                'precio' => $this->input->post('precio'),
-                'plazas' => $this->input->post('plaza'),
-                'detalles' => $this->input->post('detalle'),
+                'origen' => $this->input->post('origen',true),
+                'precio' => $this->input->post('precio',true),
+                'plazas' => $this->input->post('plaza',true),
+                'detalles' => $this->input->post('detalle',true),
                 'fechaPublicacion' => date("Y/m/d"),
             );
 
@@ -192,18 +199,18 @@ class Ruta extends CI_Controller {
     public function updateRuta(){
         if($this->session->userdata('user')) {
             $data = array(
-                'id' => $this->input->post('id'),
-                'plazas' => $this->input->post('plaza'),
-                'plazasOcupadas' => $this->input->post('plazaOcupadas'),
-                'origen' => $this->input->post('origen'),
+                'id' => $this->input->post('id',true),
+                'plazas' => $this->input->post('plaza',true),
+                'plazasOcupadas' => $this->input->post('plazaOcupadas',true),
+                'origen' => $this->input->post('origen',true),
                 //'destino' => $this->input->post('destino'),
-                'detalles' => $this->input->post('detalle'),
-                'precio' => $this->input->post('precio'),
+                'detalles' => $this->input->post('detalle',true),
+                'precio' => $this->input->post('precio',true),
 
             );
             $data2 = array(
-                'ruta' => $this->input->post('id'),
-                'coche' => $this->input->post('matricula'),
+                'ruta' => $this->input->post('id',true),
+                'coche' => $this->input->post('matricula',true),
             );
 
             $Resultado1 = $this->RutaModel->updateRutaUsuario($data);

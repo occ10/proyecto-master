@@ -10,6 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?php echo base_url();?>assets/include/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
     <link href="<?php echo base_url();?>assets/css/plantilla.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="icon" type="image/png" sizes="32x32" href="<?php echo base_url();?>assets/img/ua.PNG">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>

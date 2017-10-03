@@ -24,7 +24,7 @@ $this->load->view('private/include/cabecera');
                     <strong>Danger!</strong> Ha habido algun error en la insercion de los errores.
                 </div>
                 <?php
-            }
+            }else{
             ?>
             <?php  if(!isset($noTieneCoche)){?>
            <div style="margin-left:100px;padding-top:60px" class="col-lg-8" >
@@ -89,7 +89,7 @@ $this->load->view('private/include/cabecera');
                 <div class="alert alert-info">
                     <strong>Info!</strong> <?php  echo $noTieneCoche; ?>.
                 </div>
-            <?php }?>
+            <?php }}?>
         </div>
     </div>
 </div>

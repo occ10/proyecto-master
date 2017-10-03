@@ -22,7 +22,7 @@ $this->load->view('private/include/cabecera');
                             <div class="row">
                                 <div class="col-md-7"><img style="border-radius: 50%;"
                                                            src="<?php echo base_url(); ?>assets/userFoto/<?php if($ruta->foto=="") echo 'unkonwnfoto.png'; else  echo $ruta->foto ?> "
-                                                           
+
                                                            alt="Smiley face" height="100px" width="100px"></div>
                                 <div class="col-md-5" style="color:#000000"><h4><?php echo $ruta->nombre . " " . $ruta->apellido ?>
                                     </h4><?php echo $ruta->edad ?> años

@@ -60,11 +60,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         $(function(){
-            $("#correoElectronico").blur(function(event) {
+            $(".correoElectronicoMessage").blur(function(event) {
 
 
                 event.preventDefault();
-                var correo = $("#correoElectronico").val();
+                var correo = $(".correoElectronicoMessage").val();
                 var pattern = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
                 if (pattern.test(correo)) {
 
@@ -78,23 +78,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         success: function (response) {
 
                             if (response == 'false') {
-                                $("#messageCorreo").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
+                                $(".correoErrorMessage").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
                                 $('form input[id="boUsuario"]').prop("disabled", true);
+                                return false;
                             } else {
-                                $("#messageCorreo").html("");
+                                $(".correoErrorMessage").html("");
                                 $('form input[id="boUsuario"]').prop("disabled", false);
+                                return true;
                             }
 
 
                         },
                         error: function (error) {
-                            $("#message").html(error);
+                            $(".correoErrorMessage").html(error);
+                            return false;
                         }
                     }
                 );
             }else{
-                    $("#messageCorreo").html("El formato del correo no es correcto");
+                    $(".correoErrorMessage").html("El formato del correo no es correcto");
                     $('form input[id="boUsuario"]').prop("disabled", true);
+                    return false;
             }
             });
         });
