@@ -14,13 +14,13 @@ class ModifyPerfilModel extends CI_Model
         return $result = $query->row();
     }
 
-    function actualizarUsuario($data){
+    function actualizarUsuario($data,$correo){
 
         $this->db->trans_start();
-        $this->db->where('correo', $data['correo']);
+        $this->db->where('correo', $correo);
         $this->db->update('usuario', $data);
         $this->db->trans_complete();
-
+//echo "<pre>" . $correo . "</pre>";
         if($this->db->trans_status() === FALSE)
             return false;
         else

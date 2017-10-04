@@ -14,9 +14,6 @@ class Login extends CI_Controller {
 
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
 
@@ -52,11 +49,7 @@ class Login extends CI_Controller {
 
                         //Se guarda el objeto
                         $this->session->set_userdata('user', $Resultado);
-                        // $result = $this->CocheModel->consultarCoche($data);
-                        /*if($result == true) {
-                            //$this->session->set_userdata('user', $Resultado)
-                            $this->session->set_flashdata('public', true);
-                        }*/
+
                         redirect('/');
                     }else{
 

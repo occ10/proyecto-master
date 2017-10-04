@@ -15,7 +15,6 @@ class AdminParking extends CI_Controller
     }
     public function parkings()
     {
-        //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
         $crud->set_table('aparcamiento');

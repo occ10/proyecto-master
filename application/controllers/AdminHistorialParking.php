@@ -15,7 +15,6 @@ class AdminHistorialParking extends CI_Controller
     }
     public function historialAparcamientos()
     {
-        //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
         $crud->set_table('usuarioaparcacoche');

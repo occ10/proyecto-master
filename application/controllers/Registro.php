@@ -12,13 +12,9 @@ class Registro extends CI_Controller {
         $this->load->library('encrypt');
         $this->load->library('email');
         $this->load->model('RegistroModel');
-        // $this->load->model('PeliculaModel');
-        // $this->load->model('PeliculaVotacionModel');
+
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
         $this->load->view('public/reg');

@@ -15,7 +15,6 @@ class AdminZona extends CI_Controller
     }
     public function zonas()
     {
-        //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
         $crud->set_table('zonas');

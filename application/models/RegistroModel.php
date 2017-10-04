@@ -34,7 +34,17 @@ class RegistroModel extends CI_Model
         return $query->num_rows() == 0 ;
         //return $result = $query->row();
     }
+    public function consultarDatosUsuario($data){
 
+        $this->db->select('*');
+        $this->db->from('usuario');
+        $this->db->where('correo', $data['correo']);
+        //$this->db->where('contraseña', $data['contraseña']);
+
+        $query = $this->db->get();
+       // echo "<pre>" . $query->row() . "</pre>";
+        return $result = $query->row();
+    }
     function confirmRegistro($correo,$data){
 
         $this->db->trans_start();

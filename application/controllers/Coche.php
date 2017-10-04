@@ -15,14 +15,9 @@ class Coche extends CI_Controller {
 
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
-        //$output['cartelera'] = $this->PeliculaModel->obtenerPeliculasCartelera();
-        //$output['proximosEstrenos'] = $this->PeliculaModel->obtenerPeliculasProximosEstrenos();
-        //$output['votaciones'] = $this->PeliculaVotacionModel->obtenerVotacionesPuntuacionesPeliculas();
+
         if($this->session->userdata('user')) {
             $user = $this->session->userdata('user')->correo;
             $output [''] = "";

@@ -13,9 +13,6 @@ class Anuncio extends CI_Controller {
         $this->load->model('DetalleUsuarioBusquedaModel');
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function detalle($correo,$id)
     {
 

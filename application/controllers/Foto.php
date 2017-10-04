@@ -10,18 +10,12 @@ class Foto extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('upload');
         $this->load->helper('form');
-        // $this->load->model('PeliculaModel');
-        // $this->load->model('PeliculaVotacionModel');
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
+
     public function index()
     {
-        //$output['cartelera'] = $this->PeliculaModel->obtenerPeliculasCartelera();
-        //$output['proximosEstrenos'] = $this->PeliculaModel->obtenerPeliculasProximosEstrenos();
-        //$output['votaciones'] = $this->PeliculaVotacionModel->obtenerVotacionesPuntuacionesPeliculas();
+
         if($this->session->userdata('user')) {
             $foto = "";
             $this->load->model('FotoModel');

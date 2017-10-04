@@ -21,7 +21,6 @@ class AdminCoche extends CI_Controller
     }
     public function coches()
     {
-        //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
         $crud->set_table('coche');

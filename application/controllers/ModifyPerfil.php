@@ -15,22 +15,8 @@ class modifyPerfil extends CI_Controller {
         // $this->load->model('PeliculaVotacionModel');
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
-        //$output['cartelera'] = $this->PeliculaModel->obtenerPeliculasCartelera();
-        //$output['proximosEstrenos'] = $this->PeliculaModel->obtenerPeliculasProximosEstrenos();
-        //$output['votaciones'] = $this->PeliculaVotacionModel->obtenerVotacionesPuntuacionesPeliculas();
-       // if (!$this->session->userdata('user')) {
-          //  $this->load->view('public/login');
-       // }else{
-        //$data = array(
-        //    'correo' => $this->session->userdata('user')->nombre,
-         //   'contraseña' => $this->session->userdata('user')->contraseña,
-       // );
-        //$output['usuario']=$this->ModifyPerfilModel->obtenerUsuario($data);
         if($this->session->userdata('user')) {
             $this->load->view('private/modifyPerfil');
         }else{
@@ -42,7 +28,8 @@ class modifyPerfil extends CI_Controller {
     public function updateUser(){
 
         if($this->session->userdata('user')) {
-            if ($this->input->post('password') != null) {
+            $correo = $this->session->userdata('user')->correo;
+            /*if ($this->input->post('password') != null) {
 
                 //$pass = $this->encrypt->encode($this->input->post('password'));
                 $pass = hash('sha512', $this->input->post('password'));
@@ -58,22 +45,25 @@ class modifyPerfil extends CI_Controller {
                     'contraseña' => $pass,
                     'salt' => $salt
                 );
-            } else {
+            } else {*/
 
             $data = array(
                 'correo' => $this->input->post('correo'),
                 'nombre' => $this->input->post('nombre'),
                 'apellido' => $this->input->post('apellido'),
                 'edad' => $this->input->post('bday'),
-
-                'telefono' => $this->input->post('telefono'),
-
+                'telefono' => $this->input->post('telefono')
             );
-             }
-            $Resultado = $this->ModifyPerfilModel->actualizarUsuario($data);
+             //}
+            $Resultado = $this->ModifyPerfilModel->actualizarUsuario($data,$correo);
 
 
             if ($Resultado == true) {
+                $data2 = array(
+                    'correo' => $this->input->post('correo')
+                );
+                $Resultado = $this->RegistroModel->consultarDatosUsuario($data2);
+                $this->session->set_userdata('user', $Resultado);
                 $output['Exito'] = 'exito';
             } else {
                 $output['Error'] = 'error';

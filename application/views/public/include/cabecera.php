@@ -91,14 +91,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         },
                         error: function (error) {
                             $(".correoErrorMessage").html(error);
-                            return false;
+                            $('form input[id="boUsuario"]').prop("disabled", true);
                         }
                     }
                 );
             }else{
                     $(".correoErrorMessage").html("El formato del correo no es correcto");
                     $('form input[id="boUsuario"]').prop("disabled", true);
-                    return false;
+                    //return false;
             }
             });
         });

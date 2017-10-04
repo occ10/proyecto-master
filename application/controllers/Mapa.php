@@ -12,9 +12,6 @@ class Mapa extends CI_Controller {
         $this->load->model('CocheModel');
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
         $this->load->view('public/mapa');

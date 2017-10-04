@@ -207,5 +207,13 @@ $("#boUpdateRecoverPass" ).click(function(event){
 	return true;
 
 });
-
+$("#boModifyPefil" ).click(function(event){
+	 var correo = $("#correoElectronicoMod").val();
+        var pattern = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+         if (!pattern.test(correo)) {
+			        $("#messageCorreoModify").html("El formato del correo no es correcto");
+                   return false;
+		 }
+		 return true;
+});
 });

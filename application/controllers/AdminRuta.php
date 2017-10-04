@@ -21,7 +21,6 @@ class AdminRuta extends CI_Controller
     }
     public function rutas()
     {
-        //$this->load->view('private/listadoParticipantes');
 
         $crud = new grocery_CRUD();
         $crud->set_table('ruta');

@@ -9,18 +9,11 @@ class Home extends CI_Controller {
         $this->load->database();
         $this->load->helper('url');
         $this->load->library('session');
-       // $this->load->model('PeliculaModel');
-       // $this->load->model('PeliculaVotacionModel');
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
+
     public function index()
     {
-        //$output['cartelera'] = $this->PeliculaModel->obtenerPeliculasCartelera();
-        //$output['proximosEstrenos'] = $this->PeliculaModel->obtenerPeliculasProximosEstrenos();
-        //$output['votaciones'] = $this->PeliculaVotacionModel->obtenerVotacionesPuntuacionesPeliculas();
         $this->load->view('public/home');
     }
 

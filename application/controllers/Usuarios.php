@@ -18,9 +18,6 @@ class Usuarios extends CI_Controller
 
     }
 
-    /**
-     * Portada (muestra la cartelera)
-     */
     public function index()
     {
 
