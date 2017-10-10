@@ -1,8 +1,9 @@
 
 </div>
 <div class="footer">
-    <p>Posted by: Hege Refsnes</p>
-    <p>Contact information: <a href="mailto:someone@example.com">someone@example.com</a>.</p>
+
+   <p> <?php echo date("Y-m-d h:i:sa") ?></p>
+    <p>Contact information: occ10@alu.es</p>
 </div>
 </div>
 

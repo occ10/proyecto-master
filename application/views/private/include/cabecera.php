@@ -184,10 +184,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <span class="caret"></span></button>
                                     <ul class="dropdown-menu" role="menu1" aria-labelledby="menu1">
                                         <li><a href= " <?php echo site_url('modifyPerfil') ?>">Editar perfil</a></li>
-                                        <li><a href='<?php echo site_url('private') ?>'>Admin</a></li>
+
                                         <li><a href="<?php echo site_url('private/listadoRutas') ?> ">Viajes publicados</a></li>
                                         <li><a href="<?php echo site_url('private/perfilUsuarioBuscado') ?> ">Buscar usuario</a></li>
                                         <li><a href= " <?php echo site_url('cerrarSesion') ?>">Cerrar cesion</a></li>
+                                        <?php if($this->session->userdata('user')->opcion == 1){?>
+                                        <li><a href='<?php echo site_url('private') ?>'>Admin</a></li>
+                                        <?php } ?>
                                     </ul>
                                 </li>
                         </ul>

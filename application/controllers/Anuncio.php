@@ -11,6 +11,7 @@ class Anuncio extends CI_Controller {
         $this->load->library('session');
         $this->load->model('DetalleAnuncioModel');
         $this->load->model('DetalleUsuarioBusquedaModel');
+
     }
 
     public function detalle($correo,$id)

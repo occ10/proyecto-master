@@ -12,7 +12,7 @@ class modifyPerfil extends CI_Controller {
         $this->load->model('RegistroModel');
         $this->load->library('session');
         $this->load->library('email');
-        // $this->load->model('PeliculaVotacionModel');
+        $this->load->helper('security');
     }
 
     public function index()
@@ -54,7 +54,7 @@ class modifyPerfil extends CI_Controller {
                 'edad' => $this->input->post('bday'),
                 'telefono' => $this->input->post('telefono')
             );
-             //}
+            $data = $this->security->xss_clean($data);
             $Resultado = $this->ModifyPerfilModel->actualizarUsuario($data,$correo);
 
 
@@ -62,6 +62,7 @@ class modifyPerfil extends CI_Controller {
                 $data2 = array(
                     'correo' => $this->input->post('correo')
                 );
+                $data2 = $this->security->xss_clean($data2);
                 $Resultado = $this->RegistroModel->consultarDatosUsuario($data2);
                 $this->session->set_userdata('user', $Resultado);
                 $output['Exito'] = 'exito';
@@ -90,7 +91,7 @@ class modifyPerfil extends CI_Controller {
                 'correo' => $user,
 
             );
-
+            $data = $this->security->xss_clean($data);
             $this->load->model('LoginModel');
             //recuperar el salt del usuario
             $salt = $this->LoginModel->get_salt($data);
@@ -102,6 +103,7 @@ class modifyPerfil extends CI_Controller {
                     'correo' => $user,
                     'contraseña' => $pass
                 );
+                $data2 = $this->security->xss_clean($data2);
                 $Resultado = $this->LoginModel->get_contents($data2);
 
 
@@ -115,6 +117,7 @@ class modifyPerfil extends CI_Controller {
                         'contraseña' => $pass,
                         'salt' => $salt
                     );
+                    $data = $this->security->xss_clean($data);
                     $actualizado = $this->ModifyPerfilModel->updatePassword($data, $user);
                     if ($actualizado == true) {
                         $output['Exito'] = 'La contraseña se ha actualizado correctamanet';
@@ -151,6 +154,7 @@ class modifyPerfil extends CI_Controller {
     {
         if ($this->input->post('correo')) {
             $correo = $this->input->post('correo');
+            $correo = $this->security->xss_clean($correo);
             $Resultado = $this->RegistroModel->getUserData($correo);
             if (!empty($Resultado)) {
                 $mesagge['nombre'] = $Resultado->nombre;
@@ -203,6 +207,7 @@ class modifyPerfil extends CI_Controller {
                'contraseña' => $pass,
                'salt' => $salt
            );
+           $data = $this->security->xss_clean($data);
            $actualizado = $this->ModifyPerfilModel->updatePassword($data,$correo);
 
            if($actualizado == true){

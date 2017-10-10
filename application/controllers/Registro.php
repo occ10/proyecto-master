@@ -12,6 +12,7 @@ class Registro extends CI_Controller {
         $this->load->library('encrypt');
         $this->load->library('email');
         $this->load->model('RegistroModel');
+        $this->load->helper('security');
 
     }
 
@@ -42,7 +43,7 @@ class Registro extends CI_Controller {
                 'detalles' => $this->input->post('detalles'),
                 'salt' => $salt
             );
-
+             $data = $this->security->xss_clean($data);
 
             //Transferimos datos al modelo
 

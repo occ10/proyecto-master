@@ -181,6 +181,9 @@ $route['private/opinionesHechas/(:any)'] = 'usuarios/comentariosHechos/$1';
 $route['private/passwordInformation'] = 'usuarios/passwordInformation';
 $route['private/modifyPassword'] = 'modifyPerfil/modifyPassword';
 
+//borrar usuario
+$route['private/darBaja'] = 'usuarios/darBajaUsuario';
+
 $route['public/recoverPass'] = 'modifyPerfil/recoverPassword';
 $route['public/updatePass'] = 'modifyPerfil/updatePassword';
 $route['private/recoverUpdatePassword/(:any)'] = 'modifyPerfil/recoverUpdatePassword/$1';

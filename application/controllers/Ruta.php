@@ -15,6 +15,7 @@ class Ruta extends CI_Controller {
         $this->load->library('grocery_CRUD');
         $this->load->library('pagination');
         $this->load->library('session');
+        $this->load->helper('security');
 
     }
 
@@ -56,7 +57,7 @@ class Ruta extends CI_Controller {
                 'detalles' => $this->input->post('detalle',true),
                 'fechaPublicacion' => date("Y/m/d"),
             );
-
+            $data = $this->security->xss_clean($data);
 
             $user = $this->session->userdata('user')->correo;
             $resultado2 = $this->RutaModel->setOcpionRuta($user);
@@ -73,7 +74,7 @@ class Ruta extends CI_Controller {
                     'ruta' => $Resultado,
 
                 );
-
+                $data2 = $this->security->xss_clean($data2);
                 $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
                 if ($Resultado2 == true) {
                     $output['Exito'] = 'exito';
@@ -138,6 +139,7 @@ class Ruta extends CI_Controller {
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $page = $this->security->xss_clean($page);
             $output['rutas'] = $this->RutaModel->obtenerPaginationRutasUsuario($config['per_page'],$page,$data);
             //$output['origen'] = $this->input->post('origen');
             $output['paginacion'] = $this->pagination->create_links();
@@ -162,6 +164,7 @@ class Ruta extends CI_Controller {
             $data = array(
                 'id' => $id,
             );
+            $data = $this->security->xss_clean($data);
             $Resultado['ruta'] = $this->RutaModel->obtenerRutaUsuario($data);
             //echo "<pre>";
             // print_r($Resultado);
@@ -178,6 +181,7 @@ class Ruta extends CI_Controller {
             $data = array(
                 'id' => $id,
             );
+            $data = $this->security->xss_clean($data);
             $Resultado['ruta'] = $this->RutaModel->obtenerRutaUsuario($data);
 
             $data2 = array(
@@ -208,11 +212,12 @@ class Ruta extends CI_Controller {
                 'precio' => $this->input->post('precio',true),
 
             );
+            $data = $this->security->xss_clean($data);
             $data2 = array(
                 'ruta' => $this->input->post('id',true),
                 'coche' => $this->input->post('matricula',true),
             );
-
+            $data2 = $this->security->xss_clean($data2);
             $Resultado1 = $this->RutaModel->updateRutaUsuario($data);
             $Resultado2 = $this->RealizaRutaModel->updateRealizarRuta($data2);
             if ($Resultado1 == true and $Resultado2 == true) {
@@ -232,7 +237,8 @@ class Ruta extends CI_Controller {
             $data = array(
                 'id' => $id,
             );
-            $Resultado['ruta'] = $this->RutaModel->borrarRutaUsuario($data);
+            $data = $this->security->xss_clean($data);
+            $Resultado = $this->RutaModel->borrarRutaUsuario($data);
 
             if ($Resultado == true) {
                 $output['Exito'] = 'exito';
@@ -269,6 +275,7 @@ class Ruta extends CI_Controller {
                 'origen' => $var,
                 'correo' => $correoUSuarioSesion
             );
+            $data = $this->security->xss_clean($data);
             $config['base_url'] = base_url().'ruta/buscarAnuncios/' . $var;
             //$config['suffix']= '?origen=' . $var;
             $config['total_rows'] = $this->RutaModel->obtenerTodo($data);
@@ -291,6 +298,7 @@ class Ruta extends CI_Controller {
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = $this->security->xss_clean($page);
             $output['rutas'] = $this->RutaModel->obtenerAnunciosUsuario($config['per_page'],$page,$data);
             $output['origen'] = $this->input->post('origen');
             $output['paginacion'] = $this->pagination->create_links();

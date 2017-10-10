@@ -228,8 +228,14 @@ class DetalleUsuarioBusquedaModel extends CI_Model
     }
 
 
-     public function updatePassword($data,$user){
+    /* public function updatePassword($data,$user){
 
 
-     }
+     }*/
+    public function borrarUsuario($correo){
+        return $this->db->query("
+    DELETE t1
+    FROM usuario t1
+    WHERE t1.correo = '".$correo."'");
+    }
 }

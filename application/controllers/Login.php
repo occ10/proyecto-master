@@ -10,6 +10,7 @@ class Login extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->model('CocheModel');
+        $this->load->helper('security');
 
 
     }
@@ -29,7 +30,7 @@ class Login extends CI_Controller {
             'correo' => $user,
 
         );
-
+        $data = $this->security->xss_clean($data);
         $this->load->model('LoginModel');
         //recuperar el salt del usuario
         $salt=$this->LoginModel->get_salt($data);
@@ -41,6 +42,7 @@ class Login extends CI_Controller {
                     'correo' => $this->input->post('correo'),
                     'contraseña' => $pass
                 );
+                $data2 = $this->security->xss_clean($data2);
                 $Resultado = $this->LoginModel->get_contents($data2);
 
 
@@ -49,8 +51,12 @@ class Login extends CI_Controller {
 
                         //Se guarda el objeto
                         $this->session->set_userdata('user', $Resultado);
+                        if($Resultado->opcion == '1'){
+                            $this->load->view('private/adminHome');
+                        }else{
+                            redirect('/');
+                        }
 
-                        redirect('/');
                     }else{
 
                         $output['Error'] = 'Debes confirmar tu registro mediante el correo mandado con la direccion registrada';
@@ -62,7 +68,7 @@ class Login extends CI_Controller {
         }else{
             $output['Error'] = 'Los datos son incorrectos';
         }
-
+        if (isset($output))
             $this->load->view('public/log', $output);
     }
     public function unset_session_data() {

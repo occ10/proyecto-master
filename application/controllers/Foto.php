@@ -10,6 +10,7 @@ class Foto extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('upload');
         $this->load->helper('form');
+        $this->load->helper('security');
     }
 
 
@@ -56,6 +57,7 @@ class Foto extends CI_Controller {
                     'correo' => $this->session->userdata('user')->correo,
                     'foto' => $foto//the filename of the image should go here
                 );
+                $fileName = $this->security->xss_clean($fileName,true);
                 //Transferimos datos al modelo
                 $this->load->model('FotoModel');
                 $Resultado = $this->FotoModel->insertar_foto($fileName);

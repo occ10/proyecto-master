@@ -12,6 +12,7 @@ class Coche extends CI_Controller {
         $this->load->library('upload');
         $this->load->model('CocheModel');
         $this->load->model('RutaModel');
+        $this->load->helper('security');
 
     }
 
@@ -24,9 +25,12 @@ class Coche extends CI_Controller {
             $data = array(
                 'correo' => $user,
             );
+            $data = $this->security->xss_clean($data);
             $data2 = array(
                 'usuario' => $user,
             );
+            $data2 = $this->security->xss_clean($data2);
+
            $result = $this->CocheModel->consultarCoche($data);
 
             if($result == true){
@@ -70,7 +74,7 @@ class Coche extends CI_Controller {
                 'usuario' => $this->session->userdata('user')->correo,
                  'imageFoto' => $foto//the filename of the image should go here
             );
-
+                $data = $this->security->xss_clean($data,true);
             //Transferimos datos al modelo
 
             $Resultado = $this->CocheModel->insertaCoche($data);
@@ -130,6 +134,8 @@ class Coche extends CI_Controller {
                     //'matricula' => $this->input->post('matriculaCoche'),
                     'imageFoto' => $foto//the filename of the image should go here
                 );
+                $fileName = $this->security->xss_clean($fileName,true);
+                $matricula = $this->security->xss_clean($matricula);
                 //Transferimos datos al modelo
                 $this->load->model('FotoModel');
                 $Resultado = $this->CocheModel->updateFoto($fileName,$matricula);

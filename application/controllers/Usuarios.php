@@ -15,7 +15,9 @@ class Usuarios extends CI_Controller
         $this->load->model('CocheModel');
         $this->load->library('pagination');
         $this->load->library('encrypt');
-
+        $this->load->model('RutaModel');
+        $this->load->library('session');
+        $this->load->helper('security');
     }
 
     public function index()
@@ -34,13 +36,12 @@ class Usuarios extends CI_Controller
 
             if ($this->input->get('telefono')) {
                 $aux = $this->input->get('telefono');
+                $aux = $this->security->xss_clean($aux);
                 $correo = $this->session->userdata('user')->correo;
 
 
                         $result = $this->DetalleUsuarioBusquedaModel->buscarTelefono($aux);
                         if ($result ==  true) {
-
-
 
                         $Resultado['numViajes'] = $this->DetalleUsuarioBusquedaModel->numViajesUsuarioBuscado($aux);
                         $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentarios($aux);
@@ -65,7 +66,7 @@ class Usuarios extends CI_Controller
     public function detalleUsuarioPorCorreo($correo){
 
         if ($this->session->userdata('user')) {
-
+                        $correo = $this->security->xss_clean($correo);
                         $correoUSuarioSesion = $this->session->userdata('user')->correo;
                         $Resultado['numViajes'] = $this->DetalleUsuarioBusquedaModel->numViajesUsuarioBuscadoPorCorreo($correo);
                         $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
@@ -102,6 +103,7 @@ class Usuarios extends CI_Controller
                 'origen' => $var,
                 'correo' => $correoUSuarioSesion
             );
+            $data = $this->security->xss_clean($data);
             $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodo($data);
             $config['per_page'] = '5';
             $config['uri_segment'] = '4';
@@ -122,6 +124,7 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = $this->security->xss_clean($page);
             $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuarios($config['per_page'],$page,$data);
             $output['origen'] = $var;
             $output['paginacion'] = $this->pagination->create_links();
@@ -149,6 +152,7 @@ class Usuarios extends CI_Controller
 
             }
             $var = ($this->uri->segment(3)) ? $this->uri->segment(3) : $var;
+            $var = $this->security->xss_clean($var);
             $config['base_url'] = base_url().'usuarios/buscarUsuariosPorNombre/' . $var  ;
             //$config['suffix']= '?usuarioNombre=' . $var;
             $config['total_rows'] = $this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var,$correo);
@@ -171,6 +175,7 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = $this->security->xss_clean($page);
             $output['usuarios'] = $this->DetalleUsuarioBusquedaModel->obtenerUsuariosPorNombre($config['per_page'],$page,$var,$correo);
             $output['origen'] = $var;
             $output['paginacion'] = $this->pagination->create_links();
@@ -198,6 +203,7 @@ class Usuarios extends CI_Controller
                 'usuarioComenta' => $usuarioComenta,
                 'comentario' => $comentario,
             );
+            $data = $this->security->xss_clean($data);
             $correcto = $this->DetalleUsuarioBusquedaModel->insertarComentario($data);
             if($correcto==true){
                 $Resultado['Exito'] = 'Comentario insertado correctamente';
@@ -222,7 +228,7 @@ class Usuarios extends CI_Controller
     public function comentariosUsuarioPorCorreo($correo){
 
         if ($this->session->userdata('user')) {
-
+            $correo = $this->security->xss_clean($correo);
 
             $Resultado['numViajes'] = $this->DetalleUsuarioBusquedaModel->numViajesUsuarioBuscadoPorCorreo($correo);
             $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
@@ -254,6 +260,7 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+            $page = $this->security->xss_clean($page);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->todosComentariosPorCorreo($config['per_page'],$page,$correo);
             //$output['origen'] = $var;
             $Resultado['paginacion'] = $this->pagination->create_links();
@@ -301,6 +308,7 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $page = $this->security->xss_clean($page);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->todosComentariosPorCorreo($config['per_page'],$page,$correo);
             //$output['origen'] = $var;
             $Resultado['paginacion'] = $this->pagination->create_links();
@@ -351,6 +359,7 @@ class Usuarios extends CI_Controller
 
             //$output = array( 'rutas'=> $this->RutaModel->obtenerAnunciosUsuario($data2),'paginacion'=>$this->pagination->create_links(),'origen'=>$this->input->post('origen'));
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $page = $this->security->xss_clean($page);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->todosComentariosHechosPorCorreo($config['per_page'],$page,$correo);
             //$output['origen'] = $var;
             $Resultado['paginacion'] = $this->pagination->create_links();
@@ -368,6 +377,25 @@ class Usuarios extends CI_Controller
     public function passwordInformation()
     {
         $this->load->view('private/modifyPassword');
+
+    }
+    public function darBajaUsuario(){
+        if ($this->session->userdata('user')) {
+            $correo = $this->session->userdata('user')->correo;
+            $Resultado = $this->RutaModel->borrarRutaCoche($correo);
+            if($Resultado == true){
+                $Resultado2 = $this->DetalleUsuarioBusquedaModel->borrarUsuario($correo);
+                if($Resultado2 == true){
+                    $this->session->unset_userdata('user');
+                    $this->load->view('public/home');
+                }
+            }else{
+//TODO
+            }
+
+        }else{
+            $this->load->view('public/home');
+        }
 
     }
 
