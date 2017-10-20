@@ -29,7 +29,8 @@ class Registro extends CI_Controller {
         ) {*/
 
             //$pass = $this->encrypt->encode($this->input->post('password'));
-            $pass = hash('sha512', $this->input->post('password'));
+
+            $pass = hash('sha512', $this->input->post('passwordReg'));
             $salt = uniqid(mt_rand(), true);
             $pass = crypt($pass, $salt);
             $correo = $this->input->post('correo');
@@ -43,6 +44,7 @@ class Registro extends CI_Controller {
                 'detalles' => $this->input->post('detalles'),
                 'salt' => $salt
             );
+
              $data = $this->security->xss_clean($data);
 
             //Transferimos datos al modelo

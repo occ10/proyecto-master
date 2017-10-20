@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>plazasOcupadas</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">plazasOcupadas</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost/proyecto-master/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=correoElectronico</td>
+	<td>occc10@hotmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=password1</td>
+	<td>ddddddD1</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Publicar anuncio</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h3</td>
+	<td>Pblicar Ruta</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=div.alert.alert-info</td>
+	<td>Info! No tienes coche para publicar anuncio, ponga datos del coche, y luego, empieze a publicar anuncios.</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=ul.dropdown-menu &gt; li &gt; a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>Información personal</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=coche</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=matricula</td>
+	<td>3652HHH</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>name=fotofile</td>
+	<td>C:\Users\walid\Desktop\Escritorio\ferrari.jpg</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=boCoche</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong</td>
+	<td>Success!</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Publicar anuncio</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=origen</td>
+	<td>Elche</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=precio</td>
+	<td>6</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plaza</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=detalle</td>
+	<td>suelo salir una hora antes.</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong</td>
+	<td>Success!</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Viajes publicados</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h2</td>
+	<td>Rutas publicadas</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Elche</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[2]</td>
+	<td>4</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Ver Detalles</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=td</td>
+	<td>Elche</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Viajes publicados</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Actualizar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=plazaOcupadas</td>
+	<td>2</td>
+</tr>
+<tr>
+	<td>storeValue</td>
+	<td>id=plazaOcupadas</td>
+	<td>valor</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h3</td>
+	<td>Actualizar Ruta</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong</td>
+	<td>Success!</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Viajes publicados</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Ver Detalles</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>//td[3]</td>
+	<td>${valor}</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='button']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Cerrar cesion</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

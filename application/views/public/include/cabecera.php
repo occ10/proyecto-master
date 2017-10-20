@@ -75,14 +75,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     {
                         type: "GET",
                         url: url,
+                        async: false,
                         success: function (response) {
 
                             if (response == 'false') {
-                                $(".correoErrorMessage").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
+                                $("#messageCorreo").html("Ya hay un usuario con esta cuenta, introduzca  otra cuenta");
                                 $('form input[id="boUsuario"]').prop("disabled", true);
                                 return false;
                             } else {
-                                $(".correoErrorMessage").html("");
+                                $("#messageCorreo").html("");
                                 $('form input[id="boUsuario"]').prop("disabled", false);
                                 return true;
                             }
@@ -90,13 +91,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                         },
                         error: function (error) {
-                            $(".correoErrorMessage").html(error);
+                            $("#messageCorreo").html(error);
                             $('form input[id="boUsuario"]').prop("disabled", true);
                         }
                     }
                 );
             }else{
-                    $(".correoErrorMessage").html("El formato del correo no es correcto");
+                    $("#messageCorreo").html("El formato del correo no es correcto");
                     $('form input[id="boUsuario"]').prop("disabled", true);
                     //return false;
             }

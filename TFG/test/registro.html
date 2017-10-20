@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost/" />
+<title>registro</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">registro</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>http://localhost/proyecto-master/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Register</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputNombre</td>
+	<td>usuario300</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=Apellido</td>
+	<td>usuario300</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=correoElectronico</td>
+	<td>usuario.gmail.com</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=correoElectronico</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageCorreo</td>
+	<td>El formato del correo no es correcto</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=correoElectronico</td>
+	<td>usuario30@gmail.com</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=correoElectronico</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageCorreo</td>
+	<td>Ya hay un usuario con esta cuenta, introduzca otra cuenta</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=correoElectronico</td>
+	<td>occc10@hotmail.com</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=correoElectronico</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefonoReg</td>
+	<td>56478</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=telefonoReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageReg</td>
+	<td>El telefono debe empezar por 6 o 7</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefonoReg</td>
+	<td>654789</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=telefonoReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=messageReg</td>
+	<td>El numero debe contener 9 cifras</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=telefonoReg</td>
+	<td>654789654</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=telefonoReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=passwordReg</td>
+	<td>kjbjhff</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=passwordReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=passwordRegid</td>
+	<td>La contraseña debe contener mas de 7 caracteres</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=passwordReg</td>
+	<td>aaaaaaa1</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=passwordReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=passwordRegid</td>
+	<td>La contraseña debe contener al menos una letra mayuscula</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=passwordReg</td>
+	<td>aaaaaaAA</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=passwordReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>id=passwordRegid</td>
+	<td>La contraseña debe contener al menos un digito</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=passwordReg</td>
+	<td>aaaaaaA1</td>
+</tr>
+<tr>
+	<td>fireEvent</td>
+	<td>id=passwordReg</td>
+	<td>blur</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=bday</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=detalles</td>
+	<td>suelo salir de Alicante sobre las 8 de la </td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=bday</td>
+	<td>22</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=boUsuarioReg</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=h1</td>
+	<td>Informacion</td>
+</tr>
+<tr>
+	<td>verifyText</td>
+	<td>css=strong</td>
+	<td>Success!</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>
