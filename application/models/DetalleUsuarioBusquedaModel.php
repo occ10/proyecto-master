@@ -238,4 +238,17 @@ class DetalleUsuarioBusquedaModel extends CI_Model
     FROM usuario t1
     WHERE t1.correo = '".$correo."'");
     }
+
+    public function reservaPlaza($correoComentado,$correoComenta){
+
+        $this->db->select('count(*) as numero');
+        $this->db->from('realizaruta realiza1,realizaruta realiza2');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('realiza1.usuario', $correoComentado);
+        $this->db->where('realiza2.usuario', $correoComenta);
+        $this->db->where('realiza1.ruta = realiza2.ruta');
+        //$query = $this->db->get();
+        return $this->db->get()->row()->numero > 0 ;
+        //return $result = $query->row();
+    }
 }

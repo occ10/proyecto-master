@@ -42,6 +42,18 @@ $this->load->view('private/include/cabecera');
                            <?php echo ($detalleUsuario->plazas-$detalleUsuario->plazasOcupadas)?> disponibles
                         </span>
                     </div>
+                    <!--  boton reservar sitio-->
+                    <div style="height:50px;;padding-top: 10px">
+                        <form  action="<?php echo site_url('private/reservarPlaza')?>" id="myFormReserva" name="myFormReserva"   method="get">
+                            <div><input type="hidden" name="usuarioCorreo" id="usuariocomentado" value="<?php echo $detalleUsuario->correo ?>"></div>
+                            <div><input type="hidden" name="rutaId" id="rutaId" value="<?php echo $detalleUsuario->id ?>"></div>
+                            <div><input type="hidden" name="cocheMatricula" id="cocheMatricula" value="<?php echo $detalleUsuario->matricula ?>"></div>
+
+                            <div class="form-group" style="text-align: center;">
+                                <input type="submit" value="Reservar plaza" class="btn btn-primary" id="boReservarPlaza" style="width:80%">
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 <div style="border-style: solid;border-color:#DDDDDD;border-width:1px;margin:30px 0 0 0">
 
@@ -51,7 +63,7 @@ $this->load->view('private/include/cabecera');
                           <div class="flex-container">
                             <div style="width:50%">
                                 <img style="border-radius: 50%;"
-                                     src="<?php echo base_url(); ?>assets/userFoto/<?php echo $detalleUsuario->foto ?> "
+                                     src="<?php echo base_url(); ?>assets/userFoto/<?php if($detalleUsuario->foto == "") echo 'unkonwnfoto.png'; else echo $detalleUsuario->foto ?> "
                                      alt="Smiley face" height="90px" width="90px">
                             </div>
                               <div>

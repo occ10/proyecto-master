@@ -11,6 +11,7 @@
 </script >
 <script>
     //var jsn = [];
+
     var  jsn = <?php  if (isset ($Resultado)){
         echo  json_encode($Resultado);?>
 
@@ -26,10 +27,11 @@
         for(var i=0; i<jsn.length; i++) {
             //if (jsn[i].ocupada == '1') {
             <?php  if (isset ($Resultado)){  ?>
-                posArray[count] = {lat: parseFloat(jsn[i].lat), lng: parseFloat(jsn[i].lon), id: jsn[i].id}
+                posArray[count] = {aparcamiento: jsn[i].aparcamiento   , lat: parseFloat(jsn[i].lat), lng: parseFloat(jsn[i].lon), id: jsn[i].id}
                 count++;
             <?php }else{?>
-                posArray[i] = {lat: parseFloat(jsn[i].lat), lng: parseFloat(jsn[i].lon), id: jsn[i].id}
+                posArray[i] = {codigo: jsn[i].codigo , superficie: jsn[i].superficie , plazas : jsn[i].plazas , lat: parseFloat(jsn[i].lat), lng: parseFloat(jsn[i].lon), id: jsn[i].id}
+
             <?php  } ?>
 
 
@@ -48,10 +50,17 @@
         var markerLabel = 'Z ';
         for (i = 0; i < posArray.length; i++) {
             console.log(posArray[i]);
+
+            var cad = "";
+
+            if(posArray[i].superficie)
+                cad = 'aparcamiento: ' + posArray[i].codigo +  '\nsuperficie: ' + posArray[i].superficie + '\nplazas:' + posArray[i].plazas + '\nlatitud: ' +posArray[i].lat+ '\nlongitud: ' + posArray[i].lng;
+            else
+                cad = 'aparcamiento: ' + posArray[i].aparcamiento  + '\nlatitud: ' +posArray[i].lat+ '\nlongitud: ' + posArray[i].lng;
             var marker = new google.maps.Marker({
                 position: posArray[i],
                 map: map,
-                title: ""+i,
+                title: cad,
                 label: {
                     text: markerLabel+(posArray[i].id),
                     color: "#FFFFFF",

@@ -173,6 +173,19 @@ class modifyPerfil extends CI_Controller {
                 $config['validation'] = TRUE; // bool whether to validate email or not
                 $this->email->initialize($config);
 
+                 /*$config = Array(
+                    'protocol' => 'smtp',
+                    'smtp_host' => 'ssl://smtp.gmail.com',
+                    'smtp_port' => 465,
+                    'smtp_user' => 'infochamit@gmail.com',
+                    'smtp_pass' => 'Rector3174',
+                    'mailtype'  => 'text',
+                    'charset'   => 'utf-8',
+                    'starttls'  => true,
+                    'newline'   => "\r\n"
+                );
+                  $this->load->library('email',$config);*/
+
                 $from_email = "infochamit@gmail.com";
                 $to_email = $correo;
                 $this->email->from($from_email, 'chamit');

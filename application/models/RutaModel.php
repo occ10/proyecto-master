@@ -71,6 +71,20 @@ class RutaModel extends CI_Model
              return true;
         //return ($this->db->affected_rows() > 0);
     }
+
+    public function updatePlazasOcupadas($data){
+        $this->db->trans_start();
+        $this->db->set('plazasOcupadas', '`plazasOcupadas` + 1' , FALSE);
+        $this->db->where('id', $data['id']);
+        $this->db->update('ruta');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+        //return ($this->db->affected_rows() > 0);
+    }
     public function borrarRutaUsuario($data){
 
         $this->db->where('id', $data['id']);

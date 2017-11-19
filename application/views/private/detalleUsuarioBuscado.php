@@ -60,7 +60,7 @@ $this->load->view('private/include/cabecera');
                 </div>
                 <?php
             }
-            if($detalleUsuario->correo != $correoUSuarioSesion){
+            if($detalleUsuario->correo != $correoUSuarioSesion && $resrvaPlaza == true){
             ?>
             <form  action="<?php echo site_url('private/comentarUsuario')?>" id="myFormComentario" name="myFormComentario"  class="form-horizontal" method="post" style="">
                 <div><input type="hidden" name="usuarioComentado" id="usuariocomentado" value="<?php echo $detalleUsuario->correo ?>"></div>

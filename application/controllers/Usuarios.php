@@ -72,8 +72,9 @@ class Usuarios extends CI_Controller
                         $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
                         $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
                         $Resultado['detalleCoche'] = $this->DetalleUsuarioBusquedaModel->DetalleCocheBuscadoPorCorreo($correo);
-
                         $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($correo);
+                        $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($correo,$correoUSuarioSesion);
+
                         $Resultado['correo']  = $correo;
                         $Resultado['correoUSuarioSesion'] = $correoUSuarioSesion;
                         $Resultado['Info'] ="No hay ningun usuario con correo";
@@ -214,6 +215,7 @@ class Usuarios extends CI_Controller
             $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($usuarioComentado);
             $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($usuarioComentado);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($usuarioComentado);
+            $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($usuarioComentado,$usuarioComenta);
             $Resultado['correo']  = $usuarioComentado;
             $Resultado['correoUSuarioSesion'] = $usuarioComenta;
             $this->load->view('private/detalleUsuarioBuscado', $Resultado);

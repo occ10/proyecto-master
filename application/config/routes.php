@@ -85,7 +85,10 @@ $route['buscarRuta'] = 'ruta/buscarRuta';
 $route['private/buscarAnuncios'] = 'ruta/buscarAnuncios';
 $route['private/buscarAnuncios/(:num)'] = 'ruta/buscarAnuncios/$1';
 
-
+//reservar plaza
+$route['private/reservarPlaza'] = 'ruta/reservarRuta';
+//confirmar reserva
+$route['confirmReserva/(:any)/(:any)/(:num)'] = 'ruta/confirmReserva/$1/$2/$3';
 
 
 //mapa de parking de la ua
@@ -116,7 +119,7 @@ $route['private/listadoRutas/(:num)'] = 'ruta/listaRutasUsuario/$1';
 $route['private/detalleRuta/(:num)'] = 'ruta/detalle/$1';
 //actualizar ruta
 $route['private/modifyRuta/(:num)'] = 'ruta/obtenerRutaCoches/$1';
-//borraruna ruta
+//borrar una ruta
 $route['private/borrarRuta/(:num)'] = 'ruta/borrarRutaCoches/$1';
 
 $route['private/updateRuta'] = 'ruta/updateRuta';

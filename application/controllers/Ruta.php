@@ -315,6 +315,93 @@ class Ruta extends CI_Controller {
         }
 
     }
+    public function reservarRuta(){
+        if($this->session->userdata('user')) {
+            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
+            //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
+            if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
+                $correo = $_GET['usuarioCorreo'];
+                $idRuta = $_GET['rutaId'];
+                $cocheMatricula = $_GET['cocheMatricula'];
+                //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
+                $this->send_mail($correo,$idRuta,$cocheMatricula);
+            }
+
+
+            $this->load->view('public/home');
+        }else
+        $this->load->view('public/home');
+    }
+    public function send_mail($correo,$idRuta,$cocheMatricula)
+    {
+        $correoUSuarioSesion = $this->session->userdata('user')->correo;
+        $telefonoUsuarioSesion = $this->session->userdata('user')->telefono;
+        $nombreUsuarioSesion = $this->session->userdata('user')->nombre;
+        $this->load->library('email');
+        $config['protocol'] = 'smtp';
+        //$config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_host'] = 'ssl://smtp.gmail.com';
+        $config['smtp_port'] = '465';
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user'] = 'infochamit@gmail.com';
+        $config['smtp_pass'] = 'Rector3174';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+        $config['mailtype'] = 'text'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not
+        $this->email->initialize($config);
+
+        $from_email = "infochamit@gmail.com";
+        $to_email = $correo;
+        $this->email->from($from_email, 'chamit');
+        $this->email->to($to_email);
+        $this->email->subject('Email Test');
+        $this->email->message('El usuario ' . $nombreUsuarioSesion . ', a traves de este correo intenta reservar una plaza, pongase en contacto con el a traves del telefono ' . $telefonoUsuarioSesion . ' o mediante un correo a trves de esta direccion ' . $correoUSuarioSesion . ' en caso de que haces click sobre el enlace siguiente aceptas la reserva, por favor antes de hacer click, pongan de acuerdo, ' . site_url('confirmReserva/' . $correoUSuarioSesion . '/' . $cocheMatricula . '/' . $idRuta));
+//site_url("public/confirmRegistro/'
+       return $this->email->send();
+
+        //echo $this->email->print_debugger();
+        //Send mail
+        /* if ($this->email->send()) {
+
+            // $this->session->set_flashdata("email_sent", "Email sent successfully.");
+            // echo "<pre>" .
+             //$this->email->print_debugger() . "</pre>";
+             return true;
+         }else {
+
+           //  echo "<pre>" .
+               //  $this->email->print_debugger() . "</pre>";
+             //$this->session->set_flashdata("email_sent", "Error in sending Email.");
+             //$this->load->view('email_form');
+             return false;
+         }*/
+
+    }
+    public function confirmReserva($correo,$cocheMatricula,$idRuta){
+        //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
+
+        $data2 = array(
+            'coche' => $cocheMatricula,
+            'usuario' => $correo,
+            'ruta' => $idRuta,
+
+        );
+        $data2 = $this->security->xss_clean($data2);
+       $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
+        $data = array(
+            'id' => $idRuta
+            //'plazasOcupadas' => 'plazasOcupadas' - 1,
+        );
+        $data = $this->security->xss_clean($data);
+        $Resultado1 = $this->RutaModel->updatePlazasOcupadas($data);
+        if ($Resultado2 == true && $Resultado1 == true) {
+            $output['Exito'] = 'exito';
+        } else {
+            $output['Error'] = 'error';
+        }
+        $this->load->view('public/home');
+    }
     public function indexRegistro(){
        // $this->load->view('public/registro');
     }
