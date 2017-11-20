@@ -74,6 +74,7 @@ class Usuarios extends CI_Controller
                         $Resultado['detalleCoche'] = $this->DetalleUsuarioBusquedaModel->DetalleCocheBuscadoPorCorreo($correo);
                         $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($correo);
                         $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($correo,$correoUSuarioSesion);
+                        $Resultado['numComents'] =  $this->DetalleUsuarioBusquedaModel->numComents($correo,$correoUSuarioSesion);
 
                         $Resultado['correo']  = $correo;
                         $Resultado['correoUSuarioSesion'] = $correoUSuarioSesion;
@@ -216,6 +217,8 @@ class Usuarios extends CI_Controller
             $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($usuarioComentado);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($usuarioComentado);
             $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($usuarioComentado,$usuarioComenta);
+            $Resultado['numComents'] =  $this->DetalleUsuarioBusquedaModel->numComents($usuarioComentado,$usuarioComenta);
+
             $Resultado['correo']  = $usuarioComentado;
             $Resultado['correoUSuarioSesion'] = $usuarioComenta;
             $this->load->view('private/detalleUsuarioBuscado', $Resultado);

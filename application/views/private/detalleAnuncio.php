@@ -6,7 +6,7 @@ $this->load->view('private/include/cabecera');
 <div class="col-md-10 col-md-offset-1" style="padding-top: 20px">
     <h3><?php echo $detalleUsuario->origen ?> --> Universidad de Alicante</h3>
 
-        <div class="row" style="height:880px">
+        <div class="row" style="height:950px">
             <div class="col-sm-8" style="border-style:solid; border-width:1px;border-color: #DDDDDD;height:100%;background-color:#F5F5DC">
                 <div style="margin-top: 10px;height:50px;background-color:#FFFFFF">
 

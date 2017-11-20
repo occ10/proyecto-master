@@ -251,4 +251,16 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         return $this->db->get()->row()->numero > 0 ;
         //return $result = $query->row();
     }
+    public function numComents($correoComentado,$correoComenta){
+
+        $this->db->select('count(*) as numero');
+        $this->db->from('comenta');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('usuarioComentado', $correoComentado);
+        $this->db->where('usuarioComenta', $correoComenta);
+
+        //$query = $this->db->get();
+        return $this->db->get()->row()->numero == 0 ;
+        //return $result = $query->row();
+    }
 }
