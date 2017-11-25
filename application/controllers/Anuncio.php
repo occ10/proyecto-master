@@ -18,9 +18,12 @@ class Anuncio extends CI_Controller {
     {
 
         if($this->session->userdata('user')) {
+            $correoUSuarioSesion = $this->session->userdata('user')->correo;
             $output['detalleUsuario'] = $this->DetalleAnuncioModel->DetalleUsuario($correo,$id);
             $output['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
             $output['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($correo);
+            $output['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($correo,$correoUSuarioSesion);
+            $output['usuarioReservaPlaza'] = $this->DetalleAnuncioModel->usuarioReservaPlaza($correo,$id);
             $this->load->view('private/detalleAnuncio',$output);
         }else{
             $this->load->view('public/home');

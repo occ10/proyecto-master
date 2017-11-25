@@ -145,6 +145,28 @@ class RutaModel extends CI_Model
            where t3.correo = '".$correo."'");
         //$this->db->trans_start();
     }
+
+    function insertaReserva($data)
+    {
+        //Inserta coche en la base de datos
+        $this->db->insert('reservaPlaza', $data);
+        return ($this->db->affected_rows() > 0);
+
+    }
+    public function isUsuarioReservaPlaza($data){
+
+        $this->db->select('count(*) as numero');
+        $this->db->from('realizaruta');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('usuario', $data['usuario']);
+        $this->db->where('ruta', $data['ruta']);
+        $this->db->where('coche', $data['coche']);
+
+        //$query = $this->db->get();
+        return $this->db->get()->row()->numero > 0 ;
+        //return $result = $query->row();
+    }
+//SELECT count(*) as numero FROM `realizaruta` WHERE usuario='usuario30@gmail.com' and coche='3652HHH' and ruta=95
 /*update ruta t2
 JOIN realizaruta t1
 ON t1.ruta = t2.id

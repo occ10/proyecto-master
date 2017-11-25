@@ -43,6 +43,9 @@ $this->load->view('private/include/cabecera');
                         </span>
                     </div>
                     <!--  boton reservar sitio-->
+                    <?php if(isset($usuarioReservaPlaza) and $usuarioReservaPlaza == true and isset($resrvaPlaza) && $resrvaPlaza == false) {
+                        echo "<div class=\"alert alert-info\"> La solicitud esta a la espera de la confirmacion del respnsable</div>";
+                    } else if(isset($resrvaPlaza) && $resrvaPlaza == false){?>
                     <div style="height:50px;;padding-top: 10px">
                         <form  action="<?php echo site_url('private/reservarPlaza')?>" id="myFormReserva" name="myFormReserva"   method="get">
                             <div><input type="hidden" name="usuarioCorreo" id="usuariocomentado" value="<?php echo $detalleUsuario->correo ?>"></div>
@@ -54,6 +57,7 @@ $this->load->view('private/include/cabecera');
                             </div>
                         </form>
                     </div>
+                    <?php }?>
                 </div>
                 <div style="border-style: solid;border-color:#DDDDDD;border-width:1px;margin:30px 0 0 0">
 

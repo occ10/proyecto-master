@@ -44,4 +44,17 @@ class DetalleAnuncioModel extends CI_Model
         return $result= $this->db->get()->row();
         //return $result = $query->row();
     }
+
+    public function usuarioReservaPlaza($correo,$id){
+
+        $this->db->select('count(*) as numero');
+        $this->db->from('reservaplaza');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('usuario', $correo);
+        $this->db->where('ruta', $id);
+
+        //$query = $this->db->get();
+        return $this->db->get()->row()->numero > 0 ;
+        //return $result = $query->row();
+    }
 }

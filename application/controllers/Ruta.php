@@ -323,12 +323,17 @@ class Ruta extends CI_Controller {
                 $correo = $_GET['usuarioCorreo'];
                 $idRuta = $_GET['rutaId'];
                 $cocheMatricula = $_GET['cocheMatricula'];
+                $data = array(
+                    'ruta' => $idRuta,
+                    'usuario' => $correo
+                );
                 //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
+                $this->RutaModel->insertaReserva($data);
                 $this->send_mail($correo,$idRuta,$cocheMatricula);
             }
 
 
-            $this->load->view('public/home');
+            $this->load->view('private/reservaPlaza');
         }else
         $this->load->view('public/home');
     }
@@ -387,20 +392,25 @@ class Ruta extends CI_Controller {
             'ruta' => $idRuta,
 
         );
-        $data2 = $this->security->xss_clean($data2);
-       $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
-        $data = array(
-            'id' => $idRuta
-            //'plazasOcupadas' => 'plazasOcupadas' - 1,
-        );
-        $data = $this->security->xss_clean($data);
-        $Resultado1 = $this->RutaModel->updatePlazasOcupadas($data);
-        if ($Resultado2 == true && $Resultado1 == true) {
-            $output['Exito'] = 'exito';
-        } else {
-            $output['Error'] = 'error';
+        $existeRuta = $this->RutaModel->isUsuarioReservaPlaza($data2);
+        if($existeRuta == false) {
+            $data2 = $this->security->xss_clean($data2);
+            $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
+            $data = array(
+                'id' => $idRuta
+                //'plazasOcupadas' => 'plazasOcupadas' - 1,
+            );
+            $data = $this->security->xss_clean($data);
+            $Resultado1 = $this->RutaModel->updatePlazasOcupadas($data);
+            if ($Resultado2 == true && $Resultado1 == true) {
+                $output['Exito'] = 'exito';
+            } else {
+                $output['Error'] = 'error';
+            }
+        }else{
+            $output['Error'] = 'Ya esta dada de alta la solicitud de reservar plaza';
         }
-        $this->load->view('public/home');
+        $this->load->view('private/confirmPlaza',$output);
     }
     public function indexRegistro(){
        // $this->load->view('public/registro');
