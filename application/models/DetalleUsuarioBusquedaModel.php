@@ -239,7 +239,7 @@ class DetalleUsuarioBusquedaModel extends CI_Model
     WHERE t1.correo = '".$correo."'");
     }
 
-    public function reservaPlaza($correoComentado,$correoComenta){
+    public function reservaPlaza($correoComentado,$correoComenta,$id){
 
         $this->db->select('count(*) as numero');
         $this->db->from('realizaruta realiza1,realizaruta realiza2');
@@ -247,7 +247,7 @@ class DetalleUsuarioBusquedaModel extends CI_Model
         $this->db->where('realiza1.usuario', $correoComentado);
         $this->db->where('realiza2.usuario', $correoComenta);
         $this->db->where('realiza1.ruta = realiza2.ruta');
-        //$query = $this->db->get();
+        $this->db->where('realiza1.ruta', $id);
         return $this->db->get()->row()->numero > 0 ;
         //return $result = $query->row();
     }
@@ -261,6 +261,18 @@ class DetalleUsuarioBusquedaModel extends CI_Model
 
         //$query = $this->db->get();
         return $this->db->get()->row()->numero == 0 ;
+        //return $result = $query->row();
+    }
+    public function reservaPlazaUser($correoComentado,$correoComenta){
+
+        $this->db->select('count(*) as numero');
+        $this->db->from('realizaruta realiza1,realizaruta realiza2');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('realiza1.usuario', $correoComentado);
+        $this->db->where('realiza2.usuario', $correoComenta);
+        $this->db->where('realiza1.ruta = realiza2.ruta');
+        //$this->db->where('realiza1.ruta', $id);
+        return $this->db->get()->row()->numero > 0 ;
         //return $result = $query->row();
     }
 }

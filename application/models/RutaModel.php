@@ -27,6 +27,7 @@ class RutaModel extends CI_Model
         $this->db->from('ruta r, realizaruta z');
         $this->db->where('r.id = z.ruta');
         $this->db->where('z.usuario', $data['usuario']);
+        $this->db->where('z.opcion', '1');
         $this->db->limit($per_page,$uri_segment);
         $query = $this->db->get();
         return $query->result();
@@ -36,6 +37,7 @@ class RutaModel extends CI_Model
         $this->db->select('r.*');
         $this->db->from('ruta r, realizaruta z');
         $this->db->where('r.id = z.ruta');
+        $this->db->where('z.opcion', '1');
         $this->db->where('z.usuario', $data['usuario']);
         $query = $this->db->get();
         //$result = $query->result();

@@ -72,6 +72,7 @@ class Ruta extends CI_Controller {
                     'coche' => $Result->matricula,
                     'usuario' => $user,
                     'ruta' => $Resultado,
+                    'opcion' => '1'
 
                 );
                 $data2 = $this->security->xss_clean($data2);
