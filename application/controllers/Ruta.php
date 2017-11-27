@@ -318,7 +318,7 @@ class Ruta extends CI_Controller {
     }
     public function reservarRuta(){
         if($this->session->userdata('user')) {
-            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
+            $correoUSuarioSesion = $this->session->userdata('user')->correo;
             //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
             if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
                 $correo = $_GET['usuarioCorreo'];
@@ -326,7 +326,7 @@ class Ruta extends CI_Controller {
                 $cocheMatricula = $_GET['cocheMatricula'];
                 $data = array(
                     'ruta' => $idRuta,
-                    'usuario' => $correo
+                    'usuario' => $correoUSuarioSesion
                 );
                 //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
                 $this->RutaModel->insertaReserva($data);
@@ -394,7 +394,8 @@ class Ruta extends CI_Controller {
 
         );
         $existeRuta = $this->RutaModel->isUsuarioReservaPlaza($data2);
-        if($existeRuta == false) {
+        $existeReserva = $this->RutaModel->existeReserva($data2);
+        if($existeRuta == false and $existeReserva == true) {
             $data2 = $this->security->xss_clean($data2);
             $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
             $data = array(
@@ -408,11 +409,66 @@ class Ruta extends CI_Controller {
             } else {
                 $output['Error'] = 'error';
             }
-        }else{
+        }else if ($existeRuta == true){
             $output['Error'] = 'Ya esta dada de alta la solicitud de reservar plaza';
-        }
+        }else
+            $output['Error'] = 'El usuario ha cancelado la reserva';
+
         $this->load->view('private/confirmPlaza',$output);
     }
+
+    public function cancelarReserva(){
+        if($this->session->userdata('user')) {
+            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
+            //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
+            if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
+                $correo = $_GET['usuarioCorreo'];
+                $idRuta = $_GET['rutaId'];
+                $cocheMatricula = $_GET['cocheMatricula'];
+                $data = array(
+                    'ruta' => $idRuta,
+                    'usuario' => $correo
+                );
+                //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
+                $output['boradoReserva'] = $this->RutaModel->cancelarReserva($data);
+                //$this->send_mail($correo,$idRuta,$cocheMatricula);
+            }
+
+
+            $this->load->view('private/borradoPlaza',$output);
+        }else
+            $this->load->view('public/home');
+
+    }
+
+    public function borrarRuta(){
+        if($this->session->userdata('user')) {
+            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
+            //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
+            if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
+                $correo = $_GET['usuarioCorreo'];
+                $idRuta = $_GET['rutaId'];
+                $cocheMatricula = $_GET['cocheMatricula'];
+                $data = array(
+                    'ruta' => $idRuta,
+                    'usuario' => $correo,
+                    'coche'  => $cocheMatricula
+                );
+                //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
+                $borrado = $this->RutaModel->borrarRuta($data);
+                $cancelado = $this->RutaModel->cancelarReserva($data);
+
+                $output['boradoReserva'] = $borrado && $cancelado;
+                //$this->send_mail($correo,$idRuta,$cocheMatricula);
+            }
+
+
+            $this->load->view('private/borradoPlaza',$output);
+        }else
+            $this->load->view('public/home');
+
+    }
+
     public function indexRegistro(){
        // $this->load->view('public/registro');
     }

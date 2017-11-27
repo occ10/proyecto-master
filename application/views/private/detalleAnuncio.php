@@ -45,10 +45,23 @@ $this->load->view('private/include/cabecera');
                     <!--  boton reservar sitio-->
                     <?php if(isset($usuarioReservaPlaza) and $usuarioReservaPlaza == true and isset($resrvaPlaza) && $resrvaPlaza == false) {
                         echo "<div class=\"alert alert-info\"> La solicitud esta a la espera de la confirmacion del respnsable</div>";
+                        ?>
+                        <div style="height:50px;;padding-top: 10px">
+                        <form  action="<?php echo site_url('private/borrarReserva')?>" id="myFormReserva" name="myFormReserva"   method="get">
+                            <div><input type="hidden" name="usuarioCorreo" id="usuarioCorreo" value="<?php echo $usuarioSesion ?>"></div>
+                            <div><input type="hidden" name="rutaId" id="rutaId" value="<?php echo $detalleUsuario->id ?>"></div>
+                            <div><input type="hidden" name="cocheMatricula" id="cocheMatricula" value="<?php echo $detalleUsuario->matricula ?>"></div>
+
+                            <div class="form-group" style="text-align: center;">
+                                <input type="submit" value="Cancelar reserva" class="btn btn-primary" id="boBorrarReservar" style="width:80%">
+                            </div>
+                        </form>
+                    </div>
+                        <?php
                     } else if(isset($resrvaPlaza) && $resrvaPlaza == false){?>
                     <div style="height:50px;;padding-top: 10px">
                         <form  action="<?php echo site_url('private/reservarPlaza')?>" id="myFormReserva" name="myFormReserva"   method="get">
-                            <div><input type="hidden" name="usuarioCorreo" id="usuariocomentado" value="<?php echo $detalleUsuario->correo ?>"></div>
+                            <div><input type="hidden" name="usuarioCorreo" id="usuarioCorreo" value="<?php echo $detalleUsuario->correo ?>"></div>
                             <div><input type="hidden" name="rutaId" id="rutaId" value="<?php echo $detalleUsuario->id ?>"></div>
                             <div><input type="hidden" name="cocheMatricula" id="cocheMatricula" value="<?php echo $detalleUsuario->matricula ?>"></div>
 
@@ -57,7 +70,20 @@ $this->load->view('private/include/cabecera');
                             </div>
                         </form>
                     </div>
-                    <?php }?>
+                    <?php }else{?>
+                        <div style="height:50px;;padding-top: 10px">
+                            <form  action="<?php echo site_url('private/borrarRutaCompartida')?>" id="myFormReserva" name="myFormReserva"   method="get">
+                                <div><input type="hidden" name="usuarioCorreo" id="usuarioCorreo" value="<?php echo $usuarioSesion ?>"></div>
+                                <div><input type="hidden" name="rutaId" id="rutaId" value="<?php echo $detalleUsuario->id ?>"></div>
+                                <div><input type="hidden" name="cocheMatricula" id="cocheMatricula" value="<?php echo $detalleUsuario->matricula ?>"></div>
+
+                                <div class="form-group" style="text-align: center;">
+                                    <input type="submit" value="Borrar Ruta" class="btn btn-primary" id="boReservarPlaza" style="width:80%">
+                                </div>
+                            </form>
+                        </div>
+
+                    <?php   }?>
                 </div>
                 <div style="border-style: solid;border-color:#DDDDDD;border-width:1px;margin:30px 0 0 0">
 

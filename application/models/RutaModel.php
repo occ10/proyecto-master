@@ -168,6 +168,31 @@ class RutaModel extends CI_Model
         return $this->db->get()->row()->numero > 0 ;
         //return $result = $query->row();
     }
+    public function existeReserva($data){
+        $this->db->select('count(*) as numero');
+        $this->db->from('reservaplaza');
+        //$this->db->join('realizaruta realiza2');
+        $this->db->where('usuario', $data['usuario']);
+        $this->db->where('ruta', $data['ruta']);
+        //$query = $this->db->get();
+        return $this->db->get()->row()->numero > 0 ;
+        //return $result = $query->row();
+    }
+    public function cancelarReserva($data){
+
+        $this->db->where('ruta', $data['ruta']);
+        $this->db->where('usuario', $data['usuario']);
+        $this->db->delete('reservaplaza');
+        return ($this->db->affected_rows() > 0);
+    }
+    public function borrarRuta($data){
+
+        $this->db->where('ruta', $data['ruta']);
+        $this->db->where('usuario', $data['usuario']);
+        $this->db->where('coche', $data['coche']);
+        $this->db->delete('realizaruta');
+        return ($this->db->affected_rows() > 0);
+    }
 //SELECT count(*) as numero FROM `realizaruta` WHERE usuario='usuario30@gmail.com' and coche='3652HHH' and ruta=95
 /*update ruta t2
 JOIN realizaruta t1
