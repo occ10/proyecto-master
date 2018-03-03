@@ -31,6 +31,7 @@ class Registro extends CI_Controller {
             //$pass = $this->encrypt->encode($this->input->post('password'));
 
             $pass = hash('sha512', $this->input->post('passwordReg'));
+
             $salt = uniqid(mt_rand(), true);
             $pass = crypt($pass, $salt);
             $correo = $this->input->post('correo');
