@@ -12,7 +12,7 @@ $this->load->view('public/include/cabecera');
         <?php if(isset($boradoReserva) and $boradoReserva == true )
             echo 'La operacion se ha realizado correctamente.';
         else
-            echo 'Ha habido un problema al borrar, intentalo mas tarde.'
+            echo 'El usuario ya no forma parte de la ruta.'
         ?>
 
     </div>

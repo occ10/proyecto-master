@@ -87,6 +87,20 @@ class RutaModel extends CI_Model
             return true;
         //return ($this->db->affected_rows() > 0);
     }
+
+    public function updatePlazasdesOcupadas($data){
+        $this->db->trans_start();
+        $this->db->set('plazasOcupadas', '`plazasOcupadas` - 1' , FALSE);
+        $this->db->where('id', $data['id']);
+        $this->db->update('ruta');
+        $this->db->trans_complete();
+
+        if($this->db->trans_status() === FALSE)
+            return false;
+        else
+            return true;
+        //return ($this->db->affected_rows() > 0);
+    }
     public function borrarRutaUsuario($data){
 
         $this->db->where('id', $data['id']);
@@ -117,6 +131,7 @@ class RutaModel extends CI_Model
         $this->db->join('realizaruta', 'realizaruta.ruta = ruta.id');
         $this->db->join('usuario', 'usuario.correo = realizaruta.usuario');
 
+        $this->db->where('realizaruta.opcion =', '1');
         $this->db->where('ruta.origen', $data['origen']);
         $this->db->where('(ruta.plazas - ruta.plazasOcupadas) > ', 0);
         $this->db->where('ruta.opcion', '0');
@@ -189,7 +204,7 @@ class RutaModel extends CI_Model
 
         $this->db->where('ruta', $data['ruta']);
         $this->db->where('usuario', $data['usuario']);
-        $this->db->where('coche', $data['coche']);
+        //$this->db->where('coche', $data['coche']);
         $this->db->delete('realizaruta');
         return ($this->db->affected_rows() > 0);
     }

@@ -15,8 +15,6 @@
     var  jsn = <?php  if (isset ($Resultado)){
         echo  json_encode($Resultado);?>
 
-        //jsn =  JSON.parse(jsn);
-
     <?php }else{ echo json_encode($corrdenates);}
      ?>
 
@@ -33,10 +31,6 @@
                 posArray[i] = {codigo: jsn[i].codigo , superficie: jsn[i].superficie , plazas : jsn[i].plazas , lat: parseFloat(jsn[i].lat), lng: parseFloat(jsn[i].lon), id: jsn[i].id}
 
             <?php  } ?>
-
-
-        //}
-
         }
 
         var center = {lat: 38.385189, lng: -0.514053};
@@ -47,23 +41,26 @@
             mapTypeId: 'satellite'
         });
 
-        var markerLabel = 'Z ';
+        var markerLabel = '';
         for (i = 0; i < posArray.length; i++) {
             console.log(posArray[i]);
 
             var cad = "";
 
-            if(posArray[i].superficie)
-                cad = 'aparcamiento: ' + posArray[i].codigo +  '\nsuperficie: ' + posArray[i].superficie + '\nplazas:' + posArray[i].plazas + '\nlatitud: ' +posArray[i].lat+ '\nlongitud: ' + posArray[i].lng;
-            else
-                cad = 'aparcamiento: ' + posArray[i].aparcamiento  + '\nlatitud: ' +posArray[i].lat+ '\nlongitud: ' + posArray[i].lng;
+            if (posArray[i].superficie) {
+                markerLabel = 'Parking ';
+                cad = 'aparcamiento: ' + posArray[i].codigo + '\nsuperficie: ' + posArray[i].superficie + '\nplazas:' + posArray[i].plazas + '\nlatitud: ' + posArray[i].lat + '\nlongitud: ' + posArray[i].lng;
+            } else{
+                cad = 'aparcamiento: ' + posArray[i].aparcamiento + '\nlatitud: ' + posArray[i].lat + '\nlongitud: ' + posArray[i].lng;
+                markerLabel = 'Zona ';
+            }
             var marker = new google.maps.Marker({
                 position: posArray[i],
                 map: map,
                 title: cad,
                 label: {
                     text: markerLabel+(posArray[i].id),
-                    color: "#FFFFFF",
+                    color: "#F5F5DC",
                     fontSize: "10px",
                     fontWeight: "bold",
                     borderColor: "#000000",

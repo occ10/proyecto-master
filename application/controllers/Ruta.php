@@ -167,6 +167,7 @@ class Ruta extends CI_Controller {
             );
             $data = $this->security->xss_clean($data);
             $Resultado['ruta'] = $this->RutaModel->obtenerRutaUsuario($data);
+            $Resultado['usuarios'] = $this->RealizaRutaModel->obtenerUsuarios($data);
             //echo "<pre>";
             // print_r($Resultado);
             // echo "<pre>";
@@ -330,7 +331,7 @@ class Ruta extends CI_Controller {
                 );
                 //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
                 $this->RutaModel->insertaReserva($data);
-                $this->send_mail($correo,$idRuta,$cocheMatricula);
+                $this->send_mail($correo,$idRuta,$cocheMatricula,'reserve');
             }
 
 
@@ -338,7 +339,7 @@ class Ruta extends CI_Controller {
         }else
         $this->load->view('public/home');
     }
-    public function send_mail($correo,$idRuta,$cocheMatricula)
+    public function send_mail($correo,$idRuta,$cocheMatricula,$accion)
     {
         $correoUSuarioSesion = $this->session->userdata('user')->correo;
         $telefonoUsuarioSesion = $this->session->userdata('user')->telefono;
@@ -357,13 +358,17 @@ class Ruta extends CI_Controller {
         $config['validation'] = TRUE; // bool whether to validate email or not
         $this->email->initialize($config);
 
-        $from_email = "infochamit@gmail.com";
+        $from_email = $correoUSuarioSesion;
         $to_email = $correo;
         $this->email->from($from_email, 'chamit');
         $this->email->to($to_email);
         $this->email->subject('Email Test');
-        $this->email->message('El usuario ' . $nombreUsuarioSesion . ', a traves de este correo intenta reservar una plaza, pongase en contacto con el a traves del telefono ' . $telefonoUsuarioSesion . ' o mediante un correo a trves de esta direccion ' . $correoUSuarioSesion . ' en caso de que haces click sobre el enlace siguiente aceptas la reserva, por favor antes de hacer click, pongan de acuerdo, ' . site_url('confirmReserva/' . $correoUSuarioSesion . '/' . $cocheMatricula . '/' . $idRuta));
-//site_url("public/confirmRegistro/'
+        if($accion == 'reserve')
+            $this->email->message('El usuario ' . $nombreUsuarioSesion . ', a traves de este correo intenta reservar una plaza, pongase en contacto con el a traves del telefono ' . $telefonoUsuarioSesion . ' o mediante un correo a trves de esta direccion ' . $correoUSuarioSesion . ' en caso de que haces click sobre el enlace siguiente aceptas la reserva, por favor antes de hacer click, pongan de acuerdo, ' . site_url('confirmReserva/' . $correoUSuarioSesion . '/' . $cocheMatricula . '/' . $idRuta));
+        else
+            $this->email->message('El usuario con correo ' . $correoUSuarioSesion . ' ha confirmado tu reserva para compartir coche hacia la universidad');
+
+        //site_url("public/confirmRegistro/'
        return $this->email->send();
 
         //echo $this->email->print_debugger();
@@ -406,6 +411,7 @@ class Ruta extends CI_Controller {
             $Resultado1 = $this->RutaModel->updatePlazasOcupadas($data);
             if ($Resultado2 == true && $Resultado1 == true) {
                 $output['Exito'] = 'exito';
+                $this->send_mail($correo,$idRuta,$cocheMatricula,'confirm');
             } else {
                 $output['Error'] = 'error';
             }
@@ -448,15 +454,20 @@ class Ruta extends CI_Controller {
             if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
                 $correo = $_GET['usuarioCorreo'];
                 $idRuta = $_GET['rutaId'];
-                $cocheMatricula = $_GET['cocheMatricula'];
+                //$cocheMatricula = $_GET['cocheMatricula'];
                 $data = array(
                     'ruta' => $idRuta,
-                    'usuario' => $correo,
-                    'coche'  => $cocheMatricula
+                    'usuario' => $correo
+                    //'coche'  => $cocheMatricula
+                );
+                $data2 = array(
+                    'id' => $idRuta
                 );
                 //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
                 $borrado = $this->RutaModel->borrarRuta($data);
                 $cancelado = $this->RutaModel->cancelarReserva($data);
+                if($borrado && $cancelado)
+                $desocupado = $this->RutaModel->updatePlazasdesOcupadas($data2);
 
                 $output['boradoReserva'] = $borrado && $cancelado;
                 //$this->send_mail($correo,$idRuta,$cocheMatricula);

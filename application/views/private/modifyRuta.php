@@ -82,14 +82,14 @@ $this->load->view('private/include/cabecera');
 
                         </div>
                     </div>
-                    <div class="form-group" >
+                    <!--<div class="form-group" >
                         <label for="plaza">Plazas ocupadas</label>
                         <div class="input-group">
                             <span class="input-group-addon"><i>N</i></span>
-                            <input name="plazaOcupadas" type="number" name="quantity" min="1" max=<?php if(isset ($ruta)) echo $ruta->plazas;?>  class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
+                            <input name="plazaOcupadas" type="number" name="quantity" min="0" max=<?php if(isset ($ruta)) echo $ruta->plazas;?>  class="form-control" id="plazaOcupadas" placeholder="Ejemplo: 3" value="<?php if (isset($ruta))echo  $ruta->plazasOcupadas ?>" required><span class="input-group-addon"><i style="color:red;" class="glyphicon glyphicon-asterisk"></i></span>
 
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group" >
                         <div class="input-group">
                             <label for="detalle">Detalles</label>

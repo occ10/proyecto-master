@@ -31,4 +31,15 @@ class RealizaRutaModel extends CI_Model
             return true;
         //return ($this->db->affected_rows() > 0);
     }
+
+    public function obtenerUsuarios($data){
+
+        $this->db->select('u.*');
+        $this->db->from('usuario u, realizaruta z');
+        $this->db->where('u.correo = z.usuario');
+        $this->db->where('z.ruta', $data['id']);
+        $this->db->where('z.opcion', '0');
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

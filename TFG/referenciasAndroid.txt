@@ -1,0 +1,9 @@
+https://stackoverflow.com/questions/45972242/android-tab-fragment-map-not-showing
+https://stackoverflow.com/questions/15706438/how-to-wrap-googlemap-fragment-into-a-linearlayout
+https://developers.google.com/android/reference/com/google/android/gms/maps/SupportMapFragment
+https://developers.google.com/maps/documentation/android-api/map
+https://stackoverflow.com/questions/20155051/how-to-set-visibility-options-of-android-widget-textview
+https://adambard.com/blog/3-wrong-ways-to-store-a-password/      cifrar contraseñas
+https://www.mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
+https://www.tutorialspoint.com/java/java_sending_email.htm
+https://mvnrepository.com/artifact/javax.mail/javax.mail-api
