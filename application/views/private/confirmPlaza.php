@@ -10,9 +10,9 @@ $this->load->view('public/include/cabecera');
     <div class="panel-body">
 
         <?php if(isset($Error))
-            echo $Error;
+            echo '<div class="alert alert-info">' . $Error . '</div>';
         else
-        echo 'La solicituda se ha confirmado conrrectamente, y asu vez le hemos enviado un correo al usuario solicitante.'
+            echo '<div class="alert alert-success">La solicituda se ha confirmado conrrectamente, y asu vez le hemos enviado un correo al usuario solicitante.</div>';
         ?>
 
     </div>

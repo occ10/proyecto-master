@@ -216,7 +216,7 @@ class Usuarios extends CI_Controller
             $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($usuarioComentado);
             $Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($usuarioComentado);
             $Resultado['comentarios'] = $this->DetalleUsuarioBusquedaModel->ComentariosPorCorreo($usuarioComentado);
-            $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlaza($usuarioComentado,$usuarioComenta);
+            $Resultado['resrvaPlaza'] =  $this->DetalleUsuarioBusquedaModel->reservaPlazaUser($usuarioComentado,$usuarioComenta);
             $Resultado['numComents'] =  $this->DetalleUsuarioBusquedaModel->numComents($usuarioComentado,$usuarioComenta);
 
             $Resultado['correo']  = $usuarioComentado;

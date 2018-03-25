@@ -320,7 +320,7 @@ class Ruta extends CI_Controller {
     public function reservarRuta(){
         if($this->session->userdata('user')) {
             $correoUSuarioSesion = $this->session->userdata('user')->correo;
-            //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
+            $output['reserva'] = "";
             if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
                 $correo = $_GET['usuarioCorreo'];
                 $idRuta = $_GET['rutaId'];
@@ -329,13 +329,15 @@ class Ruta extends CI_Controller {
                     'ruta' => $idRuta,
                     'usuario' => $correoUSuarioSesion
                 );
-                //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
-                $this->RutaModel->insertaReserva($data);
-                $this->send_mail($correo,$idRuta,$cocheMatricula,'reserve');
+                $usuarioReserva = $this->RutaModel->consultarReserva($data);
+                if($usuarioReserva == false) {
+                    $this->RutaModel->insertaReserva($data);
+                    $this->send_mail($correo, $idRuta, $cocheMatricula, 'reserve');
+                }else{
+                    $output['reserva'] = 'Ya se ha realizado la reserva, solo se debe esperar la respuesta del anunciante';
+                }
             }
-
-
-            $this->load->view('private/reservaPlaza');
+            $this->load->view('private/reservaPlaza',$output);
         }else
         $this->load->view('public/home');
     }

@@ -9,9 +9,14 @@ $this->load->view('public/include/cabecera');
     </div>-->
     <div class="panel-body">
 
+        <?php if(isset($reserva) && $reserva != ""){
+            echo '<div class="alert alert-info">' . $reserva . '</div>';
+        }else {
+            echo '<div class="alert alert-success"> Hemos Enviado correo al responsable de la ruta, una vez lee el mensaje, se ponga en contacto con usted. en caso que pongais de acuerdo
+            acepta la solicituda y figuras como usuario de la ruta.</div>';
+        }
+        ?>
 
-            Hemos Enviado correo al responsable de la ruta, una vez, lee el mensaje, se ponga en contacto con usted. en caso que pongais de acuerdo
-            acepta la solicituda y figuras como usuario de la ruta.
 
     </div>
 

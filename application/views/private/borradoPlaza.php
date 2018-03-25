@@ -10,9 +10,9 @@ $this->load->view('public/include/cabecera');
     <div class="panel-body">
 
         <?php if(isset($boradoReserva) and $boradoReserva == true )
-            echo 'La operacion se ha realizado correctamente.';
+            echo '<div class="alert alert-success">La operacion se ha realizado correctamente.</div>';
         else
-            echo 'El usuario ya no forma parte de la ruta.'
+            echo '<div class="alert alert-info">El usuario ya no forma parte de la ruta.</div>';
         ?>
 
     </div>
