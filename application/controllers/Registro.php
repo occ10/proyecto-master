@@ -105,23 +105,6 @@ class Registro extends CI_Controller {
 //site_url("public/confirmRegistro/'
        $this->email->send();
        return true;
-        //echo $this->email->print_debugger();
-        //Send mail
-       /* if ($this->email->send()) {
-
-           // $this->session->set_flashdata("email_sent", "Email sent successfully.");
-           // echo "<pre>" .
-            //$this->email->print_debugger() . "</pre>";
-            return true;
-        }else {
-
-          //  echo "<pre>" .
-              //  $this->email->print_debugger() . "</pre>";
-            //$this->session->set_flashdata("email_sent", "Error in sending Email.");
-            //$this->load->view('email_form');
-            return false;
-        }*/
-
     }
 
     public function correo($correo){

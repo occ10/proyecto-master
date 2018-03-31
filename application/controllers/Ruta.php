@@ -63,30 +63,31 @@ class Ruta extends CI_Controller {
             $resultado2 = $this->RutaModel->setOcpionRuta($user);
             if($resultado2){
 
-            }
-            $Resultado = $this->RutaModel->insertaRuta($data);
-            if (!empty($Resultado)) {
+                $Resultado = $this->RutaModel->insertaRuta($data);
+                if (!empty($Resultado)) {
 
-                $Result = $this->CocheModel->ConsultaMatricula($user);
-                $data2 = array(
-                    'coche' => $Result->matricula,
-                    'usuario' => $user,
-                    'ruta' => $Resultado,
-                    'opcion' => '1'
+                    $Result = $this->CocheModel->ConsultaMatricula($user);
+                    $data2 = array(
+                        'coche' => $Result->matricula,
+                        'usuario' => $user,
+                        'ruta' => $Resultado,
+                        'opcion' => '1'
 
-                );
-                $data2 = $this->security->xss_clean($data2);
-                $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
-                if ($Resultado2 == true) {
-                    $output['Exito'] = 'exito';
+                    );
+                    $data2 = $this->security->xss_clean($data2);
+                    $Resultado2 = $this->RealizaRutaModel->insertaRealizaRuta($data2);
+                    if ($Resultado2 == true) {
+                        $output['Exito'] = 'exito';
+                    } else {
+                        $output['Error'] = 'error';
+                    }
                 } else {
                     $output['Error'] = 'error';
                 }
-            } else {
+
+            }else {
                 $output['Error'] = 'error';
             }
-
-
             $this->load->view('private/ruta', $output);
         }else{
             $this->load->view('public/home');
@@ -427,8 +428,8 @@ class Ruta extends CI_Controller {
 
     public function cancelarReserva(){
         if($this->session->userdata('user')) {
-            //$correoUSuarioSesion = $this->session->userdata('user')->correo;
-            //$telefonoUsuarioSesion = $this->session->userdata('user')->	telefono;
+            $borrado = false;
+            $cancelado = false;
             if (isset($_GET['usuarioCorreo']) && isset($_GET['rutaId'])) {
                 $correo = $_GET['usuarioCorreo'];
                 $idRuta = $_GET['rutaId'];
@@ -437,12 +438,12 @@ class Ruta extends CI_Controller {
                     'ruta' => $idRuta,
                     'usuario' => $correo
                 );
-                //echo "<pre>" . $correo . ' ' . $idRuta . ' ' . $cocheMatricula . "</pre>";
-                $output['boradoReserva'] = $this->RutaModel->cancelarReserva($data);
+                $borrado = $this->RutaModel->borrarRuta($data);
+                $cancelado = $this->RutaModel->cancelarReserva($data);
                 //$this->send_mail($correo,$idRuta,$cocheMatricula);
             }
 
-
+            $output['boradoReserva'] = $borrado && $cancelado;
             $this->load->view('private/borradoPlaza',$output);
         }else
             $this->load->view('public/home');
