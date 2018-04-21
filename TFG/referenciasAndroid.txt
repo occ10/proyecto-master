@@ -7,3 +7,24 @@ https://adambard.com/blog/3-wrong-ways-to-store-a-password/      cifrar contrase
 https://www.mkyong.com/java/javamail-api-sending-email-via-gmail-smtp-example/
 https://www.tutorialspoint.com/java/java_sending_email.htm
 https://mvnrepository.com/artifact/javax.mail/javax.mail-api
+https://stackoverflow.com/questions/13397933/android-spinner-avoid-onitemselected-calls-during-initialization/25070707
+https://developer.android.com/reference/android/widget/TextView.html#attr_android:textStyle
+https://material.io/icons/#ic_keyboard_arrow_up
+https://stackoverflow.com/questions/38192977/how-do-i-create-drop-down-content-like-on-wikipedia?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://gist.github.com/iperdomo/2867928
+https://stackoverflow.com/questions/15185636/align-the-top-of-a-view-to-the-bottom-of-another-view-in-a-relativelayout
+http://www.vogella.com/tutorials/REST/article.html
+https://javatutorial.net/java-file-upload-rest-service
+
+send image to server
+http://www.coderzheaven.com/2012/03/29/uploading-audio-video-or-image-files-from-android-to-server/
+https://www.coderefer.com/android-upload-file-to-server/
+https://stackoverflow.com/questions/25398200/uploading-file-in-php-server-from-android-device?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+https://www.codicode.com/art/upload_files_from_android_to_a_w.aspx
+https://www.aeq-web.com/android-image-upload-http-post-php/?lang=en
+https://acomputerengineer.wordpress.com/2016/03/29/upload-image-from-android-app-to-php-server-without-any-library/
+https://www.androidpit.com/forum/626715/downloading-image-from-server-to-android-device
+get image from server
+https://github.com/codepath/android_guides/wiki/Displaying-Images-with-the-Glide-Library
+https://github.com/codepath/android_guides/wiki/Displaying-Images-with-the-Picasso-Library
+https://stackoverflow.com/questions/20823249/resize-image-to-full-width-and-fixed-height-with-picasso?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa

@@ -443,7 +443,7 @@ class Ruta extends CI_Controller {
                 //$this->send_mail($correo,$idRuta,$cocheMatricula);
             }
 
-            $output['boradoReserva'] = $borrado && $cancelado;
+            $output['boradoReserva'] = $borrado || $cancelado;
             $this->load->view('private/borradoPlaza',$output);
         }else
             $this->load->view('public/home');

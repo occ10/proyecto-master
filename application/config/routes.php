@@ -88,7 +88,7 @@ $route['private/buscarAnuncios/(:num)'] = 'ruta/buscarAnuncios/$1';
 //reservar plaza
 $route['private/reservarPlaza'] = 'ruta/reservarRuta';
 //borrar ruta
-$route['private/borrarReserva'] = 'ruta/cancelarReserva';
+$route['private/borrarReserva'] = 'ruta/"cancelarReserva';
 //borrar ruta compartida
 $route['private/borrarRutaCompartida'] = 'ruta/borrarRuta';
 //confirmar reserva
