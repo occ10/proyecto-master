@@ -28,8 +28,8 @@ $this->load->view('private/include/menu');
                                                 style="border-radius: 30%;"
                                                 src="<?php echo base_url(); ?>assets/userFoto/<?php if ($comentario->foto == "") echo 'unkonwnfoto.png'; else echo $comentario->foto ?> "
                                                 alt="Smiley face" height="60px" width="60px"></a></div>
-                                    <div><strong
-                                            style="color:#333333"><?php echo $comentario->nombre . $comentario->apellido ?></strong> <?php echo $comentario->comentario ?>
+                                    <div style="padding-left:10px;color:#333333">
+                                        <strong><?php echo $comentario->nombre . $comentario->apellido ?></strong> <?php echo $comentario->comentario ?>
                                     </div>
                                 </div>
                             </li>

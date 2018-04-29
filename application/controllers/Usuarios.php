@@ -182,11 +182,6 @@ class Usuarios extends CI_Controller
             $output['origen'] = $var;
             $output['paginacion'] = $this->pagination->create_links();
             $output['total']=$this->DetalleUsuarioBusquedaModel->obtenerTodoPorNombre($var,$correo);
-            /*echo "<pre>";
-            print_r(count($output['rutas']));
-            echo "</pre>";*/
-            $output['prueba']='hola prueba';
-            //$output['id']=$id;
 
             $this->load->view('private/listaUsuariosBuscados', $output);
         }else{
@@ -285,10 +280,6 @@ class Usuarios extends CI_Controller
             $correo = $this->session->userdata('user')->correo;
 
             $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosPorCorreo($correo);
-            //$Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
-
-
-
             //////////////////////////////////////pagination comentarios
             $config['base_url'] = base_url().'private/opinionesRecibidas';
             //$config['suffix']= '?usuarioCorreo=' . $correo;
@@ -337,8 +328,6 @@ class Usuarios extends CI_Controller
 
             $Resultado['numComentarios'] = $this->DetalleUsuarioBusquedaModel->numComentariosHechosPorCorreo($correo);
             //$Resultado['detalleUsuario'] = $this->DetalleUsuarioBusquedaModel->DetalleUsuarioBuscadoPorCorreo($correo);
-
-
 
             //////////////////////////////////////pagination comentarios
             $config['base_url'] = base_url().'private/opinionesHechas';

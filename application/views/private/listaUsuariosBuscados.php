@@ -12,8 +12,6 @@ $this->load->view('private/include/cabecera');
         echo "<ul>";
         foreach ($usuarios as $usuario):
             ?>
-
-
             <li id="li-anuncio" style="border-bottom-style: groove; padding-bottom:10px ;padding-top: 10px;height:150px;">
                 <a href="<?php echo site_url('private/DetalleUsuarioPorCorreo/' . $usuario->correo)?>">
                     <div class="row" style="height:150px;">
@@ -30,7 +28,7 @@ $this->load->view('private/include/cabecera');
                             </div>
                         </div>
                         <div class="col-md-6" style="">
-                            <h4>Origen: <?php echo $origen ?></h4>
+
                             <h4>Edad: <?php echo $usuario->edad ?> años</h4>
                             <h4>Telefono:<?php echo $usuario->telefono ?>
                             <h4>Correo electronico: <?php echo $usuario->correo ?> </h4>
@@ -41,8 +39,6 @@ $this->load->view('private/include/cabecera');
                 </a>
             </li>
             <?php
-
-
         endforeach;
         ?>
         <div class="text-center" style="width:100%";>
@@ -53,7 +49,6 @@ $this->load->view('private/include/cabecera');
                 <!--<a href="-->
                 <?php
                 echo $paginacion;
-
                 ?>
 
             </div>
